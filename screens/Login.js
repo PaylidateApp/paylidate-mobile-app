@@ -56,7 +56,11 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
     backgroundColor:'#D9D9D9',
-    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.4)',   
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.8,
+    shadowRadius: 0.4,  
+    elevation: 5,  
     
   },
   inputgroup:
@@ -75,7 +79,11 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
     backgroundColor:'#D9D9D9',
-    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.4)'
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.8,
+    shadowRadius: 0.4,  
+    elevation: 5,
   },
 
   btncontainer:
@@ -88,7 +96,11 @@ const styles = StyleSheet.create({
     width: 163,
     height: 37,
     backgroundColor:'#182430',
-    boxShadow: 9,
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.8,
+    shadowRadius: 0.4,  
+    elevation: 5,
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
