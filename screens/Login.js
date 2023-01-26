@@ -1,8 +1,13 @@
 
 import { StyleSheet, View, Text, Image, TextInput, TouchableHighlight } from 'react-native'
 import React from 'react'
+import { FONTS } from '../constants/theme'
+
+  
 
 const Login = () => {
+
+  
   return (
     <View style={styles.container}>
       <Image
@@ -31,8 +36,9 @@ const Login = () => {
 
 <View style={styles.btncontainer}>
 <TouchableHighlight style={styles.loginbtn}>
-      <Text style={styles.loginbtnlabel}>Login</Text>
-    </TouchableHighlight>
+<Text style={styles.loginbtnlabel}>Login</Text>
+</TouchableHighlight>
+      
 </View>
     
 
@@ -47,6 +53,11 @@ const styles = StyleSheet.create({
   logo: {
     marginTop: 16
   },
+
+  container: {
+   
+
+  },
   
 
  email:
@@ -57,10 +68,12 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 20,
     backgroundColor:'#D9D9D9',
     shadowColor: 'black',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.8,
-    shadowRadius: 0.4,  
-    elevation: 5,  
+    shadowOffset: { width: 3, height: 1 },
+    shadowOpacity: 0.5,
+    shadowRadius: 8,  
+    elevation: 4,
+    textAlign: 'center',
+    // fontFamily: ,
     
   },
   inputgroup:
@@ -80,10 +93,11 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 20,
     backgroundColor:'#D9D9D9',
     shadowColor: 'black',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.8,
-    shadowRadius: 0.4,  
-    elevation: 5,
+    shadowOffset: { width: 3, height: 1 },
+    shadowOpacity: 0.5,
+    shadowRadius: 8,  
+    elevation: 4,
+    textAlign: 'center'
   },
 
   btncontainer:
@@ -97,10 +111,10 @@ const styles = StyleSheet.create({
     height: 37,
     backgroundColor:'#182430',
     shadowColor: 'black',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.8,
-    shadowRadius: 0.4,  
-    elevation: 5,
+    shadowOffset: { width: 3, height: 1 },
+    shadowOpacity: 0.5,
+    shadowRadius: 8,  
+    elevation: 4,
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
@@ -109,6 +123,7 @@ const styles = StyleSheet.create({
   loginbtnlabel:
   {
     color: '#fff',
+    fontFamily: FONTS.cabin
   }
 
 });
