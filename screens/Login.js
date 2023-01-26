@@ -2,8 +2,9 @@
 import { StyleSheet, View, Text, Image, TextInput, TouchableHighlight } from 'react-native'
 import React from 'react'
 import { FONTS } from '../constants/theme'
+import { AntDesign } from '@expo/vector-icons';
 
-  
+// @expo/vector-icons
 
 const Login = () => {
 
