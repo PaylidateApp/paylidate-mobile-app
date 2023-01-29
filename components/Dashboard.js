@@ -1,7 +1,7 @@
 import React from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, Text, StyleSheet, Image, Button } from "react-native";
 
-import MainButton from "../MainButton";
+import MainButton from "./MainButton";
 
 const Dashboard = () => {
   return (
@@ -27,6 +27,18 @@ const Dashboard = () => {
           <MainButton style={styles.bigButton}>Send Funds</MainButton>
         </View>
       </View>
+      <View style={styles.sectionTwo}>
+        <View style={styles.flexStyle2}>
+        <View style={styles.sectionTwoSub}>
+        <Image source={require('../assets/dashboard/trophy.png')} />
+        <Text>Dance</Text>
+        </View>
+        <View style={styles.sectionTwoSub}>
+        <Image source={require('../assets/dashboard/trophy2.png')} />
+        <Text>Dance</Text>
+        </View>
+        </View>
+      </View>
     </View>
   );
 };
@@ -46,8 +58,24 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 180,
     paddingTop: 15,
-    borderRadius: 3,
+    borderRadius: 8,
     backgroundColor: "#EB6117",
+  },
+  sectionTwo: {
+    width: "100%",
+    height: 90,
+    paddingTop: 4,
+    marginVertical: 20,
+    borderRadius: 8,
+    backgroundColor: "#489451",
+  },
+  sectionTwoSub: {
+    width: 80,
+    height: 65,
+    // paddingTop: 15,
+    // marginVertical: 20,
+    borderRadius: 8,
+    backgroundColor: "#88C58F",
   },
   flexStyle: {
     flexDirection: "row",
@@ -56,6 +84,14 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 10,
     justifyContent: "space-between",
+  },
+  flexStyle2: {
+    flexDirection: "row",
+    width: "90%",
+    marginHorizontal: 15,
+    paddingTop: 10,
+    paddingBottom: 10,
+    justifyContent: "space-around",
   },
   bigText: {
     fontSize: 24,
@@ -73,8 +109,8 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginLeft: 15,
-    width: '90%'
-  }
+    width: "90%",
+  },
 });
 
 export default Dashboard;
