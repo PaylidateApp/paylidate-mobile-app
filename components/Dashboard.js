@@ -58,10 +58,10 @@ const Dashboard = () => {
           </View>
           <View>
             <Image
-              style={styles.imageStyle2}
+              style={[styles.imageStyle2, styles.imgPositionRight ]}
               source={require("../assets/dashboard/handshake.png")}
             />
-            <Text style={styles.miniText}>My Deals</Text>
+            <Text style={[styles.miniText, styles.imgPositionRight]}>My Deals</Text>
           </View>
           <View>
             <Image
@@ -368,6 +368,9 @@ const styles = StyleSheet.create({
     width: 25,
     height: 22,
     marginVertical: 10,
+  },
+  imgPositionRight: {
+    marginRight: 33,
   },
   miniImg: {
     height: 13,

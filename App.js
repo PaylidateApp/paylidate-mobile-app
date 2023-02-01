@@ -24,6 +24,7 @@ export default function App() {
   
   return (
     <View style={styles.container}>
+      <Login />
       <Dashboard />
       <StatusBar style="auto" />
     </View>
@@ -33,7 +34,7 @@ export default function App() {
 
 
 const styles = StyleSheet.create({
-  home: {
+  container: {
     flex: 1,
     backgroundColor: '#EB6117',
     alignItems: 'center',
