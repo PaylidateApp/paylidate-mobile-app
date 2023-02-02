@@ -1,41 +1,33 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
 import { useFonts } from 'expo-font';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 // import { useCallback } from 'react';
 
 import React from 'react'
-import {Login} from './screens'
-// import * as SplashScreen from 'expo-splash-screen';
+import {Login, Dashboard} from './screens'
+
 export default function App() {
 
 
   const [fontsLoaded] = useFonts({
-    'Roboto' : require('./assets/fonts/Roboto-Regular.ttf'),
+    Cabin : require('./assets/fonts/Cabin-Regular.ttf'),
   });
-
-  // const onLayoutRootView = useCallback(async () => {
-  //   if (fontsLoaded) {
-  //     await SplashScreen.hideAsync();
-  //   }
-  // }, [fontsLoaded]);
 
   if (!fontsLoaded) return null;
   
+  const Stack = createStackNavigator();
   return (
-    <View style={styles.home}>
-      <Login />
-      {/* <Text style={{fontFamily: 'Roboto', marginTop: 100, marginBottom: 20,}}> Cabin Font </Text>
-      <Text>Normal Font </Text> */}
-    </View> 
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}> 
+
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Dashboard" component={Dashboard} />
+
+       </Stack.Navigator >
+    </NavigationContainer>
+
+    
   )
 }
 
-
-
-const styles = StyleSheet.create({
-  home: {
-    flex: 1,
-    backgroundColor: '#EB6117',
-    alignItems: 'center',
-    
-  },
-});
