@@ -1,14 +1,24 @@
 
+
 import { StyleSheet, View, Text, Image, TextInput, TouchableHighlight, Pressable } from 'react-native'
 import React from 'react'
 import { FONTS } from '../constants/theme'
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
-// @expo/vector-icons
+const Login = () => {
 
-const Login = () => (
-  <View style={styles.container}>
+  const navigation = useNavigation()
+
+  const checklogin = async () => 
+  {
+         navigation.navigate('Dashboard')
+         
+  }
+
+  return (
+    <View style={styles.container}>
     <Image
       style={styles.logo}
       source={require('../assets/splash_logo.png')} />
@@ -44,7 +54,7 @@ const Login = () => (
 
 
     <View style={styles.btncontainer}>
-      <TouchableHighlight style={styles.loginbtn}>
+      <TouchableHighlight style={styles.loginbtn} onPress={checklogin}>
         <Text style={styles.loginbtnlabel}>Login</Text>
       </TouchableHighlight>
 
@@ -75,7 +85,8 @@ const Login = () => (
 
 
   </View>
-)
+  )
+}
 
 const styles = StyleSheet.create({
   logo: {
@@ -83,7 +94,10 @@ const styles = StyleSheet.create({
   },
 
   container: {
-   
+    flex: 1,
+    backgroundColor: '#EB6117',
+    alignItems: 'center',
+    
 
   },
 
@@ -91,18 +105,20 @@ const styles = StyleSheet.create({
   {
     color: '#FFFFFF',
     fontSize: 10,
-    
+    fontFamily: FONTS.cabin
   },
   signuptext:{
     color: '#FFFFFF',
     fontSize: 10,
-    marginLeft: 40
+    marginLeft: 40,
+    fontFamily: FONTS.cabin
   },
 
   forgotpasswordtext:{
     color: '#FFFFFF',
     fontSize: 10,
-    marginRight: 39
+    marginRight: 39,
+    fontFamily: FONTS.cabin
   },
   
   icon: 
@@ -133,7 +149,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,  
     elevation: 4,
     textAlign: 'center',
-    // fontFamily: ,
+    fontFamily: FONTS.cabin
     
   },
 
@@ -188,7 +204,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 8,  
     elevation: 4,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontFamily: FONTS.cabin
   },
 
   btncontainer:
@@ -217,5 +234,4 @@ const styles = StyleSheet.create({
   }
 
 });
-
 export default Login

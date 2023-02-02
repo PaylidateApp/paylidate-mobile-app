@@ -1,12 +1,14 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, SafeAreaView, Text } from 'react-native'
+import React from 'react';
 
-const Dashboard = () => {
+import Dashboard from '../components/Dashboard';
+
+const dashboard = () => {
   return (
-    <View>
-      <Text>Dashboard</Text>
-    </View>
+    // <SafeAreaView>
+      <Dashboard />
+    // </SafeAreaView>
   )
 }
 
-export default Dashboard
+export default dashboard
