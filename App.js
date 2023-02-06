@@ -7,7 +7,7 @@ import { NavigationContainer } from '@react-navigation/native';
 // import Dashboard from './components/Dashboard';
 
 import React from 'react'
-import {Login, Dashboard} from './screens'
+import {Login, DashboardScreen, MyNetworkScreen } from './screens';
 
 export default function App() {
 
@@ -24,8 +24,8 @@ export default function App() {
       <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}> 
 
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Dashboard" component={Dashboard} />
-
+        <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
+        <Stack.Screen name="MyNetworkScreen" component={MyNetworkScreen} />
        </Stack.Navigator >
     </NavigationContainer>
 

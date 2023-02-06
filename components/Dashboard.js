@@ -1,10 +1,17 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, Button } from "react-native";
+import { View, Text, StyleSheet, Image, Button, TouchableHighlight } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import MainButton from "./MainButton";
 import Colors from "../constants/colors";
 
 const Dashboard = () => {
+  const navigation = useNavigation();
+
+  const checkMyNetwork = async () => {
+    navigation.navigate("MyNetworkScreen");
+  };
+
   return (
     <View style={styles.screen}>
       <View style={styles.textContainer}>
@@ -58,10 +65,12 @@ const Dashboard = () => {
           </View>
           <View>
             <Image
-              style={[styles.imageStyle2, styles.imgPositionRight ]}
+              style={[styles.imageStyle2, styles.imgPositionRight]}
               source={require("../assets/dashboard/handshake.png")}
             />
-            <Text style={[styles.miniText, styles.imgPositionRight]}>My Deals</Text>
+            <Text style={[styles.miniText, styles.imgPositionRight]}>
+              My Deals
+            </Text>
           </View>
           <View>
             <Image
@@ -73,10 +82,12 @@ const Dashboard = () => {
         </View>
         <View style={styles.sectionThree}>
           <View>
-            <Image
-              style={styles.imageStyle}
-              source={require("../assets/dashboard/node.png")}
-            />
+            <TouchableHighlight onPress={checkMyNetwork}>
+              <Image
+                style={styles.imageStyle}
+                source={require("../assets/dashboard/node.png")}
+              />
+            </TouchableHighlight>
             <Text style={styles.miniText}>My Network</Text>
           </View>
           <View>

@@ -1,4 +1,5 @@
 import Login from'./Login'
-import Dashboard from './Dashboard'
+import DashboardScreen from './DashboardScreen'
+import MyNetworkScreen from './MyNetworkScreen'
 
-export {Login, Dashboard}
+export {Login, DashboardScreen, MyNetworkScreen}
