@@ -1,57 +1,68 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image,Button } from 'react-native'
 import React from 'react'
+import FontAwesome from '@expo/vector-icons/FontAwesome'
 
 export default function Card2() {
-  return (
-    <View style={styles.container}>
-        <View style={styles.messageContainer}>
-            <View style={styles.messageView}>
-                <Text style={styles.username}>@Lilian444</Text>
-                <Text style={styles.time}>12:24pm</Text>
-            </View>
-            <View style={styles.seeMessage}>
-                <Text style={styles.message}>Nike Sneakers - Blue Sleek</Text>
-                <View style={styles.emage}>
-                    <Image style={styles.image} source={require('../../assets/Sneakers.png')} />
-                </View>
-                    <View style={styles.list}>
-                        <View style={styles.viewList}>
-                            <Text style={styles.quantity}>Quantity</Text>
-                            <Text style={styles.num}>3</Text>
-                        </View>
+    return (
+      <View style={styles.container}>
+          <View style={styles.messageContainer}>
+              <View style={styles.messageView}>
+                  <Text style={styles.username}>@Lilian444</Text>
+                  <Text style={styles.time}>12:24pm</Text>
+              </View>
+              <View style={styles.seeMessage}>
+                  <Text style={styles.message}>Nike Sneakers - Blue Sleek</Text>
+                  <View style={styles.emage}>
+                      <Image style={styles.image} source={require('../../assets/Sneakers.png')} />
+                  </View>
+                      <View style={styles.list}>
+                          <View style={styles.viewList}>
+                              <Text style={styles.quantity}>Quantity</Text>
+                              <Text style={styles.num}>3</Text>
+                          </View>
+  
+                          <View style={styles.viewList1}>
+                              <Text style={styles.total}>Total</Text>
+                              <Text style={styles.num1}>N37,500</Text>
+                          </View>
+  
+                          <View style={styles.viewList2}>
+                              <Text style={styles.delivery}>Delivery</Text>
+                              <Text style={styles.num2}>Abuja</Text>
+                          </View>
 
-                        <View style={styles.viewList1}>
-                            <Text style={styles.total}>Total</Text>
-                            <Text style={styles.num1}>N37,500</Text>
-                        </View>
+                          <View style={styles.viewList3}>
+                              <Text style={styles.deliveryfee}>Delivery Fee</Text>
+                              <Text style={styles.num3}>N500</Text>
+                          </View>
+  
+                          <View style={styles.viewList4}>
+                          <Button style={styles.btn} title="Make Payment" color="#182430" />
+                          <FontAwesome style={styles.icon} name="handshake-o" size={22} color="#000ff" />
+  
+                          </View>
 
-                        <View style={styles.viewList2}>
-                            <Text style={styles.delivery}>Delivery</Text>
-                            <Text style={styles.num2}>Abuja</Text>
-                        </View>
+                          
 
-                        <View style={styles.viewList3}>
-                            <Text style={styles.others}>Other info</Text>
+                          {/* <View style={styles.viewList5}>
+                            <Button onPress={onPressMakePayment} title="Make Payment" color="#841584" />
+                            <FontAwesome style={styles.icon} name="handshake-o" size={22} color="#000ff" />
+                          <View/> */}
+                      </View>
+  
+              </View>
+          </View>
+  
+      </View>
+    )
+  }
 
-                        </View>
-                        <View style={styles.viewList4}>
-                            <Text style={styles.infos}> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt  </Text>
-
-                        </View>
-                    </View>
-
-            </View>
-        </View>
-
-    </View>
-  )
-}
 
 const styles = StyleSheet.create({
     container:{
         width: 250,
         // height: 200,
-        alignSelf: 'flex-Start',
+        alignSelf: 'flex-start',
     },
 
     messageContainer:{
@@ -198,30 +209,58 @@ const styles = StyleSheet.create({
 
     viewList3: {
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         padding: 3,
     },
 
-    others: {
+    deliveryfee: {
         backgroundColor: '#D9D9D9',
         padding: 1,
         fontSize: 11,
-        width:165,
+        paddingRight: 7,
+        width:80,
+        marginLeft:25,
+        textAlign: 'center',
+    },
+
+    num3: {
+        backgroundColor: '#D9D9D9',
+        padding: 1,
+        fontSize: 11,
+        width:80,
+        marginRight:25,
         textAlign: 'center',
 
     },
+
+
 
     viewList4: {
         flexDirection: 'row',
         justifyContent: 'center',
         padding: 3,
+        marginLeft:30,
     },
 
-    infos: {
-        backgroundColor: '#D9D9D9',
+    btn: {
+        color: 'ffffff',
         padding: 1,
         fontSize: 11,
-        width:165,
+        paddingRight: 7,
+        width:80,
+        marginLeft:20,
+        padding: 3,
+        width: 1,
+    },
+
+    icon: {
+        backgroundColor: '#ffffff',
+        color: '#182430',
+        padding: 1,
+        fontSize: 29,
+        width:80,
+        marginRight:25,
+        marginTop:8,
         textAlign: 'center',
 
     },

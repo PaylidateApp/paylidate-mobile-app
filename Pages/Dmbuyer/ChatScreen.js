@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image,TextInput } from 'react-native'
 import React from 'react'
 import Card from './Card'
 import MessageList from './MessageList'
+import Card2 from './Card2'
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 
 const ChatScreen = () => {
@@ -22,8 +23,22 @@ const ChatScreen = () => {
             <View>
                 <Card />
                 <MessageList />
+                <Card2 />
 
             </View>
+
+            <View style={styles.inputContainer}>
+              <View style={styles.secContainer}>
+                <View style={styles.innerContainer} >
+                  <TextInput placeholder='Type message here...'></TextInput>
+                  <TouchableOpacity style={styles.msgconButton}>
+                    <FontAwesome style={styles.sicon} name="envelope-o" size={25} color="#000ff" />
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+
+
     </ScrollView>
   )
 }
@@ -79,5 +94,23 @@ const styles = StyleSheet.create({
       padding: 6,
       borderRadius: 5,
       margin: 15,
-    }
+    },
+
+    screenContainer: {
+      // justifyContent: 'center',
+      backgroundColor:'#182430',
+    },
+  
+    secContainer: {
+      justifyContent: 'center',
+      backgroundColor:'#FFFFFF',
+      // marginTop: 90,
+    },
+  
+    innerContainer: {
+      flexDirection: 'row',
+      justifyContent:  'space-between',
+      padding: 12,
+  
+    },
 })

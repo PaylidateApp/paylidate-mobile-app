@@ -4,7 +4,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome'
 
 export default function ChatInput() {
   return (
-    <View style={styles.container}>
+    <View style={styles.inputContainer}>
       <View style={styles.secContainer}>
         <View style={styles.innerContainer} >
           <TextInput placeholder='Type message here...'></TextInput>

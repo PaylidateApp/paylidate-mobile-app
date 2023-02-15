@@ -6,7 +6,8 @@ import ResetPassword from './Pages/Signup/ResetPassword';
 import ResetInput from './Pages/Signup/ResetInput';
 import ChatHeader from './Pages/Dmbuyer/ChatHeader';
 import ChatInput from './Pages/Dmbuyer/ChatInput';
-import Messages from './Pages/Dmbuyer/Messages';
+import ChatScreen from './Pages/Dmbuyer/ChatScreen';
+import CreatePyrq from './Pages/Dmbuyer/CreatePyrq';
 
 
 
@@ -19,7 +20,9 @@ export default function App() {
       <ResetPassword/>
       <ResetInput /> */}
       {/* <ChatHeader /> */}
-      <Messages />
+      {/* <Messages /> */}
+      <CreatePyrq />
+      {/* <ChatScreen /> */}
 
     </View>
   );

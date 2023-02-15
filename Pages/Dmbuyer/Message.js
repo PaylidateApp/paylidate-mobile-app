@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Message = ({time, isLeft, message}) => {
+const Message = ({username, isLeft, message, time}) => {
     const isOnLeft = type => {
         if(isLeft && type === 'container'){
             return {
@@ -13,6 +13,11 @@ const Message = ({time, isLeft, message}) => {
             return {
                 color:'#000',
             };
+        } else if (isLeft && type === "username") {
+            return {
+                color: 'darkgray',
+            };
+
         } else if (isLeft && type === "time") {
             return {
                 color: 'darkgray',
@@ -27,10 +32,11 @@ const Message = ({time, isLeft, message}) => {
     <View style = {styles.container}>
     <View style = {[styles.messageContainer, isOnLeft('messageContainer')]}>
         <View style = {styles.messageView}>
-            <Text style = {[styles.message, isOnLeft('message')]}> {message} </Text>
+            <Text style = {[styles.username, isOnLeft('username')]}> {username} </Text>
+            <Text style = {[styles.time, isOnLeft('time')]}> {time} </Text>
         </View>
         <View style = {styles.timeView}>
-            <Text style = {[styles.time, isOnLeft('time')]}> {time} </Text>
+            <Text style = {[styles.message, isOnLeft('message')]}> {message} </Text>
         </View>
     </View>
 </View>
@@ -45,10 +51,10 @@ const styles = StyleSheet.create({
         marginVertical: 5
     },
     messageContainer: {
-        backgroundColor: "#FFFFFF",
+        // backgroundColor: "#FFFFFF",
         maxWidth: '80%',
         alignSelf: 'flex-end',
-        borderRadius: 15,
+        borderRadius: 35,
         paddingHorizontal: 10,
         marginHorizontal: 10,
         paddingTop: 5,
@@ -56,19 +62,42 @@ const styles = StyleSheet.create({
     },
     messageView: {
         backgroundColor:'transparent',
-        maxWidth: '80%'
+        // maxWidth: '80%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        backgroundColor: '#D9D9D9',
+        padding: 3,
+        borderTopEndRadius: 10,
+        borderTopStartRadius: 10,
+
     },
 
     timeView: {
-        backgroundColor:'transparent',
-        justifyContent: 'flex-end',
-        paddingLeft:10
+        backgroundColor: '#FFFFFF',
+        padding: 5,
+        borderBottomEndRadius: 10,
+        borderBottomStartRadius: 10,
+        // backgroundColor:'transparent',
+        // justifyContent: 'flex-end',
+        // paddingLeft:10
     },
 
 
     time: {
         color: 'Light',
         alignSelf: 'flex-start',
-        fontSize: 15,
-    }
+        fontSize: 10,
+    },
+
+    username: {
+        color: 'Light',
+        alignSelf: 'flex-start',
+        fontSize: 10,
+    },
+
+    message: {
+        color: 'Light',
+        alignSelf: 'flex-start',
+        fontSize: 11.5,
+    },
 })

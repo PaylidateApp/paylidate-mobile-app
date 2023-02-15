@@ -6,27 +6,38 @@ const MessageList = () => {
     const [messages, setMessages] = useState([
         {
             user: 0,
+            username: '@lilian444',
             time: '12:00',
-            content: 'Hey'
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing'
         },
 
-        {
-            user: 1,
-            time: '12:01',
-            content: 'Hi'
-        },
+        // {
+        //     user: 1,
+        //     username: '@lilian444',
+        //     time: '12:01',
+        //     content: 'Hi'
+        // },
 
-        {
-            user: 0,
-            time: '12:03',
-            content: 'How are you'
-        },
+        // {
+        //     user: 0,
+        //     username: '@lilian444',
+        //     time: '12:03',
+        //     content: 'How are you'
+        // },
 
-        {
-            user: 1,
-            time: '12:04',
-            content: 'I am doing great'
-        },
+        // {
+        //     user: 1,
+        //     username: '@lilian444',
+        //     time: '12:04',
+        //     content: 'I am doing great'
+        // },
+
+        // {
+        //     user: 1,
+        //     username: '@lilian444',
+        //     time: '12:04',
+        //     content: 'I am doing great'
+        // },
     ]);
      const currentUser = 0;
     const user = useRef (0);
@@ -42,6 +53,7 @@ const MessageList = () => {
         {messages.map((message, index) =>(
             <Message 
             key={index}
+            username={message.username} 
             time={message.time} 
             isLeft={message.user !== user.current} 
             message={message.content} 
