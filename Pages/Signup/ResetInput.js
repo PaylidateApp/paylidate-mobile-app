@@ -1,17 +1,21 @@
 import { StyleSheet, Text, View, KeyboardAvoidingView, Image, TextInput } from 'react-native';
 import React from 'react';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import Logo from '../../Pages/Signup/Logo';
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 
 
-export default function ResetInput() {
+const ResetInput = () => {
   return (
-    <KeyboardAvoidingView style={styles.InputGroup}>
-        <View style={styles.container}>
-        <View style={styles.InputContainer}>
-            <FontAwesome style={styles.icon} name="envelope" size={17} color="#000ff" />
-            <TextInput style={styles.Input} placeholder="Enter You Email"/>
+    <View style={styles.InputGroup}>
+        <View>
+            <Logo style={styles.lgn}/>
         </View>
+        <View style={styles.container}>
+            <View style={styles.InputContainer}>
+                <FontAwesome style={styles.icon} name="envelope" size={17} color="#000ff" />
+                <TextInput style={styles.Input} placeholder="Enter You Email"/>
+            </View>
         </View>
 
         <View>
@@ -29,10 +33,12 @@ export default function ResetInput() {
 
         </View>
     </View>
-    </KeyboardAvoidingView>
+    </View>
 
   )
 }
+
+export default ResetInput
 
 const styles = StyleSheet.create({
     InputGroup: {
