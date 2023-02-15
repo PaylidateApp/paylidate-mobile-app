@@ -1,13 +1,11 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
+
 import { useFonts } from 'expo-font';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-// import { useCallback } from 'react';
 
-// import Dashboard from './components/Dashboard';
 
 import React from 'react'
-import {Login, Dashboard} from './screens'
+import {Login, Dashboard, SendFunds} from './screens'
 
 export default function App() {
 
@@ -25,7 +23,7 @@ export default function App() {
 
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Dashboard" component={Dashboard} />
-
+        <Stack.Screen name="SendFunds" component={SendFunds} />
        </Stack.Navigator >
     </NavigationContainer>
 

@@ -1,10 +1,18 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, Button } from "react-native";
-
+import { useNavigation } from '@react-navigation/native';
 import MainButton from "./MainButton";
 import Colors from "../constants/colors";
 
 const Dashboard = () => {
+
+  const navigation = useNavigation()
+
+  const sendfunds_navigation = async () => 
+  {
+         navigation.navigate('SendFunds')
+         
+  }
   return (
     <View style={styles.screen}>
       <View style={styles.textContainer}>
@@ -25,7 +33,7 @@ const Dashboard = () => {
           </View>
         </View>
         <View style={styles.buttonContainer}>
-          <MainButton>Send Funds</MainButton>
+          <MainButton onPress={sendfunds_navigation}>Send Funds</MainButton>
         </View>
       </View>
       <View style={styles.sectionTwo}>

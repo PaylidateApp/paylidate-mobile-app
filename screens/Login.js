@@ -1,9 +1,8 @@
 
 
-import { StyleSheet, View, Text, Image, TextInput, TouchableHighlight, Pressable } from 'react-native'
+import { StyleSheet, View, Text, Image, TextInput, TouchableHighlight, Pressable, SafeAreaView } from 'react-native'
 import React from 'react'
 import { FONTS } from '../constants/theme'
-import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -18,7 +17,7 @@ const Login = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
     <Image
       style={styles.logo}
       source={require('../assets/splash_logo.png')} />
@@ -84,13 +83,13 @@ const Login = () => {
 
 
 
-  </View>
+  </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
   logo: {
-    marginTop: 16
+    marginTop: 5
   },
 
   container: {
