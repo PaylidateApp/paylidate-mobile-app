@@ -44,10 +44,7 @@ export default function Card2() {
 
                           
 
-                          {/* <View style={styles.viewList5}>
-                            <Button onPress={onPressMakePayment} title="Make Payment" color="#841584" />
-                            <FontAwesome style={styles.icon} name="handshake-o" size={22} color="#000ff" />
-                          <View/> */}
+    
                       </View>
   
               </View>
