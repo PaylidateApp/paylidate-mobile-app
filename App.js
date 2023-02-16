@@ -4,6 +4,7 @@ import Input from "./Pages/Signup/Input";
 import ResetInput from './Pages/Signup/ResetInput';
 import ChatScreen from './Pages/Dmbuyer/ChatScreen';
 import ProductPage from './Pages/Product/ProductPage';
+import OrderModal from './Pages/Product/OrderModal';
 
 
 
@@ -15,7 +16,8 @@ export default function App() {
       {/* <Input/> */}
       {/* <ResetInput /> */}
       {/* <ChatScreen /> */}
-      <ProductPage />
+      {/* <ProductPage /> */}
+      <OrderModal />
 
     </View>
   );

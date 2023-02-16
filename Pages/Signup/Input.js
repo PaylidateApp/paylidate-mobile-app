@@ -73,10 +73,6 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         borderRadius:12,
         padding: 7,
-        
-        
-        
-        
     },
     
     icon: {
