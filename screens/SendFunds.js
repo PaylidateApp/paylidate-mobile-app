@@ -2,6 +2,7 @@ import {StyleSheet, View, Text, SafeAreaView, ScrollView, TouchableOpacity, Text
 import React, { useState } from 'react'
 import { FONTS } from '../constants/theme'
 import DropDownPicker from 'react-native-dropdown-picker';
+import Navigation from '../components/Navigation';
 
 const SendFunds = () => {
 
@@ -63,9 +64,9 @@ const data = ['Access bank', 'Gt bank']
 
      {
        showPaylidateUser ?  <View style={styles.wrapper}>
-       <Text style={styles.sendbankact}>Select Bank</Text>
+       <Text style={styles.sendbankact}>Select User</Text>
 
-       <Flatlist>
+       
        <DropDownPicker
      open={open}
      value={value}
@@ -75,7 +76,45 @@ const data = ['Access bank', 'Gt bank']
      setValue={setValue}
      setItems={setItems}
    />
-       </Flatlist>
+       
+       
+
+
+       <Text style={styles.sendbankactt}>Confirm User</Text>
+
+       <View style={styles.paylidateuserwrapper}>
+         <Text style={styles.paylidateacctname} >
+         Attah Lawrence
+         </Text>
+       
+       
+
+       </View>
+
+     
+
+     <View style={styles.sendfundsbtnwrapper}>
+     <TouchableOpacity style={styles.sendfundsbtn}>
+        <Text style={styles.sendtext}>Send</Text>
+       </TouchableOpacity> 
+     </View>
+     
+       
+
+     </View> : <View style={styles.wrapper}>
+       <Text style={styles.sendbankact}>Select Bank</Text>
+
+       
+       <DropDownPicker
+     open={open}
+     value={value}
+     items={items}
+     style={styles.dropDownPicker}
+     setOpen={setOpen}
+     setValue={setValue}
+     setItems={setItems}
+   />
+       
        
 
        <Text style={styles.sendbankactt}>Enter Account Number</Text>
@@ -104,7 +143,7 @@ const data = ['Access bank', 'Gt bank']
      
        
 
-     </View> : <Text>ivajhjhdjhn</Text>
+     </View>
      } 
 
 
@@ -113,8 +152,11 @@ const data = ['Access bank', 'Gt bank']
       
       </View>
 
+<Navigation />
 
+<View>
 
+</View>
     </SafeAreaView>
    
   )
@@ -155,11 +197,29 @@ const styles = StyleSheet.create({
       marginTop: 8,
       alignItems: 'center',
     },
+    paylidateuserwrapper:
+    {
+      borderWidth: 1,
+      borderRadius: 8,
+      width: 240,
+      height: 40,
+      marginTop: 8,
+      alignItems: 'center',
+      borderColor:'#969696',
+    },
 
     accttext:{
       marginTop: 10,
       fontSize:14,
       fontFamily: FONTS.cabin,
+
+    },
+
+    paylidateacctname:{
+      marginTop: 10,
+      fontSize:14,
+      fontFamily: FONTS.cabin,
+      color: ' #717171',
 
     },
 
