@@ -5,6 +5,8 @@ import ResetInput from './Pages/Signup/ResetInput';
 import ChatScreen from './Pages/Dmbuyer/ChatScreen';
 import ProductPage from './Pages/Product/ProductPage';
 import OrderModal from './Pages/Product/OrderModal';
+import ViewDeal from './Pages/Transaction/ViewDeal';
+import ViewModal from './Pages/Transaction/ViewModal';
 
 
 
@@ -17,7 +19,9 @@ export default function App() {
       {/* <ResetInput /> */}
       {/* <ChatScreen /> */}
       {/* <ProductPage /> */}
-      <OrderModal />
+      {/* <OrderModal /> */}
+      {/* <ViewDeal /> */}
+      <ViewModal />
 
     </View>
   );
