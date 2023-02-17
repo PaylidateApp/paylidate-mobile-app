@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Modal, StyleSheet, Text, View, TextInput, Button,  } from 'react-native';
+import { Modal, StyleSheet, Text, View,  Button, Switch, TouchableOpacity, } from 'react-native';
 
-const ViewModal = () => {
+const OrderModal = () => {
   const [modalVisible, setModalVisible] = useState(false); // state to control the visibility of the modal
-  const [amountValue, setAmountValue] = useState(''); // state to store the value of the input field
-  const [dropdownValue, setDropdownValue] = useState(''); // state to store the value of the dropdown field
-  const [textareaValue, setTextareaValue] = useState(''); // state to store the value of the textarea field
+  const [switchValue, setSwitchValue] = useState(false); // state to store the value of the switch
+  
 
   const handlePress = () => {
     // do something when the button is pressed
@@ -16,32 +15,47 @@ const ViewModal = () => {
       <Button title="Open Modal" onPress={() => setModalVisible(true)} />
       <Modal visible={modalVisible} animationType="slide">
         <View style={styles.modalContainer}>
+            
+            
           
           <View style={styles.modalBody}>
-            <Text
-              style={styles.inputField}
-              value={amountValue}
-              onChangeText={(text) => setAmountValue(text)}
-              placeholder="Order quantity"
-            />
-            {/* <Picker
-              selectedValue={dropdownValue}
-              style={styles.dropdownField}
-              onValueChange={(value) => setDropdownValue(value)}
-            >
-              <Picker.Item label="Option 1" value="option1" />
-              <Picker.Item label="Option 2" value="option2" />
-              <Picker.Item label="Option 3" value="option3" />
-            </Picker> */}
-            <TextInput
-              style={styles.textareaField}
-              value={textareaValue}
-              onChangeText={(text) => setTextareaValue(text)}
-              placeholder="Other specifications"
-              multiline={true}
-            />
-            <Button style={styles.modalBtn} title="Order" onPress={handlePress} />
-            <Text style={styles.modalText}>After sending this order, you will get a payment request with the final amount including delivery if required.</Text>
+          <View style={styles.ModalView}>
+            <Text style={styles.amt}>Amount:</Text>
+            <Text style={styles.fig}>N662,000</Text>
+          </View>
+
+          <View style={styles.ModalView1}>
+            <Text style={styles.fee}>Escrow fee:</Text>
+            <Text style={styles.fig1}>N2,500</Text>
+           </View>
+
+           <View style={styles.ModalView2}>
+            <Text style={styles.total}>Total:</Text>
+            <Text style={styles.fig2}>N664,500</Text>
+           </View>
+
+           <View style={styles.main}>
+            <TouchableOpacity>
+                <View style={styles.radio}>
+                    <Text style={styles.radioText}>Radio 1</Text>
+                </View>
+            </TouchableOpacity>
+
+           </View>
+           
+ 
+
+
+            <View style={styles.set}>
+                <Text style={styles.modalText}>Escrow</Text>
+                <Switch
+                value={switchValue}
+                onValueChange={(value) => setSwitchValue(value)}
+                style={styles.switchField}
+                />
+
+            </View>
+            <Button style={styles.modalBtn} title="Continue" onPress={handlePress} />
           </View>
           <Button title="Close" onPress={() => setModalVisible(false)} />
         </View>
@@ -51,66 +65,133 @@ const ViewModal = () => {
 };
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    modalContainer: {
-      flex: 1,
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-      backgroundColor: '#fff',
-    },
-    modalBody: {
-      width: '100%',
-      height: '50%',
-      borderTopLeftRadius: 20,
-      borderTopRightRadius: 20,
-      backgroundColor: '#D9D9D9',
-      padding: 20,
-    },
-    inputField: {
-      width: '100%',
-      borderWidth: 1,
-      borderColor: '#ccc',
-      borderRadius: 5,
-      padding: 10,
-      marginBottom: 30,
-      backgroundColor: '#fff',
-    },
-    dropdownField: {
-      width: '100%',
-      borderWidth: 1,
-      borderColor: '#ccc',
-      borderRadius: 5,
-      marginBottom: 10,
-      backgroundColor: '#fff',
-    },
-    textareaField: {
-      width: '100%',
-      borderWidth: 1,
-      borderColor: '#ccc',
-      backgroundColor: '#fff',
-      borderRadius: 5,
-      padding: 10,
-      marginBottom: 10,
-      height: 100,
-      textAlignVertical: 'top',
-    },
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    backgroundColor: '#D9D9D9',
+  },
+  modalBody: {
+    width: '100%',
+    height: '80%',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    backgroundColor: '#fffccc',
+    padding: 20,
+  },
 
-    modalBtn: {
-        color:'#fff',
-    },
 
-    modalText: {
-        fontSize:14,
-    margin: 20,
-    marginLeft: 40,
-      justifyContent:'center',
-      alignItems: 'center',
+ModalView: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop:70,
+}, 
 
-    },
-  });
+amt: {
+    fontSize: 20,
+    marginLeft:75,
+    textAlign: 'center',
+
+},
+
+fig: {
+    fontSize: 20,
+    marginRight:75,
+    textAlign: 'center',
+
+},
+
+ModalView1: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop:20,
+},
+
+fee: {
+    fontSize: 20,
+    marginLeft:75,
+    textAlign: 'center',
+
+},
+
+fig1: {
+    fontSize: 20,
+    marginRight:75,
+    textAlign: 'center',
+
+},
+
+ModalView2: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop:20,
+},
+
+total: {
+    fontSize: 20,
+    marginLeft:85,
+    textAlign: 'center',
+},
+
+fig2: {
+    fontSize: 20,
+    marginRight:75,
+    textAlign: 'center',
+
+},
+
+main: {
+    flex:1,
+    alignItems:'center',
+    justifyContent:'center,'
+},
+
+radioText: {
+    fontSize:20
+},
+
+radio: {
+    height:40,
+    weight:40,
+    borderColor:'black',
+    borderWidth:2,
+    borderRadius:20,
+    margin:10,
+},
+
+set: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop:85,
+},
+
+modalText: {
+    fontSize: 20,
+    marginLeft:75,
+    textAlign: 'center',
+
+},
+
+switchField: {
+    fontSize: 20,
+    marginRight:75,
+    textAlign: 'center',
+
+},
+
+modalBtn: {
+    color:'#fff',
+    backgroundColor:'#fff',
+    marginTop:75,
+  },
+
+
   
-export default ViewModal;
+});
+  
+export default OrderModal;
