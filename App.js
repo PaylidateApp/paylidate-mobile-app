@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import React from 'react'
 
-import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen } from './screens';
+import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, SendFunds } from './screens';
 
 
 export default function App() {
@@ -28,6 +28,7 @@ export default function App() {
         <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
         <Stack.Screen name="MyNetworkScreen" component={MyNetworkScreen} />
         <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} />
+        <Stack.Screen name="SendFunds" component={SendFunds} />
 
        </Stack.Navigator >
     </NavigationContainer>
