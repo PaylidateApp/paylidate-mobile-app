@@ -1,13 +1,13 @@
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
+
 import { useFonts } from 'expo-font';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-// import { useCallback } from 'react';
 
-// import Dashboard from './components/Dashboard';
 
 import React from 'react'
+
 import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen } from './screens';
+
 
 export default function App() {
 
@@ -24,9 +24,11 @@ export default function App() {
       <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}> 
 
         <Stack.Screen name="Login" component={Login} />
+        
         <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
         <Stack.Screen name="MyNetworkScreen" component={MyNetworkScreen} />
         <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} />
+
        </Stack.Navigator >
     </NavigationContainer>
 

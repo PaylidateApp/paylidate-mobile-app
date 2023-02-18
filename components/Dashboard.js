@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   View,
   Text,
@@ -14,6 +15,7 @@ import ProductListItem from "./ProductListItem";
 import Colors from "../constants/colors";
 
 const Dashboard = () => {
+
   const navigation = useNavigation();
 
   const checkMyNetwork = async () => {
@@ -23,6 +25,7 @@ const Dashboard = () => {
   const checkUserProfile = async () => {
     navigation.navigate("UserProfileScreen");
   };
+
 
   return (
     <View style={styles.screen}>
@@ -44,7 +47,7 @@ const Dashboard = () => {
           </View>
         </View>
         <View style={styles.buttonContainer}>
-          <MainButton>Send Funds</MainButton>
+          <MainButton onPress={sendfunds_navigation}>Send Funds</MainButton>
         </View>
       </View>
       <View style={styles.sectionTwo}>
