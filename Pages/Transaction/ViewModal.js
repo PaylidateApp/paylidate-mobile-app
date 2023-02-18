@@ -4,6 +4,7 @@ import { Modal, StyleSheet, Text, View,  Button, Switch, TouchableOpacity, } fro
 const OrderModal = () => {
   const [modalVisible, setModalVisible] = useState(false); // state to control the visibility of the modal
   const [switchValue, setSwitchValue] = useState(false); // state to store the value of the switch
+  const [selectedRadio, setSelectedRadio] = useState(1); // state to store the value of the radio
   
 
   const handlePress = () => {
@@ -35,9 +36,25 @@ const OrderModal = () => {
            </View>
 
            <View style={styles.main}>
-            <TouchableOpacity>
-                <View style={styles.radio}>
-                    <Text style={styles.radioText}>Radio 1</Text>
+            <TouchableOpacity style={styles.wrap} onPress={()=>setSelectedRadio(1)}>
+                <View style={styles.radioWrapper}>
+                    <View style={styles.radio}>
+                     {
+                        selectedRadio===1 ?  <View style={styles.radioBg}></View>:null
+                     }
+                    </View>
+                    <Text style={styles.radioText}>Your wallet</Text>
+                </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.wrap1} onPress={()=>setSelectedRadio(2)}>
+                <View style={styles.radioWrapper}>
+                    <View style={styles.radio}>
+                      {
+                        selectedRadio===2 ?  <View style={styles.radioBg}></View>:null
+                      }
+                    </View>
+                    <Text style={styles.radioText}>Your Linked Card</Text>
                 </View>
             </TouchableOpacity>
 
@@ -81,7 +98,7 @@ const styles = StyleSheet.create({
     height: '80%',
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    backgroundColor: '#fffccc',
+    backgroundColor: '#fff',
     padding: 20,
   },
 
@@ -148,26 +165,53 @@ fig2: {
 main: {
     flex:1,
     alignItems:'center',
-    justifyContent:'center,'
+    justifyContent:'center',
+    marginTop: 5,
 },
 
-radioText: {
-    fontSize:20
+wrap: {
+    marginRight:43,
 },
+
+wrap1: {
+    marginTop:13,
+},
+
+radioWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+},
+
+
 
 radio: {
-    height:40,
-    weight:40,
+    height:20,
+    width:20,
     borderColor:'black',
     borderWidth:2,
     borderRadius:20,
-    margin:10,
+    margin:2,
 },
+
+radioBg: {
+    height:14,
+    width:12,
+    backgroundColor:'black',
+    borderRadius:20,
+    margin:1,
+    marginLeft:2,
+},
+
+radioText: {
+    fontSize:16
+},
+
 
 set: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop:85,
+    marginTop:5,
 },
 
 modalText: {
@@ -187,7 +231,7 @@ switchField: {
 modalBtn: {
     color:'#fff',
     backgroundColor:'#fff',
-    marginTop:75,
+    marginTop:5,
   },
 
 
