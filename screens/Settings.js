@@ -329,7 +329,10 @@ const toggleDisplayHelp = () => {
       </View>
     }
     </ScrollView>
+
+     <View>
       
+      </View> 
     </SafeAreaView>
   )
 }
