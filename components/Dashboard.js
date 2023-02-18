@@ -25,6 +25,10 @@ const Dashboard = () => {
   const checkUserProfile = async () => {
     navigation.navigate("UserProfileScreen");
   };
+  
+  const sendfunds_navigation = async () => {
+    navigation.navigate("SendFunds");
+  };
 
 
   return (
