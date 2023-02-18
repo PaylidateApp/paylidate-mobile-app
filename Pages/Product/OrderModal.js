@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     },
     modalBody: {
       width: '100%',
-      height: '50%',
+      height: '60%',
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20,
       backgroundColor: '#D9D9D9',
@@ -73,10 +73,11 @@ const styles = StyleSheet.create({
     inputField: {
       width: '100%',
       borderWidth: 1,
-      borderColor: '#ccc',
+      borderColor: 'black',
       borderRadius: 5,
       padding: 10,
       marginBottom: 30,
+      marginTop: 30,
       backgroundColor: '#fff',
     },
     dropdownField: {
@@ -90,7 +91,7 @@ const styles = StyleSheet.create({
     textareaField: {
       width: '100%',
       borderWidth: 1,
-      borderColor: '#ccc',
+      borderColor: 'black',
       backgroundColor: '#fff',
       borderRadius: 5,
       padding: 10,
