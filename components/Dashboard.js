@@ -1,18 +1,32 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, Button } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Button,
+  TouchableHighlight,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import MainButton from "./MainButton";
+import ProductListItem from "./ProductListItem";
 import Colors from "../constants/colors";
 
 const Dashboard = () => {
 
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
-  const sendfunds_navigation = async () => 
-  {
-         navigation.navigate('SendFunds')
-         
-  }
+  const checkMyNetwork = async () => {
+    navigation.navigate("MyNetworkScreen");
+  };
+
+  const checkUserProfile = async () => {
+    navigation.navigate("UserProfileScreen");
+  };
+
+
   return (
     <View style={styles.screen}>
       <View style={styles.textContainer}>
@@ -66,10 +80,12 @@ const Dashboard = () => {
           </View>
           <View>
             <Image
-              style={[styles.imageStyle2, styles.imgPositionRight ]}
+              style={[styles.imageStyle2, styles.imgPositionRight]}
               source={require("../assets/dashboard/handshake.png")}
             />
-            <Text style={[styles.miniText, styles.imgPositionRight]}>My Deals</Text>
+            <Text style={[styles.miniText, styles.imgPositionRight]}>
+              My Deals
+            </Text>
           </View>
           <View>
             <Image
@@ -81,17 +97,30 @@ const Dashboard = () => {
         </View>
         <View style={styles.sectionThree}>
           <View>
-            <Image
-              style={styles.imageStyle}
-              source={require("../assets/dashboard/node.png")}
-            />
+            <TouchableHighlight onPress={checkMyNetwork}>
+              <Image
+                style={styles.imageStyle}
+                source={require("../assets/dashboard/node.png")}
+              />
+            </TouchableHighlight>
             <Text style={styles.miniText}>My Network</Text>
           </View>
           <View>
+          
+          {/* section three ends 
+          <TouchableHighlight onPress={checkUserProfile}>
+              <Image
+                style={styles.imageStyle2}
+                source={require("../assets/dashboard/payment_wallet.png")}
+              />
+            </TouchableHighlight>
+          */}
+
             <Image
               style={styles.imageStyle2}
               source={require("../assets/dashboard/payment_wallet.png")}
             />
+
             <Text style={styles.miniText}>Payment Requests</Text>
           </View>
           <View>
@@ -106,96 +135,12 @@ const Dashboard = () => {
           <MainButton style={styles.bigButton}>Post to Community</MainButton>
         </View>
       </View>
-      <View style={styles.listSection}>
-        <View style={styles.listItemStyles}>
-          <View style={styles.listItemsPicContainer}>
-            <Image
-              style={styles.listItemsPic}
-              source={require("../assets/dashboard/camera.png")}
-            />
-          </View>
-          <View style={styles}>
-            <View style={styles.listItemsTxtContainer}>
-              <View
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                }}
-              >
-                <Text style={[styles.miniText, styles.miniTextPosition2]}>
-                  @AttahLaw
-                </Text>
 
-                <Image
-                  style={styles.miniImg}
-                  source={require("../assets/dashboard/verify_primary.png")}
-                />
-              </View>
-              <View>
-                <Text style={styles.smallTextDark}>
-                  Nikon Camera DSLI XP 600
-                </Text>
-              </View>
-            </View>
-            <View style={styles.listItemsTxtContainer}>
-              <View>
-                <Text
-                  style={[styles.smallTextDark, styles.smallTextDarkPosition]}
-                >
-                  N660,000
-                </Text>
-              </View>
-            </View>
-            <View style={styles.listItemsTxtContainer}>
-              <View style={styles.listItemsTxt}>
-                <View
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                  }}
-                >
-                  <Image
-                    style={styles.microImg}
-                    source={require("../assets/dashboard/location.png")}
-                  />
-                  <Text style={styles.microText}>Abuja</Text>
-                </View>
-                <View
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                  }}
-                >
-                  <Image
-                    style={styles.microImgTruck}
-                    source={require("../assets/dashboard/truck.png")}
-                  />
-                  <Text style={styles.microText}>Nigeria Wide</Text>
-                </View>
-              </View>
-            </View>
-            <View style={styles}>
-              <View style={styles.listItemsTxt}>
-                <View>
-                  <Image
-                    style={styles.commentImg}
-                    source={require("../assets/dashboard/comment.png")}
-                  />
-                </View>
-                <View style={styles.listItemsTxt}>
-                  <Text style={[styles.miniText, styles.miniTextPosition]}>
-                    10
-                  </Text>
-                  <Image
-                    style={styles.likeImg}
-                    source={require("../assets/dashboard/like.png")}
-                  />
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
+      {/* product list section */}
+      <View style={styles.listSection}>
+        <ProductListItem />
       </View>
+      {/* product list section end */}
     </View>
   );
 };
@@ -266,41 +211,6 @@ const styles = StyleSheet.create({
     borderColor: Colors.primary,
     alignItem: "center",
   },
-  listItemStyles: {
-    flexDirection: "row",
-    width: "95%",
-    height: 160,
-    marginVertical: 10,
-    marginHorizontal: 10,
-    borderRadius: 8,
-    borderWidth: 1,
-    backgroundColor: "#F6F6F6",
-    borderColor: "#dddddd",
-  },
-  listItemsPicContainer: {
-    width: "45%",
-    height: 160,
-    backgroundColor: "#ffffff",
-    borderRadius: 10,
-    borderWidth: 0.8,
-    // borderLeftWidth: 1.8,
-    // borderRightWidth: 1.8,
-    borderColor: "#000000",
-  },
-  listItemsPic: {
-    width: "100%",
-    //height: 158,
-  },
-  listItemsTxtContainer: {
-    width: "95%",
-    borderBottomWidth: 1,
-    //borderRadius: 12,
-    borderColor: "#dddddd",
-  },
-  listItemsTxt: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-  },
 
   bigText: {
     fontSize: 24,
@@ -318,17 +228,6 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     textAlign: "center",
   },
-  smallTextDark: {
-    fontSize: 10,
-    fontWeight: "normal",
-    lineHeight: 12,
-    textAlign: "left",
-    paddingHorizontal: 25,
-    paddingVertical: 8,
-  },
-  smallTextDarkPosition: {
-    paddingVertical: 7,
-  },
   miniText: {
     fontSize: 8,
     fontWeight: "normal",
@@ -336,24 +235,6 @@ const styles = StyleSheet.create({
     color: "#000000",
     textAlign: "center",
     paddingTop: 8,
-  },
-  miniTextPosition: {
-    textAlign: "left",
-    paddingHorizontal: 5,
-    paddingTop: 15,
-  },
-  miniTextPosition2: {
-    textAlign: "left",
-    paddingHorizontal: 25,
-    paddingTop: 15,
-  },
-  microText: {
-    fontSize: 6,
-    fontWeight: "normal",
-    lineHeight: 7,
-    textAlign: "left",
-    paddingHorizontal: 5,
-    paddingTop: 15,
   },
 
   buttonContainer: {
@@ -380,11 +261,6 @@ const styles = StyleSheet.create({
   imgPositionRight: {
     marginRight: 33,
   },
-  miniImg: {
-    height: 13,
-    width: 13,
-    marginTop: 12,
-  },
   microImg: {
     height: 10,
     width: 8,
@@ -397,20 +273,6 @@ const styles = StyleSheet.create({
     width: 10,
     marginTop: 15,
     marginBottom: 7,
-  },
-  commentImg: {
-    width: 12.5,
-    height: 12.5,
-    marginTop: 11,
-    marginBottom: 5,
-    marginRight: 12,
-  },
-  likeImg: {
-    width: 15,
-    height: 13,
-    marginTop: 11,
-    marginBottom: 5,
-    marginHorizontal: 2,
   },
 });
 

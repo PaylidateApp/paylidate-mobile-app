@@ -3,7 +3,7 @@ import React from 'react';
 
 import Dashboard from '../components/Dashboard';
 
-const dashboard = () => {
+const DashboardScreen = () => {
   return (
     // <SafeAreaView>
       <Dashboard />
@@ -11,4 +11,4 @@ const dashboard = () => {
   )
 }
 
-export default dashboard
+export default DashboardScreen;

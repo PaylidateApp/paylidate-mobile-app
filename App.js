@@ -5,7 +5,9 @@ import { NavigationContainer } from '@react-navigation/native';
 
 
 import React from 'react'
-import {Login, Dashboard, SendFunds, Settings} from './screens'
+
+import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen } from './screens';
+
 
 export default function App() {
 
@@ -22,9 +24,11 @@ export default function App() {
       <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}> 
 
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Dashboard" component={Dashboard} />
-        <Stack.Screen name="SendFunds" component={SendFunds} />
-        <Stack.Screen name="Settings" component={Settings} />
+        
+        <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
+        <Stack.Screen name="MyNetworkScreen" component={MyNetworkScreen} />
+        <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} />
+
        </Stack.Navigator >
     </NavigationContainer>
 

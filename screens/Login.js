@@ -12,7 +12,7 @@ const Login = () => {
 
   const checklogin = async () => 
   {
-         navigation.navigate('Dashboard')
+         navigation.navigate('DashboardScreen')
          
   }
 
