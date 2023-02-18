@@ -93,7 +93,7 @@ const data = ['Access bank', 'Gt bank']
 
      
 
-     <View style={styles.sendfundsbtnwrapper}>
+     <View style={styles.paylidatebtnwrapper}>
      <TouchableOpacity style={styles.sendfundsbtn}>
         <Text style={styles.sendtext}>Send</Text>
        </TouchableOpacity> 
@@ -170,6 +170,11 @@ const styles = StyleSheet.create({
   sendfundsbtnwrapper:
   {
     paddingBottom: 20
+  },
+
+  paylidatebtnwrapper:
+  {
+    marginTop: 90
   },
     screentitle:
     {
