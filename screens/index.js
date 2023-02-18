@@ -7,10 +7,3 @@ import MyNetworkScreen from './MyNetworkScreen';
 import UserProfileScreen from './UserProfileScreen';
 
 export {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, SendFunds, Settings}
-
-/*
-Ivan_updates
-
-
-export {Login, Dashboard, }
-*/
