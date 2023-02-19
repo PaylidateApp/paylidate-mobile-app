@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
       color: 'white',
       fontFamily: FONTS.cabin,
       fontSize: 16,
-      fontWeight: 700,
+      fontWeight: Platform.OS === 'android' ? 'bold' : 700,
       marginTop: 5,
 
     },
@@ -259,7 +259,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         fontFamily: FONTS.cabin,
         fontSize: 16,
-        fontWeight:500
+        fontWeight: Platform.OS === 'android' ? 'normal' : 500
 
     },
     sendbankactt:
@@ -268,7 +268,7 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         fontFamily: FONTS.cabin,
         fontSize: 16,
-        fontWeight:500
+        fontWeight: Platform.OS === 'android' ? 'normal' : 500
 
     },
 
@@ -282,7 +282,7 @@ const styles = StyleSheet.create({
 
     amount:{
       fontFamily: FONTS.cabin,
-      fontWeight: 500,
+      fontWeight: Platform.OS === 'android' ? 'normal' : 500,
       fontSize: 20,
       marginTop: 10
     },
