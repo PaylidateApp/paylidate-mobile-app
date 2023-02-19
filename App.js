@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import React from 'react'
 
-import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, SendFunds } from './screens';
+import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, SendFunds, Settings } from './screens';
 
 
 // import Logo from "./Pages/Signup/Logo";
@@ -38,6 +38,7 @@ export default function App() {
         <Stack.Screen name="MyNetworkScreen" component={MyNetworkScreen} />
         <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} />
         <Stack.Screen name="SendFunds" component={SendFunds} />
+        <Stack.Screen name="Settings" component={Settings} />
 
        </Stack.Navigator >
     </NavigationContainer>
