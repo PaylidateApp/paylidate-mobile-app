@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
         marginLeft:75,
         fontFamily:FONTS.cabin,
         fontSize:16,
-        fontWeight:500
+        fontWeight:'bold'
       },
       searchcontainer:{
         alignItems: 'center',
