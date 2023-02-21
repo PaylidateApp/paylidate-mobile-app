@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import React from 'react'
 
-import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, SendFunds, Settings } from './screens';
+import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, SendFunds, Settings,SignUp, ResetInput, PayBills } from './screens';
 
 
 // import Logo from "./Pages/Signup/Logo";
@@ -33,7 +33,9 @@ export default function App() {
       <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}> 
 
         <Stack.Screen name="Login" component={Login} />
-        
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="ResetInput" component={ResetInput} />
+        <Stack.Screen name="PayBills" component={PayBills} />
         <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
         <Stack.Screen name="MyNetworkScreen" component={MyNetworkScreen} />
         <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} />

@@ -2,7 +2,7 @@
 
 import { StyleSheet, View, Text, Image, TextInput, TouchableHighlight, Pressable, SafeAreaView } from 'react-native'
 import React from 'react'
-import { FONTS } from '../constants/theme'
+import { FONTS } from '../../constants/theme'
 import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -16,11 +16,23 @@ const Login = () => {
          
   }
 
+  const signup_navigation = async () => 
+  {
+         navigation.navigate('SignUp')
+         
+  }
+
+  const reset_password_navigation = async () => 
+  {
+         navigation.navigate('ResetInput')
+         
+  }
+
   return (
     <SafeAreaView style={styles.container}>
     <Image
       style={styles.logo}
-      source={require('../assets/splash_logo.png')} />
+      source={require('../../assets/splash_logo.png')} />
 
 
 
@@ -62,11 +74,11 @@ const Login = () => {
 
 <View style={styles.pressable}>
 
-<Pressable>
+<Pressable onPress={signup_navigation}>
 <Text style={styles.signuptext}>Don’t have an account? Sign Up</Text>
 </Pressable>
 
-<Pressable>
+<Pressable onPress={reset_password_navigation}>
 <Text style={styles.forgotpasswordtext}>Forgot Password?</Text>
 </Pressable>
    

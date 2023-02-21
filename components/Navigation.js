@@ -5,12 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 
 const Navigation = () => {
 
     const navigation = useNavigation()
-    const Tab = createBottomTabNavigator();
+    
 
   const dashboard = async () => 
   {
