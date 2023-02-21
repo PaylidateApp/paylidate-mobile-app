@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import React from 'react'
 
-import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, SendFunds, Settings,SignUp, ResetInput, PayBills } from './screens';
+import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, SendFunds, Settings,SignUp, ResetInput, PayBills, Airtime, DataBundle, Internet } from './screens';
 
 
 // import Logo from "./Pages/Signup/Logo";
@@ -41,7 +41,9 @@ export default function App() {
         <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} />
         <Stack.Screen name="SendFunds" component={SendFunds} />
         <Stack.Screen name="Settings" component={Settings} />
-
+        <Stack.Screen name="Airtime" component={Airtime} />
+        <Stack.Screen name="Internet" component={Internet} />
+        <Stack.Screen name="DataBundle" component={DataBundle} />
        </Stack.Navigator >
     </NavigationContainer>
 

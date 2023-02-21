@@ -14,7 +14,7 @@ const Navigation = () => {
 
   const dashboard = async () => 
   {
-         navigation.navigate('Dashboard')
+         navigation.navigate('DashboardScreen')
          
   }
 
