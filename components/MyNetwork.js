@@ -1,40 +1,125 @@
 import React from "react";
-import {
-  StyleSheet,
-  View,
-  Text,
-  TextInput,
-  Image,
-} from "react-native";
+import { StyleSheet, View, Text, FlatList, Image } from "react-native";
 
-import { Ionicons } from "@expo/vector-icons";
-
+import CustomSearchBar from "./CustomSearchBar";
 import Colors from "../constants/colors";
+
+const NetworkContacts = [
+  {
+    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
+    userName: "@MrsVso",
+    name: "Victoria Sunny Owolijah",
+    imageUrl: "../assets/myNetwork/david.png",
+    commentUrl: "../assets/myNetwork/comment.png",
+  },
+  {
+    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
+    userName: "@Ivan_moneyman",
+    name: "Ivan Arabone",
+    imageUrl: "../assets/myNetwork/david.png",
+    commentUrl: "../assets/myNetwork/comment.png",
+  },
+  {
+    id: "5869-bd96-145571e29d72",
+    userName: "@Syflex360",
+    name: "Onazi Simon",
+    imageUrl: "../assets/myNetwork/david.png",
+  },
+  {
+    id: "bd7acbea-c1b1-46c2ad53abb28ba",
+    userName: "@DavidShegs",
+    name: "David Aremu",
+    imageUrl: "../assets/myNetwork/david.png",
+    commentUrl: "../assets/myNetwork/comment.png",
+  },
+  {
+    id: "3ac68afc-c605-48d31aa97f63",
+    userName: "@LawAttah",
+    name: "Lawrence Attah",
+    imageUrl: "../assets/myNetwork/david.png",
+    commentUrl: "../assets/myNetwork/comment.png",
+  },
+  {
+    id: "71f-bd96-145571e29d72",
+    userName: "@Ferdinand",
+    name: "Ferdinand Gege",
+    imageUrl: "../assets/myNetwork/david.png",
+  },
+  {
+    id: "c1b1-46c2-aed5-3ad53abb28ba",
+    userName: "@Lily",
+    name: "Lilian",
+    imageUrl: "../assets/myNetwork/david.png",
+    commentUrl: "../assets/myNetwork/comment.png",
+  },
+  {
+    id: "3ac68afc-48d3-a4f8-fbd91aa97f63",
+    userName: "@Dannyadegoke",
+    name: "Daniel Adegoke",
+    imageUrl: "../assets/myNetwork/david.png",
+    commentUrl: "../assets/myNetwork/comment.png",
+  },
+  {
+    id: "58694a0f-471f-bd96-145571e29d72",
+    userName: "@MrsVSO",
+    name: "Victoria Sunny Owolijah",
+    imageUrl: "../assets/myNetwork/david.png",
+  },
+];
+
+const Contact = ({ userName, name }) => (
+  <View style={styles.containerTwo}>
+    <View
+      style={{
+        flexDirection: "row",
+        justifyContent: "space-evenly",
+      }}
+    >
+      <View>
+        <Image
+          style={styles.img}
+          source={require("../assets/myNetwork/cyflex.png")}
+        />
+      </View>
+      <View
+        style={{
+          paddingHorizontal: 7,
+          paddingVertical: 11,
+        }}
+      >
+        <View>
+          <Text style={styles.sectionOneUsername}>{userName}</Text>
+        </View>
+        <View
+          style={{
+            paddingVertical: 2,
+          }}
+        >
+          <Text style={styles.sectionOneUsername}>{name}</Text>
+        </View>
+      </View>
+    </View>
+    <View
+      style={{
+        paddingVertical: 13,
+      }}
+    >
+      <Image
+        style={styles.imgComment}
+        source={require("../assets/myNetwork/comment.png")}
+      />
+    </View>
+  </View>
+);
 
 const MyNetwork = () => {
   return (
     <View style={styles.screen}>
-      <View>
-        <View style={{
-          flexDirection: "row",
-          marginVertical: 12,
-          marginHorizontal: 35,
-        }}>
-          {/* icon */}
-          <View style={styles.searchIcon}>
-            <Ionicons name="search" size={22} color="black" />
-          </View>
-          <TextInput
-            style={styles.input}
-            placeholder="Enter Username or Phone number to search"
-          />
-        </View>
-
-        {/* title */}
-        <View style={styles.header}>
-          <Text style={styles.headerTitle}>Invite friends to my Network</Text>
-        </View>
+      {/* Custom SearchBar */}
+      <View style={styles.searchbarContainer}>
+        <CustomSearchBar style={styles.searchbar}></CustomSearchBar>
       </View>
+      {/* Custom SearchBar ends */}
 
       {/* section one */}
       <View style={styles.container}>
@@ -172,12 +257,14 @@ const MyNetwork = () => {
       <View
         style={{
           paddingTop: 8,
+          flex: 1,
         }}
       >
         {/* section two header */}
         <View
           style={{
             paddingVertical: 5,
+            
           }}
         >
           <Text style={styles.sectionTwoHeader}>My Network Contacts</Text>
@@ -185,262 +272,13 @@ const MyNetwork = () => {
         {/* section two header ends */}
 
         {/* section two listItems */}
-        <View style={styles.containerTwo}>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-            }}
-          >
-            <View>
-              <Image
-                style={styles.img}
-                source={require("../assets/myNetwork/david.png")}
-              />
-            </View>
-            <View
-              style={{
-                paddingHorizontal: 7,
-                paddingVertical: 11,
-              }}
-            >
-              <View>
-                <Text style={styles.sectionOneUsername}>@DavidShegs</Text>
-              </View>
-              <View
-                style={{
-                  paddingVertical: 2,
-                }}
-              >
-                <Text style={styles.sectionOneUsername}>Lagos Jiji Guy</Text>
-              </View>
-            </View>
-          </View>
-          <View
-            style={{
-              paddingVertical: 13,
-            }}
-          >
-            <Image
-              style={styles.imgComment}
-              source={require("../assets/myNetwork/comment.png")}
-            />
-          </View>
-        </View>
-        <View style={styles.containerTwo}>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-            }}
-          >
-            <View>
-              <Image
-                style={styles.img}
-                source={require("../assets/myNetwork/cyflex.png")}
-              />
-            </View>
-            <View
-              style={{
-                paddingHorizontal: 7,
-                paddingVertical: 11,
-              }}
-            >
-              <View>
-                <Text style={styles.sectionOneUsername}>@Ivan_moneyman</Text>
-              </View>
-              <View
-                style={{
-                  paddingVertical: 2,
-                }}
-              >
-                <Text style={styles.sectionOneUsername}>Ivan Arabome</Text>
-              </View>
-            </View>
-          </View>
-          <View
-            style={{
-              paddingVertical: 13,
-            }}
-          >
-            <Image
-              style={styles.imgComment}
-              source={require("../assets/myNetwork/comment.png")}
-            />
-          </View>
-        </View>
-        <View style={styles.containerTwo}>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-            }}
-          >
-            <View>
-              <Image
-                style={styles.img}
-                source={require("../assets/myNetwork/vso.png")}
-              />
-            </View>
-            <View
-              style={{
-                paddingHorizontal: 7,
-                paddingVertical: 11,
-              }}
-            >
-              <View>
-                <Text style={styles.sectionOneUsername}>@MrsVSO</Text>
-              </View>
-              <View
-                style={{
-                  paddingVertical: 2,
-                }}
-              >
-                <Text style={styles.sectionOneUsername}>
-                  Victoria Sunny Owolijah
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            style={{
-              paddingVertical: 13,
-            }}
-          >
-            <Image
-              style={styles.imgComment}
-              source={require("../assets/myNetwork/comment.png")}
-            />
-          </View>
-        </View>
-        <View style={styles.containerTwo}>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-            }}
-          >
-            <View>
-              <Image
-                style={styles.img}
-                source={require("../assets/myNetwork/david.png")}
-              />
-            </View>
-            <View
-              style={{
-                paddingHorizontal: 7,
-                paddingVertical: 11,
-              }}
-            >
-              <View>
-                <Text style={styles.sectionOneUsername}>@DavidShegs</Text>
-              </View>
-              <View
-                style={{
-                  paddingVertical: 2,
-                }}
-              >
-                <Text style={styles.sectionOneUsername}>Lagos Jiji Guy</Text>
-              </View>
-            </View>
-          </View>
-          <View
-            style={{
-              paddingVertical: 13,
-            }}
-          >
-            <Image
-              style={styles.imgComment}
-              source={require("../assets/myNetwork/comment.png")}
-            />
-          </View>
-        </View>
-        <View style={styles.containerTwo}>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-            }}
-          >
-            <View>
-              <Image
-                style={styles.img}
-                source={require("../assets/myNetwork/cyflex.png")}
-              />
-            </View>
-            <View
-              style={{
-                paddingHorizontal: 7,
-                paddingVertical: 11,
-              }}
-            >
-              <View>
-                <Text style={styles.sectionOneUsername}>@Ivan_moneyman</Text>
-              </View>
-              <View
-                style={{
-                  paddingVertical: 2,
-                }}
-              >
-                <Text style={styles.sectionOneUsername}>Ivan Arabome</Text>
-              </View>
-            </View>
-          </View>
-          <View
-            style={{
-              paddingVertical: 13,
-            }}
-          >
-            <Image
-              style={styles.imgComment}
-              source={require("../assets/myNetwork/comment.png")}
-            />
-          </View>
-        </View>
-        <View style={styles.containerTwo}>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-            }}
-          >
-            <View>
-              <Image
-                style={styles.img}
-                source={require("../assets/myNetwork/vso.png")}
-              />
-            </View>
-            <View
-              style={{
-                paddingHorizontal: 7,
-                paddingVertical: 11,
-              }}
-            >
-              <View>
-                <Text style={styles.sectionOneUsername}>@MrsVSO</Text>
-              </View>
-              <View
-                style={{
-                  paddingVertical: 2,
-                }}
-              >
-                <Text style={styles.sectionOneUsername}>
-                  Victoria Sunny Owolijah
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            style={{
-              paddingVertical: 13,
-            }}
-          >
-            <Image
-              style={styles.imgComment}
-              source={require("../assets/myNetwork/comment.png")}
-            />
-          </View>
-        </View>
+          <FlatList
+            data={NetworkContacts}
+            renderItem={({ item }) => (
+              <Contact userName={item.userName} name={item.name} />
+            )}
+            keyExtractor={(item) => item.id}
+          />
         {/* section two listItems end */}
       </View>
     </View>
@@ -472,32 +310,6 @@ const styles = StyleSheet.create({
     lineHeight: 15,
     color: "#ffffff",
     paddingVertical: 12,
-  },
-  input: {
-    height: 40,
-    // margin: 12,
-    // borderWidth: 1,
-    borderRightWidth: 1,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
-    // borderRadius: 20,
-    borderTopRightRadius: 20,
-    borderBottomRightRadius: 20,
-    padding: 10,
-    color: "#525252",
-    fontSize: 10,
-    lineHeight: 12,
-  },
-  searchIcon: {
-    width: 40,
-    height: 40,
-    paddingTop: 8,
-    alignItems: "center",
-    borderTopLeftRadius: 20,
-    borderBottomLeftRadius: 20,
-    borderLeftWidth: 1,
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
   },
   container: {
     marginVertical: 10,
@@ -557,6 +369,17 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     alignItems: "center",
     marginVertical: 5,
+  },
+  searchbarContainer: {
+    marginHorizontal: 5,
+    width: "100%",
+  },
+  searchbar: {
+    backgroundColor: "#D9D9D9",
+    borderColor: "#999999",
+    borderWidth: 0.1,
+    fontSize: 10,
+    lineHeight: 12,
   },
 });
 
