@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, KeyboardAvoidingView, Image, TextInput } from 'react-native';
 import React from 'react';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import Logo from '../../Pages/Signup/Logo';
+import Logo from './Logo';
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 
 
@@ -19,7 +19,7 @@ const ResetInput = () => {
         </View>
 
         <View>
-        <View style={styles.container}>
+        <View style={styles.siContainer}>
             <Text style={styles.signUp}>Reset Password</Text>
         </View>
         <View style={styles.nxt}>
@@ -46,6 +46,9 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         color: "#D9D9D9",
+        height: "100%",
+        backgroundColor: '#EB6117',
+
         
         
 
@@ -71,8 +74,9 @@ const styles = StyleSheet.create({
 
     Input: {
         padding: 7,
+        fontSize: 14,
         backgroundColor: "#D9D9D9",
-        width: 250,
+        width: 260,
         borderBottomRightRadius: 20,
         borderTopRightRadius: 20,
     },
@@ -80,7 +84,7 @@ const styles = StyleSheet.create({
         
     },
 
-    container:{
+    siContainer:{
         alignItems: "center",
         justifyContent: "center",
         marginTop: 32,
@@ -105,12 +109,12 @@ const styles = StyleSheet.create({
     },
 
     acc: {
-        fontSize: 10,
+        fontSize: 12,
         color: "#FFFFFF",
     },
 
     login: {
-        fontSize: 10,
+        fontSize: 12,
         color: "#FFFFFF",
     },
 
@@ -123,7 +127,7 @@ const styles = StyleSheet.create({
     },
 
     ft: {
-        fontSize: 12,
+        fontSize: 10,
         color: "#FFFFFF",
     },
 

@@ -1,11 +1,16 @@
-import { StyleSheet, Text, View, KeyboardAvoidingView, Image, TextInput } from 'react-native'
+import { StyleSheet, Text, View, KeyboardAvoidingView, Image, TextInput,  } from 'react-native'
 import React from 'react'
+import Logo from './Logo'
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 
 const Input = () => {
   return (
+    
     <View style={styles.InputGroup}>
+        <View>
+          <Logo />
+        </View>
         <View style={styles.container}>
             <View style={styles.InputContainer}>
                 <FontAwesome style={styles.icon} name="id-card-o" size={16} color="#000ff" />
@@ -64,6 +69,10 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         color: "#D9D9D9",
+        height: "100%",
+        backgroundColor: '#EB6117',
+
+
         
         
 
@@ -86,7 +95,7 @@ const styles = StyleSheet.create({
     Input: {
         padding: 5,
         backgroundColor: "#D9D9D9",
-        width: 250,
+        width: 260,
         borderBottomRightRadius: 20,
         borderTopRightRadius: 20,
     },
@@ -120,6 +129,7 @@ const styles = StyleSheet.create({
 
     acc: {
         fontSize: 12,
+        // fontFamily: FONTS.cabin,
         color: "#FFFFFF",
     },
 
@@ -132,12 +142,12 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 60,
+        marginTop: 40,
         
     },
 
     ft: {
-        fontSize: 12,
+        fontSize: 10,
         color: "#FFFFFF",
     },
 })
