@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, FlatList, Image } from "react-native";
+import { StyleSheet, View, Text, FlatList, Image, TouchableWithoutFeedback, Keyboard } from "react-native";
 
 import CustomSearchBar from "./CustomSearchBar";
 import Colors from "../constants/colors";
@@ -114,7 +114,11 @@ const Contact = ({ userName, name }) => (
 
 const MyNetwork = () => {
   return (
+    // <TouchableWithoutFeedback onPress={() =>{
+    //   Keyboard.dismiss();
+    // }}></TouchableWithoutFeedback>
     <View style={styles.screen}>
+
       {/* Custom SearchBar */}
       <View style={styles.searchbarContainer}>
         <CustomSearchBar style={styles.searchbar}></CustomSearchBar>
@@ -312,6 +316,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
   },
   container: {
+    width: "100%",
     marginVertical: 10,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -329,7 +334,8 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(217, 217, 217, 0.1)",
   },
   sectionOne: {
-    width: 160,
+    width: '47%',
+    minWidth: 160,
     height: 160,
     borderRadius: 10,
     backgroundColor: "#E3E3E3",
@@ -380,6 +386,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.1,
     fontSize: 10,
     lineHeight: 12,
+    // width: "50%",
   },
 });
 

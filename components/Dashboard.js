@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   View,
   Text,
@@ -32,6 +33,14 @@ const Dashboard = () => {
     navigation.navigate("AddCardScreen");
   };
 
+  const checkActiveCards = async () => {
+    navigation.navigate("ActiveCardScreen");
+  };
+
+  const sendfunds_navigation = async () => {
+    navigation.navigate("SendFunds");
+  };
+
   return (
     <View style={styles.screen}>
       <View style={styles.textContainer}>
@@ -52,7 +61,7 @@ const Dashboard = () => {
           </View>
         </View>
         <View style={styles.buttonContainer}>
-          <MainButton>Send Funds</MainButton>
+          <MainButton onPress={sendfunds_navigation}>Send Funds</MainButton>
         </View>
       </View>
       <View style={styles.sectionTwo}>
@@ -77,7 +86,7 @@ const Dashboard = () => {
       <View>
         <View style={styles.sectionThree}>
           <View>
-            <TouchableHighlight onPress={checkMyCommunity}>
+            <TouchableHighlight onPress={checkActiveCards}>
               <Image
                 style={styles.imageStyle2}
                 source={require("../assets/dashboard/users.png")}
@@ -114,6 +123,8 @@ const Dashboard = () => {
           </View>
           <View>
             <TouchableHighlight onPress={checkUserProfile}>
+              {/* section three ends 
+          <TouchableHighlight onPress={checkUserProfile}>
               <Image
                 style={styles.imageStyle2}
                 source={require("../assets/dashboard/payment_wallet.png")}
@@ -127,6 +138,11 @@ const Dashboard = () => {
             />
           */}
 
+              <Image
+                style={styles.imageStyle2}
+                source={require("../assets/dashboard/payment_wallet.png")}
+              />
+            </TouchableHighlight>
             <Text style={styles.miniText}>Payment Requests</Text>
           </View>
           <View>
@@ -150,7 +166,9 @@ const Dashboard = () => {
           </View>
         </View>
         <View style={styles.buttonContainer}>
-          <MainButton style={styles.bigButton}>Post to Community</MainButton>
+          <MainButton onPress={checkMyCommunity} style={styles.bigButton}>
+            Post to Community
+          </MainButton>
         </View>
       </View>
 

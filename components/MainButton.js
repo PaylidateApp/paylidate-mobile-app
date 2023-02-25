@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
         color: '#000000',
         //fontFamily: 'Cabin',
         fontSize: 12,
+        fontWeight: "normal",
         textAlign: 'center'
     }
 });

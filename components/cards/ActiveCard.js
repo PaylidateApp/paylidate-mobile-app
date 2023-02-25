@@ -4,73 +4,91 @@ import {
   View,
   Text,
   TouchableHighlight,
+  TouchableWithoutFeedback,
+  Keyboard,
   TextInput,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 
-import ImgPicker from "./ImagePicker";
-
-const PostItem = () => {
+const ActiveCard = () => {
   return (
-    <View style={styles.screen}>
-      <View style={{paddingVertical: 40}}>
-        {/* Add Image */}
-        <View>
-          <ImgPicker />
+    <TouchableWithoutFeedback
+      onPress={() => {
+        Keyboard.dismiss();
+      }}
+    >
+      <View style={styles.screen}>
+        {/* Header */}
+        <View style={styles.headerStyle}>
+          <View style={{ flexDirection: "row", width: "45%" }}>
+            <Ionicons name="chevron-back" size={20} color="black" />
+            <Text style={styles.txt}>Home</Text>
+          </View>
+          <View>
+            <Text style={styles.bigTxt}>Linked Card</Text>
+          </View>
         </View>
-        {/* Add Image Ends */}
+        {/* Header End */}
 
-        {/* Product/Service Name */}
-        <View>
-          <TextInput style={styles.input} placeholder="Product/Service name" />
+        {/* Card Starts */}
+        <View style={{ paddingVertical: 45, alignItems: "center" }}>
+          <View style={styles.cardStyle}>
+            {/* Expiry Date and CVV */}
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                paddingTop: 20,
+                paddingBottom: 20,
+              }}
+            >
+              <View >
+                <Text style={styles.txt}> **** **** **** 0000</Text>
+              </View>
+              <View >
+                <Text style={styles.txt}>MM/YY</Text>
+              </View>
+            </View>
+            {/* Expiry Date and CVV End */}
+
+            {/* Expiry Date and CVV */}
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                paddingTop: 60,
+                paddingBottom: 20,
+              }}
+            >
+              <View style={{paddingVertical: 10}}>
+                <Text style={styles.txt}> Lawrence Attah</Text>
+              </View>
+              <View style={{}}>
+                <Text style={styles.greenText}>AfriGo</Text>
+              </View>
+            </View>
+            {/* Expiry Date and CVV End */}
+          </View>
         </View>
-        {/* Product/Service Name End */}
+        {/* Card Ends */}
 
-        {/* Price */}
-        <View>
-          <TextInput style={styles.input} placeholder="Price if fixed" />
-        </View>
-        {/* Price End*/}
+        <View style={{ alignItems: "center", width: '100%' }}>
+          {/* Text */}
+          <View>
+            <Text style={styles.orangeTxt}>Card is Active</Text>
+          </View>
+          {/* Text ends */}
 
-        {/* Available Quantity */}
-        <View>
-          <TextInput style={styles.input} placeholder="Available quantity" />
-        </View>
-        {/* Available Quantity End */}
-
-        {/* Product/Service Description */}
-        <View>
-          <TextInput
-            placeholder="Product/Service description"
-            editable
-            multiline
-            numberOfLines={6}
-            maxLength={80}
-            style={styles.inputTextField}
-          />
-        </View>
-        {/* Product/Service Description */}
-
-        {/* Referral Amount */}
-        <View style={{ paddingHorizontal: 5, paddingVertical: 10 }}>
-          <Text style={styles.txt}>
-            If you want this product to be referred by others, please add a
-            referral bonus else live the field blank
-          </Text>
-        </View>
-
-        <View>
-          <TextInput style={styles.input} placeholder="Referral amount" />
-        </View>
-        {/* Referral Amount End */}
-
-        {/* Create Post button */}
-        <View style={styles.btnContainer}>
-          <TouchableHighlight style={styles.post2CommunityBtn}>
-            <Text style={styles.post2CommunityBtnTxt}>Create Post</Text>
-          </TouchableHighlight>
+          {/* Remove Card button */}
+          <View style={styles.btnContainer}>
+            <TouchableHighlight style={styles.removeCardBtn}>
+              <Text style={styles.removeCardBtnTxt}>Remove Card</Text>
+            </TouchableHighlight>
+          </View>
+          {/* Remove Card button */}
         </View>
       </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -83,26 +101,44 @@ const styles = StyleSheet.create({
     backgroundColor: "#D9D9D9",
   },
 
+  headerStyle: {
+    flexDirection: "row",
+    paddingVertical: 12,
+  },
+
+  cardStyle: {
+    width: "95%",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+    backgroundColor: "#E6CBBC",
+    shadowColor: "#000000",
+    shadowOffset: { width: 4, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 8,
+  },
+
   btnContainer: {
     alignItems: "center",
-    marginVertical: 10,
+    marginVertical: 100,
+    width: "85%",
   },
-  post2CommunityBtn: {
+  removeCardBtn: {
     width: "85%",
     height: 40,
     backgroundColor: "#182430",
-    borderRadius: 10,
+    borderRadius: 5,
     justifyContent: "center",
     alignItems: "center",
   },
-  post2CommunityBtnTxt: {
+  removeCardBtnTxt: {
     fontFamily: "Cabin",
     fontSize: 14,
     lineHeight: 17,
     color: "#fff",
   },
   input: {
-    height: 50,
+    height: 40,
     marginVertical: 12,
     borderWidth: 1,
     borderRadius: 8,
@@ -118,8 +154,24 @@ const styles = StyleSheet.create({
     fontFamily: "Cabin",
     fontSize: 14,
     lineHeight: 17,
-    textAlign: "center",
+  },
+  bigTxt: {
+    fontFamily: "Cabin",
+    fontSize: 16,
+    lineHeight: 19,
+  },
+  greenText: {
+    fontFamily: "Cabin",
+    fontSize: 32,
+    lineHeight: 39,
+    color: "#58A662",
+  },
+  orangeTxt: {
+    fontFamily: "Cabin",
+    fontSize: 14,
+    lineHeight: 17,
+    color: '#EB6117'
   },
 });
 
-export default PostItem;
+export default ActiveCard;
