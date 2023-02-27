@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     paybillstext:{
       marginLeft:75,
       fontFamily:FONTS.cabin,
-      fontSize:16,
+      fontSize:18,
       fontWeight:'bold'
     },
 
@@ -104,7 +104,12 @@ const styles = StyleSheet.create({
       width:360,
       height:394,
       borderRadius:10,
-      backgroundColor:'#F6F6F6',
+      backgroundColor:'#FFF8F4',
+      shadowColor: 'black',
+      shadowOffset: { width: 3, height: 1 },
+      shadowOpacity: 0.5,
+      shadowRadius: 8,  
+      elevation: 4,
       alignItems:'center',
       marginLeft:8,
       marginTop:26
@@ -115,14 +120,19 @@ const styles = StyleSheet.create({
       width:268,
       height:40,
       marginLeft:46,
-      marginTop:6
+      marginTop:6,
+      fontFamily:FONTS.cabin,
+      fontSize:16,
+      fontWeight:'bold',
+      paddingLeft:80
+
     },
     networktext:
     {
       marginRight:209,
       marginTop:49,
       fontFamily:FONTS.cabin,
-      fontSize:16,
+      fontSize:10,
       fontWeight:'bold'
 
 
@@ -133,7 +143,7 @@ const styles = StyleSheet.create({
       marginRight:209,
       marginTop:24,
       fontFamily:FONTS.cabin,
-      fontSize:16,
+      fontSize:10,
       fontWeight:'bold'
     },
 
@@ -149,6 +159,7 @@ const styles = StyleSheet.create({
       marginRight:130,
       fontFamily:FONTS.cabin,
       fontWeight:'bold',
+      fontSize:10
 
     },
     contacttext:
@@ -163,6 +174,10 @@ const styles = StyleSheet.create({
       width:268,
       height:40,
       borderRadius:8,
+      fontFamily:FONTS.cabin,
+      fontSize:16,
+      fontWeight:'bold',
+      paddingLeft:20,
       marginTop:6
     },
     buybtn:
@@ -180,7 +195,9 @@ const styles = StyleSheet.create({
     {
       color:'white',
       fontFamily:FONTS.cabin,
-      fontSize:16
+      fontSize:16,
+      fontWeight:'bold'
+
 
     }
 

@@ -1,7 +1,7 @@
 import { View, SafeAreaView, Text, ScrollView, StyleSheet, TouchableOpacity, TextInput, Image, Switch } from 'react-native'
 import React from 'react'
 import { useState } from 'react';
-import { FONTS } from '../constants/theme'
+import { FONTS } from '../../constants/theme'
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -36,6 +36,8 @@ const toggleDisplayprofile = () => {
   setDisplayRightIcon(!displayRightIcon)
 
 }
+
+
 
 const toggleDisplaycontact = () => {
   setDisplayContact(!displayContact)
@@ -73,6 +75,13 @@ const toggleDisplayHelp = () => {
 
 }
 
+const navigation = useNavigation()
+
+  const navigate_verifyme = async () => 
+  {
+         navigation.navigate('VerifyMe')
+         
+  }
 
 
   return (
@@ -92,7 +101,7 @@ const toggleDisplayHelp = () => {
       <View style={styles.screentitlewrap}>
       <Text style={styles.acctsettingstext}>Account Settings</Text>
 
-<TouchableOpacity style={styles.verifybtn}>
+<TouchableOpacity style={styles.verifybtn} onPress={navigate_verifyme}>
 <Text style={styles.verifymetext}>Verify me</Text>
 </TouchableOpacity>
       </View>
@@ -120,7 +129,7 @@ const toggleDisplayHelp = () => {
         <View style={styles.profilepiccontainer}>
         <Image
         style={styles.profileimg}
-        source={require("../assets/favicon.png")}
+        source={require("../../assets/favicon.png")}
       />
           <TouchableOpacity style={styles.uploadprofilebtn}>
           <AntDesign name="cloudupload" size={24} color="#182430" style={styles.cloudicon} />
@@ -384,7 +393,7 @@ const styles = StyleSheet.create({
     justifyContent:'space-between',
     borderBottomWidth:1,
     borderColor: 'grey',
-    backgroundColor:'#D9D9D9'
+    backgroundColor:'#FFF8F4'
   },
   
   historybtn:{
@@ -394,8 +403,8 @@ const styles = StyleSheet.create({
   settingstext:{
     marginLeft:75,
     fontFamily:FONTS.cabin,
-    fontSize:16,
-    fontWeight:500
+    fontSize:18,
+    fontWeight:'bold'
   },
 acctsettingstext:{
   fontFamily:FONTS.cabin,
@@ -460,8 +469,8 @@ acctsettingstext:{
   },
   label:{
     fontFamily:FONTS.cabin,
-    fontSize:16,
-    fontWeight:500,
+    fontSize:10,
+    fontWeight:'medium',
     marginLeft:64,
     marginTop:15
 
@@ -475,8 +484,9 @@ acctsettingstext:{
     marginTop:6,
     marginLeft:60,
     fontFamily:FONTS.cabin,
-    fontSize:14,
-    fontWeight:500
+    paddingLeft:20,
+    fontSize:16,
+    fontWeight:'bold'
 
 
   },
@@ -489,8 +499,9 @@ acctsettingstext:{
     marginTop:6,
     marginLeft:60,
     fontFamily:FONTS.cabin,
-    fontSize:14,
-    fontWeight:500
+    fontSize:16,
+    fontWeight:'bold',
+    paddingLeft:20
   },
   withdrawtobankcontainer:
   {
@@ -501,8 +512,8 @@ acctsettingstext:{
   withdrawbanklabel:{
     marginLeft: 64,
     fontFamily:FONTS.cabin,
-    fontSize:16,
-    fontWeight:500,
+    fontSize:10,
+    fontWeight:'medium',
     marginLeft:64,
     marginTop:15
 
@@ -515,8 +526,8 @@ acctsettingstext:{
   },
    placeholder:{
     fontFamily:FONTS.cabin,
-    fontSize:14,
-    fontWeight:500
+    fontSize:16,
+    fontWeight:'bold'
 
       
   },
@@ -524,6 +535,7 @@ acctsettingstext:{
   {
     fontFamily:FONTS.cabin,
     fontSize:16,
+    fontWeight:'bold',
     marginRight:10
   },
   updateprofilebtn:{
@@ -545,7 +557,8 @@ acctsettingstext:{
 
   },
   optionsettings:{
-    paddingBottom:23
+    paddingBottom:23,
+    
   },
   cloudicon:
   {

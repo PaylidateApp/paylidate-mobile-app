@@ -1,8 +1,8 @@
-import { SafeAreaView, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
+import { SafeAreaView, Text, TextInput, StyleSheet, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { FONTS } from '../constants/theme'
+import { FONTS } from '../../constants/theme'
 
-const VerifyAccountant = () => {
+const VerifyAccount = () => {
   return (
     <SafeAreaView style={styles.container}>
         <View style={styles.content}>
@@ -23,25 +23,34 @@ const VerifyAccountant = () => {
   )
 }
 
-export default VerifyAccountant
+export default VerifyAccount
 
 const styles = StyleSheet.create({
     container:
     {
         backgroundColor:'#EB6117',
         alignItems: 'center',
+        height: '100%',
+
     },
 
     content:
     {
         flexDirection:'row',
-        justifyContent:'space-between',
         alignItems:'center',
+        justifyContent:'space-between',
+        marginTop:20
     },
     verificationcodeinput:
     {
         width:34,
-        height:42
+        height:42,
+        marginTop:285,
+        marginLeft:20,
+        marginRight:20,
+        borderRadius:10,
+        backgroundColor:'white'
+
     },
 
     verifybtn:

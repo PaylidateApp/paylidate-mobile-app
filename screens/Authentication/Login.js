@@ -46,7 +46,8 @@ const Login = () => {
 
       <TextInput
         style={styles.email}
-        placeholder="Enter Your Email" />
+        placeholder="Enter Your Email" 
+        placeholderTextColor={'#848484'}/>
       </View>
 
     {/* Password */}
@@ -59,7 +60,8 @@ const Login = () => {
 
       <TextInput
         style={styles.password}
-        placeholder="Enter Your Password" />
+        placeholder="Enter Your Password"
+        placeholderTextColor={'#848484'}/>
 
     </View>
 
@@ -101,7 +103,9 @@ const Login = () => {
 
 const styles = StyleSheet.create({
   logo: {
-    marginTop: 5
+    marginTop: 100,
+    width: 165,
+    height: 183
   },
 
   container: {
@@ -115,20 +119,26 @@ const styles = StyleSheet.create({
   footertext:
   {
     color: '#FFFFFF',
-    fontSize: 10,
-    fontFamily: FONTS.cabin
+    fontSize: 12,
+    fontWeight:'bold',
+    fontFamily: FONTS.cabin,
+    marginLeft:67,
+    marginRight:66
   },
   signuptext:{
     color: '#FFFFFF',
-    fontSize: 10,
+    fontSize: 12,
+    fontWeight:'bold',
     marginLeft: 40,
     fontFamily: FONTS.cabin
   },
 
   forgotpasswordtext:{
     color: '#FFFFFF',
-    fontSize: 10,
-    marginRight: 39,
+    fontSize: 12,
+    fontWeight:'medium',
+    marginLeft: 47,
+    marginRight:39,
     fontFamily: FONTS.cabin
   },
   
@@ -159,8 +169,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 8,  
     elevation: 4,
-    textAlign: 'center',
-    fontFamily: FONTS.cabin
+    fontFamily: FONTS.cabin,
+    fontSize:16,
+    fontWeight: 'bold',
+    paddingLeft: 19,
+
+
     
   },
 
@@ -175,7 +189,7 @@ const styles = StyleSheet.create({
   {
     justifyContent: 'center',
     alignItems:'center',
-    marginTop:70
+    marginTop:50
   },
 
 
@@ -184,7 +198,7 @@ const styles = StyleSheet.create({
   },
   emailcontainer:
   {
-      marginTop: -60,
+      marginTop: -20,
       alignItems: 'center',
       flexDirection: 'row',
       justifyContent: 'center',
@@ -215,9 +229,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 8,  
     elevation: 4,
-    textAlign: 'center',
-    fontFamily: FONTS.cabin
+    fontFamily: FONTS.cabin,
+    fontSize:16,
+    fontWeight: 'bold',
+    paddingLeft: 19,
+
   },
+
+  
 
   btncontainer:
   {
@@ -242,6 +261,9 @@ const styles = StyleSheet.create({
   loginbtnlabel:
   {
     color: '#fff',
+    fontSize:16,
+    fontWeight: 'bold',
+
   }
 
 });

@@ -168,24 +168,25 @@ const styles = StyleSheet.create({
     paybillstext:{
         marginLeft:75,
         fontFamily:FONTS.cabin,
-        fontSize:16,
+        fontSize:18,
         fontWeight:'bold'
       },
       searchcontainer:{
-        alignItems: 'center',
+      
       flexDirection: 'row',
-      justifyContent: 'space-between',
       borderWidth:1,
       borderRadius:15,
       width: 240,
       height: 28,
+      borderColor:'grey'
       },
       icon:
       {
         marginLeft:10
       },
       searchinput:
-      { marginRight:100,
+      {
+         paddingLeft:70
       },
       phonebackground:
       {
