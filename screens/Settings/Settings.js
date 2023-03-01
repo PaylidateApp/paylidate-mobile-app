@@ -1,7 +1,7 @@
-import { View, SafeAreaView, Text, ScrollView, StyleSheet, TouchableOpacity, TextInput, Image, Switch } from 'react-native'
+import { View, SafeAreaView, Text, ScrollView, StyleSheet, TouchableOpacity, TextInput, Image, Switch, KeyboardAvoidingView } from 'react-native'
 import React from 'react'
 import { useState } from 'react';
-import { FONTS } from '../constants/theme'
+import { FONTS } from '../../constants/theme'
 import { FontAwesome } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -36,6 +36,8 @@ const toggleDisplayprofile = () => {
   setDisplayRightIcon(!displayRightIcon)
 
 }
+
+
 
 const toggleDisplaycontact = () => {
   setDisplayContact(!displayContact)
@@ -73,14 +75,23 @@ const toggleDisplayHelp = () => {
 
 }
 
+const navigation = useNavigation()
+
+  const navigate_verifyme = async () => 
+  {
+         navigation.navigate('VerifyMe')
+         
+  }
 
 
   return (
     <SafeAreaView style={styles.container}>
 
-      <View style={styles.screentitlewrapper}>
+<KeyboardAvoidingView
+behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+    <View style={styles.screentitlewrapper}>
         <TouchableOpacity style={styles.historybtn}>
-        <AntDesign name="left" size={24} color="black"  />
+        <AntDesign name="left" size={24} color="#182430"  />
         </TouchableOpacity>
       
       <Text style={styles.hometext}>Home</Text>
@@ -92,7 +103,7 @@ const toggleDisplayHelp = () => {
       <View style={styles.screentitlewrap}>
       <Text style={styles.acctsettingstext}>Account Settings</Text>
 
-<TouchableOpacity style={styles.verifybtn}>
+<TouchableOpacity style={styles.verifybtn} onPress={navigate_verifyme}>
 <Text style={styles.verifymetext}>Verify me</Text>
 </TouchableOpacity>
       </View>
@@ -104,14 +115,14 @@ const toggleDisplayHelp = () => {
     <TouchableOpacity style={styles.settingscontainer} onPress={toggleDisplayprofile}>
 
     
-    <EvilIcons name="user" size={24} color="black" style={styles.firsticon} />
+    <EvilIcons name="user" size={24} color="#182430" style={styles.firsticon} />
       <Text style={styles.settingsoptiontext}>Profile</Text>
 {
-  displayRightIcon && <AntDesign name="right" size={24} color="black" style={styles.secondicon} />
+  displayRightIcon && <AntDesign name="right" size={24} color="#182430" style={styles.secondicon} />
 }
       
 
-      { displayProfile && <AntDesign name="down" size={24} color="black" style={styles.secondicon} />}
+      { displayProfile && <AntDesign name="down" size={24} color="#182430" style={styles.secondicon} />}
     </TouchableOpacity>
 
     {
@@ -120,24 +131,22 @@ const toggleDisplayHelp = () => {
         <View style={styles.profilepiccontainer}>
         <Image
         style={styles.profileimg}
-        source={require("../assets/favicon.png")}
+        source={require("../../assets/favicon.png")}
       />
           <TouchableOpacity style={styles.uploadprofilebtn}>
-          <AntDesign name="cloudupload" size={24} color="black" style={styles.cloudicon} />
+          <AntDesign name="cloudupload" size={24} color="#182430" style={styles.cloudicon} />
             <Text style={styles.uploadtext}>Upload</Text>
           </TouchableOpacity>
         </View>
 
         <Text style={styles.label}>Full name</Text>
 
-          <TextInput style={styles.usernameinputbox}>
-          <Text style={styles.placeholder}>Joy Ojah</Text> 
+          <TextInput style={styles.usernameinputbox} placeholder="Joy Ojah">
           </TextInput>
 
           <Text style={styles.label}>User name</Text>
           
-          <TextInput style={styles.usernameinputbox}>
-          <Text style={styles.placeholder}>@Joywrites</Text> 
+          <TextInput style={styles.usernameinputbox} placeholder="@Joywrites">
           </TextInput>
          
          <TouchableOpacity style={styles.updateprofilebtn}><Text style={styles.updatetext}>Update</Text></TouchableOpacity>
@@ -146,13 +155,13 @@ const toggleDisplayHelp = () => {
     
     <TouchableOpacity style={styles.settingscontainer} onPress={toggleDisplaycontact}>
       
-    <MaterialIcons name="contact-mail" size={24} color="black" style={styles.firsticon} />
+    <MaterialIcons name="contact-mail" size={24} color="#182430" style={styles.firsticon} />
     
       <Text style={styles.settingsoptiontext}>Contact details</Text>
 
-      { contactRightIcon && <AntDesign name="right" size={24} color="black" style={styles.secondicon} />}
+      { contactRightIcon && <AntDesign name="right" size={24} color="#182430" style={styles.secondicon} />}
 
-      { displayContact  && <AntDesign name="down" size={24} color="black" style={styles.secondicon} />}
+      { displayContact  && <AntDesign name="down" size={24} color="#182430" style={styles.secondicon} />}
     </TouchableOpacity>
 
     { displayContact &&
@@ -175,12 +184,12 @@ const toggleDisplayHelp = () => {
 
     <TouchableOpacity style={styles.settingscontainer} onPress={toggleDisplaycommerce}>
 
-    <FontAwesome5 name="shopify" size={24} color="black" style={styles.firsticon} />
+    <FontAwesome5 name="shopify" size={24} color="#182430" style={styles.firsticon} />
       <Text style={styles.settingsoptiontext}>Social Commerce</Text>
 
-      {commerceRightIcon && <AntDesign name="right" size={24} color="black" style={styles.secondicon} /> }
+      {commerceRightIcon && <AntDesign name="right" size={24} color="#182430" style={styles.secondicon} /> }
 
-      { displayCommerce && <AntDesign name="down" size={24} color="black" style={styles.secondicon} />}
+      { displayCommerce && <AntDesign name="down" size={24} color="#182430" style={styles.secondicon} />}
     </TouchableOpacity>
 
     { displayCommerce &&
@@ -211,12 +220,12 @@ const toggleDisplayHelp = () => {
 
     <TouchableOpacity style={styles.settingscontainer} onPress={toggleDisplaypayments}>
 
-    <MaterialCommunityIcons name="wallet-plus" size={24} color="black" style={styles.firsticon} />
+    <MaterialCommunityIcons name="wallet-plus" size={24} color="#182430" style={styles.firsticon} />
       <Text style={styles.settingsoptiontext}>Payments</Text>
 
-      { paymentsRightIcon && <AntDesign name="right" size={24} color="black" style={styles.secondicon} /> }
+      { paymentsRightIcon && <AntDesign name="right" size={24} color="#182430" style={styles.secondicon} /> }
 
-      { displayPayments && <AntDesign name="down" size={24} color="black" style={styles.secondicon} />}
+      { displayPayments && <AntDesign name="down" size={24} color="#182430" style={styles.secondicon} />}
     </TouchableOpacity>
 
 
@@ -263,12 +272,12 @@ const toggleDisplayHelp = () => {
 
     <TouchableOpacity style={styles.settingscontainer} onPress={toggleDisplaysocialmedia}>
 
-    <Ionicons name="share-social" size={24} color="black" style={styles.firsticon} />
+    <Ionicons name="share-social" size={24} color="#182430" style={styles.firsticon} />
       <Text style={styles.settingsoptiontext}>Social Media Accounts</Text>
 
-      { socialRightIcon && <AntDesign name="right" size={24} color="black" style={styles.secondicon} />}
+      { socialRightIcon && <AntDesign name="right" size={24} color="#182430" style={styles.secondicon} />}
 
-      { displaySocialMedia && <AntDesign name="down" size={24} color="black" style={styles.secondicon} />}
+      { displaySocialMedia && <AntDesign name="down" size={24} color="#182430" style={styles.secondicon} />}
     </TouchableOpacity>
 
 { displaySocialMedia &&
@@ -298,12 +307,12 @@ const toggleDisplayHelp = () => {
     }
     <TouchableOpacity style={styles.settingscontainer} onPress={toggleDisplaysecurity}>
 
-    <MaterialCommunityIcons name="security" size={24} color="black" style={styles.firsticon} />
+    <MaterialCommunityIcons name="security" size={24} color="#182430" style={styles.firsticon} />
       <Text style={styles.settingsoptiontext}>Security</Text>
 
-      { securityRightIcon && <AntDesign name="right" size={24} color="black" style={styles.secondicon} />}
+      { securityRightIcon && <AntDesign name="right" size={24} color="#182430" style={styles.secondicon} />}
 
-      { displaySecurity && <AntDesign name="down" size={24} color="black" style={styles.secondicon} />}
+      { displaySecurity && <AntDesign name="down" size={24} color="#182430" style={styles.secondicon} />}
     </TouchableOpacity>
 
     { displaySecurity &&
@@ -315,12 +324,12 @@ const toggleDisplayHelp = () => {
     <TouchableOpacity style={styles.settingscontainer} onPress={toggleDisplayHelp}>
 
     
-    <MaterialCommunityIcons name="handshake-outline" size={24} color="black" style={styles.firsticon}/>
+    <MaterialCommunityIcons name="handshake-outline" size={24} color="#182430" style={styles.firsticon}/>
       <Text style={styles.settingsoptiontext}>Help</Text>
       
       
-     {helpRightIcon && <AntDesign name="right" size={24} color="black" style={styles.secondicon} />}
-      { displayHelp && <AntDesign name="down" size={24} color="black" style={styles.secondicon} />}
+     {helpRightIcon && <AntDesign name="right" size={24} color="#182430" style={styles.secondicon} />}
+      { displayHelp && <AntDesign name="down" size={24} color="#182430" style={styles.secondicon} />}
     </TouchableOpacity>
    
    { displayHelp &&
@@ -333,6 +342,8 @@ const toggleDisplayHelp = () => {
      <View>
       
       </View> 
+</KeyboardAvoidingView>
+    
     </SafeAreaView>
   )
 }
@@ -347,6 +358,11 @@ const styles = StyleSheet.create({
       
   },
 
+  hometext:{
+    fontSize:14,
+    fontWeight:'bold',
+    fontFamily:FONTS.cabin
+  },
   screentitlewrap:
   {
       alignItems: 'center',
@@ -381,7 +397,7 @@ const styles = StyleSheet.create({
     justifyContent:'space-between',
     borderBottomWidth:1,
     borderColor: 'grey',
-    backgroundColor:'#D9D9D9'
+    backgroundColor:'#FFF8F4'
   },
   
   historybtn:{
@@ -391,8 +407,8 @@ const styles = StyleSheet.create({
   settingstext:{
     marginLeft:75,
     fontFamily:FONTS.cabin,
-    fontSize:16,
-    fontWeight:500
+    fontSize:18,
+    fontWeight:'bold'
   },
 acctsettingstext:{
   fontFamily:FONTS.cabin,
@@ -457,8 +473,8 @@ acctsettingstext:{
   },
   label:{
     fontFamily:FONTS.cabin,
-    fontSize:16,
-    fontWeight:500,
+    fontSize:10,
+    fontWeight:'medium',
     marginLeft:64,
     marginTop:15
 
@@ -472,8 +488,9 @@ acctsettingstext:{
     marginTop:6,
     marginLeft:60,
     fontFamily:FONTS.cabin,
-    fontSize:14,
-    fontWeight:500
+    paddingLeft:20,
+    fontSize:16,
+    fontWeight:'bold'
 
 
   },
@@ -486,8 +503,9 @@ acctsettingstext:{
     marginTop:6,
     marginLeft:60,
     fontFamily:FONTS.cabin,
-    fontSize:14,
-    fontWeight:500
+    fontSize:16,
+    fontWeight:'bold',
+    paddingLeft:20
   },
   withdrawtobankcontainer:
   {
@@ -498,8 +516,8 @@ acctsettingstext:{
   withdrawbanklabel:{
     marginLeft: 64,
     fontFamily:FONTS.cabin,
-    fontSize:16,
-    fontWeight:500,
+    fontSize:10,
+    fontWeight:'medium',
     marginLeft:64,
     marginTop:15
 
@@ -512,8 +530,8 @@ acctsettingstext:{
   },
    placeholder:{
     fontFamily:FONTS.cabin,
-    fontSize:14,
-    fontWeight:500
+    fontSize:16,
+    fontWeight:'bold'
 
       
   },
@@ -521,6 +539,7 @@ acctsettingstext:{
   {
     fontFamily:FONTS.cabin,
     fontSize:16,
+    fontWeight:'bold',
     marginRight:10
   },
   updateprofilebtn:{
@@ -542,7 +561,8 @@ acctsettingstext:{
 
   },
   optionsettings:{
-    paddingBottom:23
+    paddingBottom:23,
+    
   },
   cloudicon:
   {

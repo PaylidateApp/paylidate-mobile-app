@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import React from 'react'
 
-import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, SendFunds, Settings } from './screens';
+import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, VerifyAccount, VerifyMe, SendFunds, Settings,SignUp, ResetInput, PayBills, Airtime, DataBundle, Internet } from './screens';
 
 
 // import Logo from "./Pages/Signup/Logo";
@@ -30,18 +30,26 @@ export default function App() {
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}> 
+      <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
 
         <Stack.Screen name="Login" component={Login} />
-        
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="ResetInput" component={ResetInput} />
+        <Stack.Screen name="PayBills" component={PayBills} />
         <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
         <Stack.Screen name="MyNetworkScreen" component={MyNetworkScreen} />
         <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} />
         <Stack.Screen name="SendFunds" component={SendFunds} />
         <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="Airtime" component={Airtime} />
+        <Stack.Screen name="Internet" component={Internet} />
+        <Stack.Screen name="DataBundle" component={DataBundle} />
+        <Stack.Screen name="VerifyMe" component={VerifyMe} />
 
-       </Stack.Navigator >
+      </Stack.Navigator>
+
     </NavigationContainer>
+
 
     
   )
