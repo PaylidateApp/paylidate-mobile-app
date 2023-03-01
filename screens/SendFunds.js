@@ -1,4 +1,4 @@
-import {StyleSheet, View, Text, SafeAreaView, ScrollView, TouchableOpacity, TextInput, FlatList} from 'react-native'
+import {StyleSheet, View, Text, SafeAreaView, ScrollView, TouchableOpacity, TextInput, FlatList, KeyboardAvoidingView} from 'react-native'
 import React, { useState } from 'react'
 import { FONTS } from '../constants/theme'
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -113,14 +113,23 @@ const data = ['Access bank', 'Gt bank']
      setOpen={setOpen}
      setValue={setValue}
      setItems={setItems}
+     dropDownContainerStyle={{
+      width: 240,
+      marginLeft:50,
+      borderColor:'#969696',
+    }}
    />
        
        
 
        <Text style={styles.sendbankactt}>Enter Account Number</Text>
-
+        
+       <KeyboardAvoidingView
+       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
        <TextInput style={styles.acctnamewrapper}
        />
+        </KeyboardAvoidingView> 
+       
 
        <Text style={styles.sendbankactt}>Verify Account Name</Text>
 
@@ -152,8 +161,8 @@ const data = ['Access bank', 'Gt bank']
       
       </View>
 
-<Navigation />
 
+      <Navigation></Navigation>
 <View>
 
 </View>
@@ -165,7 +174,9 @@ const data = ['Access bank', 'Gt bank']
 const styles = StyleSheet.create({
   
   container:{
-    backgroundColor:'#FBFFFD'
+    backgroundColor:'#FBFFFD',
+    height: '100%',
+
   },
   sendfundsbtnwrapper:
   {

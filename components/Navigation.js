@@ -5,53 +5,124 @@ import { useNavigation } from '@react-navigation/native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Octicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
-
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {DashboardScreen, Settings } from '../screens';
 
 const Navigation = () => {
 
-    const navigation = useNavigation()
-    
-
-  const dashboard = async () => 
-  {
-         navigation.navigate('DashboardScreen')
-         
-  }
-
-  const settings = async () => 
-  {
-         navigation.navigate('Settings')
-         
-  }
+  const Tab = createBottomTabNavigator();
+  
+   
   return (
-    <View style={styles.navigationalmenu}>
+    <Tab.Navigator
+    
+    screenOptions={{
+      tabBarShowLabel:false,
+      tabBarStyle:
+      [
+       {
+        position:'absolute',
+        fontFamily: FONTS.cabin,
+        fontSize:12,
+        
+
+      }
+      ]
       
-      <TouchableOpacity onPress={dashboard} style={styles.navigationalbtn}>
-      <MaterialCommunityIcons name="home" size={24} color="black" />
-        <Text style={styles.navigationalmenuText}>Home</Text>
-      </TouchableOpacity>
+    }}>
+    <Tab.Screen name="Home" component={DashboardScreen} options={
+      {
+        tabBarIcon:({focused}) => 
+        (
+          <View style={{alignItems:'center'}}>
+            <MaterialCommunityIcons name="home" size={24} color="black"
+            
+            style={{
+              tintColor: focused? '#EB6117' : 'black',
 
-      <TouchableOpacity style={styles.navigationalbtn}>
-      <MaterialCommunityIcons name="contacts" size={24} color="black" />
-        <Text style={styles.navigationalmenuText}>Network</Text>
+            }}
+            />
+            <Text>Home</Text>
+          </View>
+        )
+      }
+    } />
+    <Tab.Screen name="Network" component={DashboardScreen} 
+    options={
+      {
+        tabBarIcon:({focused}) => 
+        (
+          <View style={{alignItems:'center'}}>
+            <MaterialCommunityIcons name="contacts" size={24} color="black" 
+            
+            style={{
+              tintColor: focused? '#EB6117' : 'black',
+
+            }}
+            />
+            <Text>Network</Text>
+          </View>
+        )
+      }
+    } />
+
+<Tab.Screen name="Post" component={DashboardScreen}
+    options={
+      {
+        tabBarIcon:({focused}) => 
+        (
+          <TouchableOpacity style={{alignItems:'center'}}>
+             <AntDesign name="plus" size={24} color="black"  
+            
+            style={{
+              tintColor: focused? '#EB6117' : 'black',
+
+            }}
+            />
+          </TouchableOpacity>
+        )
+
         
-      </TouchableOpacity>
+      }
+    } />
 
-      <AntDesign name="plus" size={24} color="black" style={styles.navigationalbtn} />
+    <Tab.Screen name="Notifications" component={DashboardScreen}
+    options={
+      {
+        tabBarIcon:({focused}) => 
+        (
+          <View style={{alignItems:'center'}}>
+             <MaterialCommunityIcons name="bell" size={24} color="black" 
+            
+            style={{
+              tintColor: focused? '#EB6117' : 'black',
 
-      <TouchableOpacity style={styles.navigationalbtn}>
-      <MaterialCommunityIcons name="bell" size={24} color="black" />
-        <Text style={styles.navigationalmenuText}>Notifications</Text>
-        
-      </TouchableOpacity>
+            }}
+            />
+            <Text>Notifications</Text>
+          </View>
+        )
+      }
+    } />
+    <Tab.Screen name="Settings" component={Settings} 
+    options={
+      {
+        tabBarIcon:({focused}) => 
+        (
+          <View style={{alignItems:'center'}}>
+            <Octicons name="gear" size={24} color="black"
+            
+            style={{
+              tintColor: focused? '#EB6117' : 'black',
 
-      <TouchableOpacity onPress={settings} style={styles.navigationalbtn}>
-      <Octicons name="gear" size={24} color="black" />
-        <Text style={styles.navigationalmenuText}>Settings</Text>
-        
-      </TouchableOpacity>
-
-    </View>
+            }}
+            />
+            <Text>Settings</Text>
+          </View>
+        )
+      }
+    }/>
+  </Tab.Navigator>
   )
 }
 const styles = StyleSheet.create({

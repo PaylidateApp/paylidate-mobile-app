@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, StyleSheet, View, TouchableOpacity, TextInput } from 'react-native'
+import { SafeAreaView, Text, StyleSheet, View, TouchableOpacity, TextInput,KeyboardAvoidingView } from 'react-native'
 import React from 'react'
 import { FontAwesome } from '@expo/vector-icons';
 import { FONTS } from '../../constants/theme'
@@ -34,6 +34,8 @@ const PayBills = () => {
   }
   return (
     <SafeAreaView>
+      <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <View style={styles.screentitlewrapper}>
         <TouchableOpacity style={styles.historybtn}>
         <AntDesign name="left" size={24} color="black"  />
@@ -115,6 +117,8 @@ const PayBills = () => {
         <Text style={styles.comingsoontext}>Coming soon</Text>
        </TouchableOpacity>
       </View>
+      </KeyboardAvoidingView>
+     
       
     </SafeAreaView>
   )

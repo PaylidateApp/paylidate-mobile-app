@@ -1,4 +1,4 @@
-import { View, SafeAreaView, Text, ScrollView, StyleSheet, TouchableOpacity, TextInput, Image, Switch } from 'react-native'
+import { View, SafeAreaView, Text, ScrollView, StyleSheet, TouchableOpacity, TextInput, Image, Switch, KeyboardAvoidingView } from 'react-native'
 import React from 'react'
 import { useState } from 'react';
 import { FONTS } from '../../constants/theme'
@@ -87,7 +87,9 @@ const navigation = useNavigation()
   return (
     <SafeAreaView style={styles.container}>
 
-      <View style={styles.screentitlewrapper}>
+<KeyboardAvoidingView
+behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+    <View style={styles.screentitlewrapper}>
         <TouchableOpacity style={styles.historybtn}>
         <AntDesign name="left" size={24} color="#182430"  />
         </TouchableOpacity>
@@ -340,6 +342,8 @@ const navigation = useNavigation()
      <View>
       
       </View> 
+</KeyboardAvoidingView>
+    
     </SafeAreaView>
   )
 }

@@ -1,26 +1,36 @@
-import { SafeAreaView, Text, View, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
+import { SafeAreaView, Text, View, StyleSheet, TouchableOpacity, TextInput, KeyboardAvoidingView } from 'react-native'
 import React, {useState} from 'react'
 import { AntDesign } from '@expo/vector-icons';
 import { FONTS } from '../../constants/theme';
-import DropDownPicker from 'react-native-dropdown-picker';
+import { SelectList } from 'react-native-dropdown-select-list'
 
 const Internet = () => {
 
-  const [networkOpen, setNetworkOpen] = useState(false);
-  const [networkValue, setNetworkValue] = useState(null);
-  const [network, setNetwork] = useState([
-    {label: 'MTN', value: 'mtn'},
-    {label: 'Airtel', value: 'airtel'}
-  ]);
+  const [selected, setSelected] = React.useState("");
+  
+  const data = [
+      {key:'1', value:'Mobiles'},
+      {key:'2', value:'Appliances'},
+      {key:'3', value:'Cameras'},
+      {key:'4', value:'Computers'},
+      {key:'5', value:'Vegetables'},
+      {key:'6', value:'Diary Products'},
+      {key:'7', value:'Drinks'},
+  ]
 
-  const [bundleOpen, setBundleOpen] = useState(false);
-  const [bundleValue, setBundleValue] = useState(null);
-  const [bundle, setBundle] = useState([
-    {label: 'N10, 000', value: 'N10, 000'},
-    {label: 'N20, 000', value: 'N30, 000'}
-  ]);
+  const dataa = [
+      {key:'1', value:'Mobiles'},
+      {key:'2', value:'Appliances'},
+      {key:'3', value:'Cameras'},
+      {key:'4', value:'Computers'},
+      {key:'5', value:'Vegetables'},
+      {key:'6', value:'Diary Products'},
+      {key:'7', value:'Drinks'},
+  ]
   return (
     <SafeAreaView style={styles.container}>
+      <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
       <View style={styles.screentitlewrapper}>
         <TouchableOpacity style={styles.historybtn}>
         <AntDesign name="left" size={24} color="black"  />
@@ -34,25 +44,25 @@ const Internet = () => {
 
       <View style={styles.content}>
     <Text style={styles.networktext}>Network</Text>
-    <DropDownPicker
-     open={networkOpen}
-     value={networkValue}
-     items={network}
-     style={styles.dropDownPicker}
-     setOpen={setNetworkOpen}
-     setValue={setNetworkValue}
-     setItems={setNetwork}
-   />
+    <SelectList 
+        setSelected={(val) => setSelected(val)} 
+        data={data} 
+        save="value"
+        maxHeight={100}
+        search={false}
+        fontFamily={FONTS.cabin}
+        boxStyles={{width:268, height:40, marginTop:6,}}
+    />
     <Text style={styles.bundletext} >Amount</Text>
-    <DropDownPicker
-     open={bundleOpen}
-     value={bundleValue}
-     items={bundle}
-     style={styles.dropDownPicker}
-     setOpen={setBundleOpen}
-     setValue={setBundleValue}
-     setItems={setBundle}
-   />
+    <SelectList 
+        setSelected={(val) => setSelected(val)} 
+        data={dataa} 
+        save="value"
+        maxHeight={100}
+        search={false}
+        fontFamily={FONTS.cabin}
+        boxStyles={{width:268, height:40, marginTop:6,}}
+    />
 
     <View style={styles.phonenumberlabel}>
     <Text style={styles.phonenumbertext} >Account ID</Text>
@@ -69,6 +79,8 @@ const Internet = () => {
     </TouchableOpacity>
     
     </View>
+      </KeyboardAvoidingView>
+      
     </SafeAreaView>
   )
 }
@@ -77,7 +89,9 @@ export default Internet
 const styles = StyleSheet.create({
   container:
   {
-    backgroundColor:'#FBFFFD'
+    backgroundColor:'#FBFFFD',
+    height:'100%',
+    alignItems: 'center'
   },
 
   screentitlewrapper:
@@ -100,7 +114,7 @@ const styles = StyleSheet.create({
     content:
     {
       width:360,
-      height:394,
+      paddingBottom: 40,
       borderRadius:10,
       backgroundColor:'#FFF8F4',
       shadowColor: 'black',
@@ -109,7 +123,6 @@ const styles = StyleSheet.create({
       shadowRadius: 8,  
       elevation: 4,
       alignItems:'center',
-      marginLeft:8,
       marginTop:26
 
     },

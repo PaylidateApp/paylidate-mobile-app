@@ -1,10 +1,12 @@
-import { SafeAreaView, Text, TextInput, StyleSheet, TouchableOpacity, View } from 'react-native'
+import { SafeAreaView, Text, TextInput, StyleSheet, TouchableOpacity, View, KeyboardAvoidingView } from 'react-native'
 import React from 'react'
 import { FONTS } from '../../constants/theme'
 
 const VerifyAccount = () => {
   return (
     <SafeAreaView style={styles.container}>
+        <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <View style={styles.content}>
         <TextInput style={styles.verificationcodeinput} />
         <TextInput style={styles.verificationcodeinput} />
@@ -17,6 +19,8 @@ const VerifyAccount = () => {
         <Text style={styles.verifytext}>Verify</Text>
         
      </TouchableOpacity>
+        </KeyboardAvoidingView>
+        
 
       
     </SafeAreaView>

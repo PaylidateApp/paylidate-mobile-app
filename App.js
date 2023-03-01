@@ -30,7 +30,7 @@ export default function App() {
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}> 
+      <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
 
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
@@ -45,10 +45,11 @@ export default function App() {
         <Stack.Screen name="Internet" component={Internet} />
         <Stack.Screen name="DataBundle" component={DataBundle} />
         <Stack.Screen name="VerifyMe" component={VerifyMe} />
-       </Stack.Navigator >
+
+      </Stack.Navigator>
+
     </NavigationContainer>
 
-    
 
     
   )

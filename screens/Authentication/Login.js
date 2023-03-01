@@ -1,6 +1,6 @@
 
 
-import { StyleSheet, View, Text, Image, TextInput, TouchableHighlight, Pressable, SafeAreaView } from 'react-native'
+import { StyleSheet, View, Text, Image, TextInput, TouchableHighlight, Pressable, SafeAreaView, KeyboardAvoidingView } from 'react-native'
 import React from 'react'
 import { FONTS } from '../../constants/theme'
 import { FontAwesome } from '@expo/vector-icons';
@@ -30,48 +30,50 @@ const Login = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-    <Image
+
+      
+      <Image
       style={styles.logo}
       source={require('../../assets/splash_logo.png')} />
 
 
+<KeyboardAvoidingView>
+   {/* Email */}
+   <View style={styles.emailcontainer}>
 
-    {/* Email */}
-    <View style={styles.emailcontainer}>
+{/* icon */}
+<View style={styles.icon}>
+  <FontAwesome name="user" size={24} color="#182430" style={styles.inputboxicon} />
+</View>
 
-      {/* icon */}
-      <View style={styles.icon}>
-        <FontAwesome name="user" size={24} color="#182430" style={styles.inputboxicon} />
-      </View>
+<TextInput
+  style={styles.email}
+  placeholder="Enter Your Email" 
+  placeholderTextColor={'#848484'}/>
+</View>
 
-      <TextInput
-        style={styles.email}
-        placeholder="Enter Your Email" 
-        placeholderTextColor={'#848484'}/>
-      </View>
+{/* Password */}
+<View style={styles.passowrdcontainer}>
 
-    {/* Password */}
-    <View style={styles.passowrdcontainer}>
+{/* icon */}
+<View style={styles.icon}>
+  <FontAwesome name="lock" size={24} color="#182430" style={styles.inputboxicon} />
+</View>
 
-      {/* icon */}
-      <View style={styles.icon}>
-        <FontAwesome name="lock" size={24} color="#182430" style={styles.inputboxicon} />
-      </View>
+<TextInput
+  style={styles.password}
+  placeholder="Enter Your Password"
+  placeholderTextColor={'#848484'}/>
 
-      <TextInput
-        style={styles.password}
-        placeholder="Enter Your Password"
-        placeholderTextColor={'#848484'}/>
-
-    </View>
+</View>
 
 
-    <View style={styles.btncontainer}>
-      <TouchableHighlight style={styles.loginbtn} onPress={checklogin}>
-        <Text style={styles.loginbtnlabel}>Login</Text>
-      </TouchableHighlight>
+<View style={styles.btncontainer}>
+<TouchableHighlight style={styles.loginbtn} onPress={checklogin}>
+  <Text style={styles.loginbtnlabel}>Login</Text>
+</TouchableHighlight>
 
-    </View>
+</View>
 
 
 <View style={styles.pressable}>
@@ -83,9 +85,9 @@ const Login = () => {
 <Pressable onPress={reset_password_navigation}>
 <Text style={styles.forgotpasswordtext}>Forgot Password?</Text>
 </Pressable>
-   
-      
-  
+
+
+
 </View>
 
 
@@ -94,6 +96,10 @@ const Login = () => {
 <Text style={styles.footertext}>Buyer Protection | Seller Verification | Transaction Security</Text>
 
 </View>
+</KeyboardAvoidingView>
+ 
+      
+    
 
 
 
