@@ -4,9 +4,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet, Text, View } from 'react-native';
 
 
-import React from 'react'
+import React from 'react';
 
-import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, SendFunds, Settings } from './screens';
+import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, VerifyAccount, VerifyMe, SendFunds, Settings,SignUp, ResetInput, PayBills, Airtime, DataBundle, Internet, MyCommunityScreen, AddCardScreen, ActiveCardScreen } from './screens';
+import CreatePost from './components/CreatePost';
+
 
 
 // import Logo from "./Pages/Signup/Logo";
@@ -34,18 +36,32 @@ export default function App() {
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Login' screenOptions={{headerShown: false}}> 
+      <Stack.Navigator initialRouteName='Login' screenOptions={{ headerShown: false }}>
 
         <Stack.Screen name="Login" component={Login} />
-        
+        <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="ResetInput" component={ResetInput} />
+        <Stack.Screen name="PayBills" component={PayBills} />
         <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
         <Stack.Screen name="MyNetworkScreen" component={MyNetworkScreen} />
         <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} />
+        <Stack.Screen name='MyCommunityScreen' component={MyCommunityScreen} />
+        <Stack.Screen name='CreatePost' component={CreatePost} />
+        <Stack.Screen name='AddCardScreen' component={AddCardScreen} />
+        <Stack.Screen name='ActiveCardScreen' component={ActiveCardScreen} />
         <Stack.Screen name="SendFunds" component={SendFunds} />
         <Stack.Screen name="Settings" component={Settings} />
+        <Stack.Screen name="Airtime" component={Airtime} />
+        <Stack.Screen name="Internet" component={Internet} />
+        <Stack.Screen name="DataBundle" component={DataBundle} />
+        <Stack.Screen name="VerifyMe" component={VerifyMe} />
 
-       </Stack.Navigator >
+      </Stack.Navigator>
+
     </NavigationContainer>
+
+   
+
 
     
   )

@@ -7,6 +7,7 @@ import {
   Image,
   Button,
   TouchableHighlight,
+  TouchableOpacity
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -15,7 +16,6 @@ import ProductListItem from "./ProductListItem";
 import Colors from "../constants/colors";
 
 const Dashboard = () => {
-
   const navigation = useNavigation();
 
   const checkMyNetwork = async () => {
@@ -25,11 +25,26 @@ const Dashboard = () => {
   const checkUserProfile = async () => {
     navigation.navigate("UserProfileScreen");
   };
-  
+
+  const checkMyCommunity = async () => {
+    navigation.navigate("MyCommunityScreen");
+  };
+
+  const checkAddCards = async () => {
+    navigation.navigate("AddCardScreen");
+  };
+
+  const checkActiveCards = async () => {
+    navigation.navigate("ActiveCardScreen");
+  };
+
   const sendfunds_navigation = async () => {
     navigation.navigate("SendFunds");
   };
 
+  const paybills_navigation = async () => {
+    navigation.navigate("PayBills");
+  };
 
   return (
     <View style={styles.screen}>
@@ -39,7 +54,15 @@ const Dashboard = () => {
       <View style={styles.sectionOne}>
         <View style={styles.flexStyle}>
           <Text style={styles.bigText}>N329,000</Text>
-          <MainButton>Fund Wallet</MainButton>
+          {/* Fund Wallet button */}
+          <View >
+            <TouchableHighlight
+              style={styles.smallBtn}
+            >
+              <Text style={styles.smallBtnTxt}>Fund Wallet</Text>
+            </TouchableHighlight>
+          </View>
+          {/* Fund button ends */}
         </View>
         <View style={styles.flexStyle}>
           <View>
@@ -50,10 +73,19 @@ const Dashboard = () => {
             <Text style={styles.smallText}>Sterling Bank</Text>
           </View>
         </View>
-        <View style={styles.buttonContainer}>
-          <MainButton onPress={sendfunds_navigation}>Send Funds</MainButton>
+        {/* Send funds button */}
+        <View style={styles.btnContainer}>
+          <TouchableHighlight
+            style={styles.sendFundsBtn}
+            onPress={sendfunds_navigation}
+          >
+            <Text style={styles.sendFundsBtnTxt}>Send Funds</Text>
+          </TouchableHighlight>
         </View>
+        {/* Send funds button ends */}
       </View>
+
+      {/* Section Two  */}
       <View style={styles.sectionTwo}>
         <View style={styles.flexStyle2}>
           <View style={styles.sectionTwoSub}>
@@ -61,25 +93,28 @@ const Dashboard = () => {
               style={styles.imgStyleSec2}
               source={require("../assets/dashboard/trophy.png")}
             />
-            <Text style={styles.smallText}>117 PPTs</Text>
+            <Text style={styles.smallTextSecTwo}>117 PPTs</Text>
           </View>
           <View style={styles.sectionTwoSub}>
             <Image
               style={styles.imgStyleSec2}
               source={require("../assets/dashboard/trophy2.png")}
             />
-            <Text style={styles.smallText}>N 2,500</Text>
+            <Text style={styles.smallTextSecTwo}>N 2,500</Text>
           </View>
         </View>
       </View>
+      {/* Section Two ends */}
 
       <View>
         <View style={styles.sectionThree}>
           <View>
-            <Image
-              style={styles.imageStyle2}
-              source={require("../assets/dashboard/users.png")}
-            />
+            <TouchableHighlight onPress={checkActiveCards}>
+              <Image
+                style={[styles.imageStyle2, styles.imgPositionLeft]}
+                source={require("../assets/dashboard/users.png")}
+              />
+            </TouchableHighlight>
             <Text style={styles.miniText}>Community Feed</Text>
           </View>
           <View>
@@ -93,7 +128,7 @@ const Dashboard = () => {
           </View>
           <View>
             <Image
-              style={styles.imageStyle}
+              style={[styles.imageStyle, styles.imgPositionLeft]}
               source={require("../assets/dashboard/verified.png")}
             />
             <Text style={styles.miniText}>Fulfillment</Text>
@@ -101,43 +136,74 @@ const Dashboard = () => {
         </View>
         <View style={styles.sectionThree}>
           <View>
-            <TouchableHighlight onPress={checkMyNetwork}>
+            <TouchableOpacity onPress={checkMyNetwork}>
               <Image
-                style={styles.imageStyle}
+                style={[styles.imageStyle, styles.imgPositionLeft]}
                 source={require("../assets/dashboard/node.png")}
               />
-            </TouchableHighlight>
+            </TouchableOpacity>
             <Text style={styles.miniText}>My Network</Text>
           </View>
           <View>
-          
-          {/* section three ends 
+            {/* section three ends */}
           <TouchableHighlight onPress={checkUserProfile}>
               <Image
                 style={styles.imageStyle2}
                 source={require("../assets/dashboard/payment_wallet.png")}
               />
             </TouchableHighlight>
-          */}
 
-            <Image
+            {/* 
+          <Image
               style={styles.imageStyle2}
               source={require("../assets/dashboard/payment_wallet.png")}
             />
+          */}
 
+          {/* 
+            <Image
+              style={[styles.imageStyle2, styles.imgPositionLeft]}
+              source={require("../assets/dashboard/payment_wallet.png")}
+            />
+          */}
             <Text style={styles.miniText}>Payment Requests</Text>
           </View>
+
           <View>
+          {/* 
+
+          <TouchableOpacity onPress={paybills_navigation}>
+
             <Image
               style={styles.imageStyle}
               source={require("../assets/dashboard/payment.png")}
             />
+          */}
+            
+            
+            <TouchableHighlight onPress={checkAddCards}>
+              <Image
+                style={styles.imageStyle}
+                source={require("../assets/dashboard/payment.png")}
+              />
+            </TouchableHighlight>
+            
+          
+
             <Text style={styles.miniText}>Pay Bills</Text>
-          </View>
+          </TouchableOpacity>
         </View>
-        <View style={styles.buttonContainer}>
-          <MainButton style={styles.bigButton}>Post to Community</MainButton>
+
+        {/* Post to Community button */}
+        <View style={styles.btnContainer}>
+          <TouchableHighlight
+          onPress={checkMyCommunity}
+            style={styles.postCommunityBtn}
+         >
+            <Text style={styles.postCommunityBtnTxt}>Post to Community</Text>
+          </TouchableHighlight>
         </View>
+        {/* Post to Community button ends */}
       </View>
 
       {/* product list section */}
@@ -162,22 +228,21 @@ const styles = StyleSheet.create({
   },
   sectionOne: {
     width: "100%",
-    height: 180,
+    height: 133,
     paddingTop: 15,
     borderRadius: 8,
-    backgroundColor: Colors.primary,
+    backgroundColor: "#F6A67B",
   },
   sectionTwo: {
     width: "100%",
-    height: 90,
-    paddingTop: 4,
+    height: 66,
     marginVertical: 20,
     borderRadius: 8,
     backgroundColor: "#489451",
   },
   sectionTwoSub: {
-    width: 75,
-    height: 65,
+    width: 60,
+    height: 49,
     alignItems: "center",
     borderRadius: 8,
     backgroundColor: "#88C58F",
@@ -186,8 +251,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "90%",
     marginHorizontal: 15,
-    paddingTop: 10,
-    paddingBottom: 10,
+    paddingTop: 3,
+    paddingBottom: 4,
     justifyContent: "space-between",
   },
   flexStyle2: {
@@ -208,7 +273,7 @@ const styles = StyleSheet.create({
   },
   listSection: {
     width: "100%",
-    height: 180,
+    height: 800,
     borderTopWidth: 0.3,
     borderBottomWidth: 0.3,
     marginVertical: 20,
@@ -223,6 +288,7 @@ const styles = StyleSheet.create({
   },
   mediumText: {
     fontSize: 12,
+    lineHeight: 15,
     fontWeight: "normal",
   },
   smallText: {
@@ -232,22 +298,71 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     textAlign: "center",
   },
-  miniText: {
-    fontSize: 8,
+  smallTextSecTwo: {
+    fontSize: 12,
     fontWeight: "normal",
-    lineHeight: 10,
+    lineHeight: 15,
+    color: "#ffffff",
+    textAlign: "center",
+  },
+  miniText: {
+    fontSize: 10,
+    fontWeight: "bold",
+    lineHeight: 12,
     color: "#000000",
     textAlign: "center",
     paddingTop: 8,
   },
 
-  buttonContainer: {
-    marginLeft: 15,
-    width: "90%",
+  btnContainer: {
+    alignItems: "center",
+    // marginVertical: 10,
   },
-  bigButton: {
-    backgroundColor: Colors.primary,
-    color: "#ffffff",
+  sendFundsBtn: {
+    width: "90%",
+    height: 25,
+    backgroundColor: "#D9D9D9",
+    borderRadius: 8,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  sendFundsBtnTxt: {
+    fontFamily: "Cabin",
+    fontWeight: 'bold',
+    fontSize: 16,
+    lineHeight: 19,
+    color: "#000",
+  },
+  postCommunityBtn:{
+    width: "90%",
+    height: 30,
+    backgroundColor: "#EB6117",
+    borderRadius: 7,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  postCommunityBtnTxt: {
+    fontFamily: "Cabin",
+    fontWeight: 'bold',
+    fontSize: 16,
+    lineHeight: 19,
+    color: "#fff",
+  },
+  smallBtn: {
+    width: "100%",
+    height: 28,
+    backgroundColor: "#D9D9D9",
+    borderRadius: 8,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  smallBtnTxt: {
+    fontFamily: "Cabin",
+    fontWeight: 'bold',
+    fontSize: 14,
+    lineHeight: 17,
+    color: "#000",
+    paddingHorizontal: 3,
   },
   imageStyle: {
     width: 37,
@@ -258,12 +373,15 @@ const styles = StyleSheet.create({
     maxHeight: 37,
   },
   imgStyleSec2: {
-    width: 25,
-    height: 22,
-    marginVertical: 10,
+    width: 20.33,
+    height: 18.11,
+    marginVertical: 4,
   },
   imgPositionRight: {
     marginRight: 33,
+  },
+  imgPositionLeft: {
+    marginLeft: 10,
   },
   microImg: {
     height: 10,

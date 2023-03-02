@@ -1,8 +1,8 @@
 
 
-import { StyleSheet, View, Text, Image, TextInput, TouchableHighlight, Pressable, SafeAreaView } from 'react-native'
+import { StyleSheet, View, Text, Image, TextInput, TouchableHighlight, Pressable, SafeAreaView, KeyboardAvoidingView } from 'react-native'
 import React from 'react'
-import { FONTS } from '../constants/theme'
+import { FONTS } from '../../constants/theme'
 import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -16,62 +16,78 @@ const Login = () => {
          
   }
 
+  const signup_navigation = async () => 
+  {
+         navigation.navigate('SignUp')
+         
+  }
+
+  const reset_password_navigation = async () => 
+  {
+         navigation.navigate('ResetInput')
+         
+  }
+
   return (
     <SafeAreaView style={styles.container}>
-    <Image
+
+      
+      <Image
       style={styles.logo}
-      source={require('../assets/splash_logo.png')} />
+      source={require('../../assets/splash_logo.png')} />
 
 
+<KeyboardAvoidingView>
+   {/* Email */}
+   <View style={styles.emailcontainer}>
 
-    {/* Email */}
-    <View style={styles.emailcontainer}>
+{/* icon */}
+<View style={styles.icon}>
+  <FontAwesome name="user" size={24} color="#182430" style={styles.inputboxicon} />
+</View>
 
-      {/* icon */}
-      <View style={styles.icon}>
-        <FontAwesome name="user" size={24} color="#182430" style={styles.inputboxicon} />
-      </View>
+<TextInput
+  style={styles.email}
+  placeholder="Enter Your Email" 
+  placeholderTextColor={'#848484'}/>
+</View>
 
-      <TextInput
-        style={styles.email}
-        placeholder="Enter Your Email" />
-      </View>
+{/* Password */}
+<View style={styles.passowrdcontainer}>
 
-    {/* Password */}
-    <View style={styles.passowrdcontainer}>
+{/* icon */}
+<View style={styles.icon}>
+  <FontAwesome name="lock" size={24} color="#182430" style={styles.inputboxicon} />
+</View>
 
-      {/* icon */}
-      <View style={styles.icon}>
-        <FontAwesome name="lock" size={24} color="#182430" style={styles.inputboxicon} />
-      </View>
+<TextInput
+  style={styles.password}
+  placeholder="Enter Your Password"
+  placeholderTextColor={'#848484'}/>
 
-      <TextInput
-        style={styles.password}
-        placeholder="Enter Your Password" />
-
-    </View>
+</View>
 
 
-    <View style={styles.btncontainer}>
-      <TouchableHighlight style={styles.loginbtn} onPress={checklogin}>
-        <Text style={styles.loginbtnlabel}>Login</Text>
-      </TouchableHighlight>
+<View style={styles.btncontainer}>
+<TouchableHighlight style={styles.loginbtn} onPress={checklogin}>
+  <Text style={styles.loginbtnlabel}>Login</Text>
+</TouchableHighlight>
 
-    </View>
+</View>
 
 
 <View style={styles.pressable}>
 
-<Pressable>
+<Pressable onPress={signup_navigation}>
 <Text style={styles.signuptext}>Don’t have an account? Sign Up</Text>
 </Pressable>
 
-<Pressable>
+<Pressable onPress={reset_password_navigation}>
 <Text style={styles.forgotpasswordtext}>Forgot Password?</Text>
 </Pressable>
-   
-      
-  
+
+
+
 </View>
 
 
@@ -80,6 +96,10 @@ const Login = () => {
 <Text style={styles.footertext}>Buyer Protection | Seller Verification | Transaction Security</Text>
 
 </View>
+</KeyboardAvoidingView>
+ 
+      
+    
 
 
 
@@ -89,7 +109,9 @@ const Login = () => {
 
 const styles = StyleSheet.create({
   logo: {
-    marginTop: 5
+    marginTop: 100,
+    width: 165,
+    height: 183
   },
 
   container: {
@@ -103,20 +125,26 @@ const styles = StyleSheet.create({
   footertext:
   {
     color: '#FFFFFF',
-    fontSize: 10,
-    fontFamily: FONTS.cabin
+    fontSize: 12,
+    fontWeight:'bold',
+    fontFamily: FONTS.cabin,
+    marginLeft:67,
+    marginRight:66
   },
   signuptext:{
     color: '#FFFFFF',
-    fontSize: 10,
+    fontSize: 12,
+    fontWeight:'bold',
     marginLeft: 40,
     fontFamily: FONTS.cabin
   },
 
   forgotpasswordtext:{
     color: '#FFFFFF',
-    fontSize: 10,
-    marginRight: 39,
+    fontSize: 12,
+    fontWeight:'medium',
+    marginLeft: 47,
+    marginRight:39,
     fontFamily: FONTS.cabin
   },
   
@@ -147,8 +175,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 8,  
     elevation: 4,
-    textAlign: 'center',
-    fontFamily: FONTS.cabin
+    fontFamily: FONTS.cabin,
+    fontSize:16,
+    fontWeight: 'bold',
+    paddingLeft: 19,
+
+
     
   },
 
@@ -163,7 +195,7 @@ const styles = StyleSheet.create({
   {
     justifyContent: 'center',
     alignItems:'center',
-    marginTop:70
+    marginTop:50
   },
 
 
@@ -172,7 +204,7 @@ const styles = StyleSheet.create({
   },
   emailcontainer:
   {
-      marginTop: -60,
+      marginTop: -20,
       alignItems: 'center',
       flexDirection: 'row',
       justifyContent: 'center',
@@ -203,9 +235,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 8,  
     elevation: 4,
-    textAlign: 'center',
-    fontFamily: FONTS.cabin
+    fontFamily: FONTS.cabin,
+    fontSize:16,
+    fontWeight: 'bold',
+    paddingLeft: 19,
+
   },
+
+  
 
   btncontainer:
   {
@@ -230,6 +267,9 @@ const styles = StyleSheet.create({
   loginbtnlabel:
   {
     color: '#fff',
+    fontSize:16,
+    fontWeight: 'bold',
+
   }
 
 });

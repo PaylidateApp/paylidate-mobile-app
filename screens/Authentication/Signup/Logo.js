@@ -5,7 +5,7 @@ export default function Logo() {
   return (
     <View style={styles.img}>
       <Image
-      source={require('../../assets/splash_logo.png')}
+      source={require('../../../assets/splash_logo.png')}
       style={{width:165, height:183}}
 
       />
