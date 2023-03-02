@@ -65,11 +65,11 @@ const UserProfile = () => {
         >
           <Text style={styles.headerTxt}>My Catalog</Text>
         </View>
-        <View>
-          <ProductListItem />
-          <ProductListItem />
-          <ProductListItem />
-        </View>
+      {/* product list section */}
+      <View style={styles.listSection}>
+        <ProductListItem />
+      </View>
+      {/* product list section end */}
       </View>
       {/* section three ends */}
     </View>
@@ -136,6 +136,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 17,
     color: "#fff",
+  },
+  listSection: {
+    height: "100%",
+    marginVertical: 10,
+    alignItem: "center",
   },
 });
 

@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
     },
     input: {
       height: 40,
+      width: '88%',
       // margin: 12,
       // borderWidth: 1,
       borderRightWidth: 1,

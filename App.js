@@ -2,9 +2,11 @@ import { useFonts } from 'expo-font';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 
-import React from 'react'
+import React from 'react';
 
-import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, VerifyAccount, VerifyMe, SendFunds, Settings,SignUp, ResetInput, PayBills, Airtime, DataBundle, Internet } from './screens';
+import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, VerifyAccount, VerifyMe, SendFunds, Settings,SignUp, ResetInput, PayBills, Airtime, DataBundle, Internet, MyCommunityScreen, AddCardScreen, ActiveCardScreen } from './screens';
+import CreatePost from './components/CreatePost';
+
 
 
 // import Logo from "./Pages/Signup/Logo";
@@ -39,6 +41,10 @@ export default function App() {
         <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
         <Stack.Screen name="MyNetworkScreen" component={MyNetworkScreen} />
         <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} />
+        <Stack.Screen name='MyCommunityScreen' component={MyCommunityScreen} />
+        <Stack.Screen name='CreatePost' component={CreatePost} />
+        <Stack.Screen name='AddCardScreen' component={AddCardScreen} />
+        <Stack.Screen name='ActiveCardScreen' component={ActiveCardScreen} />
         <Stack.Screen name="SendFunds" component={SendFunds} />
         <Stack.Screen name="Settings" component={Settings} />
         <Stack.Screen name="Airtime" component={Airtime} />
