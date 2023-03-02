@@ -7,6 +7,7 @@ import {
   Image,
   Button,
   TouchableHighlight,
+  TouchableOpacity
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
@@ -39,6 +40,10 @@ const Dashboard = () => {
 
   const sendfunds_navigation = async () => {
     navigation.navigate("SendFunds");
+  };
+
+  const paybills_navigation = async () => {
+    navigation.navigate("PayBills");
   };
 
   return (
@@ -131,12 +136,12 @@ const Dashboard = () => {
         </View>
         <View style={styles.sectionThree}>
           <View>
-            <TouchableHighlight onPress={checkMyNetwork}>
+            <TouchableOpacity onPress={checkMyNetwork}>
               <Image
                 style={[styles.imageStyle, styles.imgPositionLeft]}
                 source={require("../assets/dashboard/node.png")}
               />
-            </TouchableHighlight>
+            </TouchableOpacity>
             <Text style={styles.miniText}>My Network</Text>
           </View>
           <View>
@@ -163,8 +168,12 @@ const Dashboard = () => {
           */}
             <Text style={styles.miniText}>Payment Requests</Text>
           </View>
+
           <View>
           {/* 
+
+          <TouchableOpacity onPress={paybills_navigation}>
+
             <Image
               style={styles.imageStyle}
               source={require("../assets/dashboard/payment.png")}
@@ -182,7 +191,7 @@ const Dashboard = () => {
           
 
             <Text style={styles.miniText}>Pay Bills</Text>
-          </View>
+          </TouchableOpacity>
         </View>
 
         {/* Post to Community button */}

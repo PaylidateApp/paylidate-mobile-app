@@ -1,4 +1,4 @@
-import {StyleSheet, View, Text, SafeAreaView, ScrollView, TouchableOpacity, TextInput, FlatList} from 'react-native'
+import {StyleSheet, View, Text, SafeAreaView, ScrollView, TouchableOpacity, TextInput, FlatList, KeyboardAvoidingView} from 'react-native'
 import React, { useState } from 'react'
 import { FONTS } from '../constants/theme'
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -32,7 +32,7 @@ const data = ['Access bank', 'Gt bank']
       {/* send funds container */}
 
       <View style={styles.sendfunds_container}>
-        
+      <Text style={styles.sendbankactt}>Amount</Text>
         <View style={styles.amountcontainer}>
         <Text style={styles.amount}>N250,000</Text>
         </View>
@@ -52,7 +52,7 @@ const data = ['Access bank', 'Gt bank']
           }
         </TouchableOpacity>
 
-      <Text style={styles.sendbankact}>{index}</Text>
+      <Text style={styles.radiobtnlabel}>{index}</Text>
        
       </View>
 
@@ -102,7 +102,7 @@ const data = ['Access bank', 'Gt bank']
        
 
      </View> : <View style={styles.wrapper}>
-       <Text style={styles.sendbankact}>Select Bank</Text>
+       <Text style={styles.sendbankactt}>Select Bank</Text>
 
        
        <DropDownPicker
@@ -113,14 +113,23 @@ const data = ['Access bank', 'Gt bank']
      setOpen={setOpen}
      setValue={setValue}
      setItems={setItems}
+     dropDownContainerStyle={{
+      width: 240,
+      marginLeft:50,
+      borderColor:'#969696',
+    }}
    />
        
        
 
        <Text style={styles.sendbankactt}>Enter Account Number</Text>
-
+        
+       <KeyboardAvoidingView
+       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
        <TextInput style={styles.acctnamewrapper}
        />
+        </KeyboardAvoidingView> 
+       
 
        <Text style={styles.sendbankactt}>Verify Account Name</Text>
 
@@ -152,8 +161,8 @@ const data = ['Access bank', 'Gt bank']
       
       </View>
 
-<Navigation />
 
+      <Navigation></Navigation>
 <View>
 
 </View>
@@ -165,7 +174,9 @@ const data = ['Access bank', 'Gt bank']
 const styles = StyleSheet.create({
   
   container:{
-    backgroundColor:'#FBFFFD'
+    backgroundColor:'#FBFFFD',
+    height: '100%',
+
   },
   sendfundsbtnwrapper:
   {
@@ -180,6 +191,8 @@ const styles = StyleSheet.create({
     {
         fontFamily: FONTS.cabin,
         marginTop: 41,
+        fontSize:18,
+        fontWeight:'bold',
         textAlign: 'center',
     },
     dropDownPicker:
@@ -187,10 +200,16 @@ const styles = StyleSheet.create({
       width: 240,
       height:40,
       marginLeft:50,
+      marginRight:50,
       borderWidth:1,
       borderRadius:8,
       marginTop: 8,
+      borderColor:'#969696',
       fontFamily: FONTS.cabin,
+      fontSize:16,
+      fontWeight:'bold',
+      paddingLeft:80,
+      
       
     },
     acctnamewrapper:
@@ -200,7 +219,13 @@ const styles = StyleSheet.create({
       width: 240,
       height: 40,
       marginTop: 8,
+      borderColor:'#969696',
+      textAlign:'center',
+      fontSize:16,
+      fontWeight:'bold',
       alignItems: 'center',
+      fontFamily: FONTS.cabin,
+
     },
     paylidateuserwrapper:
     {
@@ -215,14 +240,16 @@ const styles = StyleSheet.create({
 
     accttext:{
       marginTop: 10,
-      fontSize:14,
+      fontSize:16,
+      fontWeight:'bold',
       fontFamily: FONTS.cabin,
 
     },
 
     paylidateacctname:{
       marginTop: 10,
-      fontSize:14,
+      fontSize:16,
+      fontWeight:'bold',
       fontFamily: FONTS.cabin,
       color: ' #717171',
 
@@ -234,7 +261,7 @@ const styles = StyleSheet.create({
       height: 30,
       alignItems: 'center',
       borderRadius: 8,
-      marginTop: 36,
+      marginTop: 25,
 
     },
     
@@ -242,7 +269,7 @@ const styles = StyleSheet.create({
       color: 'white',
       fontFamily: FONTS.cabin,
       fontSize: 16,
-      fontWeight: Platform.OS === 'android' ? 'bold' : 700,
+      fontWeight: 'bold',
       marginTop: 5,
 
     },
@@ -253,13 +280,13 @@ const styles = StyleSheet.create({
       marginTop: 17,
     },
 
-    sendbankact:
+    radiobtnlabel:
     {
         marginTop: 2,
         marginLeft: 10,
         fontFamily: FONTS.cabin,
         fontSize: 16,
-        fontWeight: Platform.OS === 'android' ? 'normal' : 500
+        fontWeight: 'medium'
 
     },
     sendbankactt:
@@ -267,8 +294,8 @@ const styles = StyleSheet.create({
         marginTop: 23,
         marginLeft: 10,
         fontFamily: FONTS.cabin,
-        fontSize: 16,
-        fontWeight: Platform.OS === 'android' ? 'normal' : 500
+        fontSize: 10,
+        fontWeight: 'bold'
 
     },
 
@@ -282,8 +309,8 @@ const styles = StyleSheet.create({
 
     amount:{
       fontFamily: FONTS.cabin,
-      fontWeight: Platform.OS === 'android' ? 'normal' : 500,
-      fontSize: 20,
+      fontWeight: 'bold',
+      fontSize: 16,
       marginTop: 10
     },
 radiobutton:
@@ -313,19 +340,22 @@ inner:{
        marginTop: 35,
        borderRadius:20,
        borderWidth: 1,
-       backgroundColor: 'white'
+       backgroundColor: 'white',
+       alignItems:'center'
        
     },
 
     amountcontainer:
     {
       marginLeft:  50,
+      marginRight:50,
       width:240,
       height:40,
       borderWidth: 1,
       borderRadius:8,
-      marginTop:31,
+      marginTop:12,
       alignItems: 'center',
+      borderColor:'#969696'
 
 
       

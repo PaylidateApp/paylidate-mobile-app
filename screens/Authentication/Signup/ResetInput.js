@@ -1,50 +1,31 @@
-import { StyleSheet, Text, View, KeyboardAvoidingView, Image, TextInput } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View, KeyboardAvoidingView, Image, TextInput } from 'react-native';
+import React from 'react';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import Logo from '../Signup/Logo';
 import FontAwesome from '@expo/vector-icons/FontAwesome'
 
-const Input = () => {
+
+const ResetInput = () => {
   return (
     <View style={styles.InputGroup}>
-        <View style={styles.container}>
-            <View style={styles.InputContainer}>
-                <FontAwesome style={styles.icon} name="id-card-o" size={16} color="#000ff" />
-                <TextInput style={styles.Input} placeholder="Your Full Name"/>
-            </View>
+        <View>
+            <Logo style={styles.lgn}/>
         </View>
-        
-        <View style={styles.container}>
-            <View style={styles.InputContainer}>
-                <FontAwesome style={styles.icon} name="phone" size={22} color="#000ff" />
-                <TextInput style={styles.Input} placeholder=" Enter Your Phone Number"/>
-            </View>
-        </View>
-
         <View style={styles.container}>
             <View style={styles.InputContainer}>
                 <FontAwesome style={styles.icon} name="envelope" size={17} color="#000ff" />
                 <TextInput style={styles.Input} placeholder="Enter You Email"/>
             </View>
         </View>
-        <View style={styles.container}>
-            <View style={styles.InputContainer}>
-                <FontAwesome style={styles.icon} name="lock" size={25} color="#000ff" />
-                <TextInput style={styles.Input} placeholder="Create Your Password"/>
-            </View>
-        </View>
-        <View style={styles.container}>
-            <View style={styles.InputContainer}>
-                <FontAwesome style={styles.icon} name="lock" size={25} color="#000ff" />
-                <TextInput style={styles.Input} placeholder="Confirm Your Passsword" secureTextEntry/>
-            </View>
-        </View>
+
         <View>
-        <View style={styles.signContainer}>
-            <Text style={styles.signUp}>SignUp</Text>
+        <View style={styles.container}>
+            <Text style={styles.signUp}>Reset Password</Text>
         </View>
         <View style={styles.nxt}>
-            <Text style={styles.acc}>Already have an account?</Text>
-            <Text style={styles.login}>Log in</Text>
+            <Text style={styles.acc}>Don't have an account?</Text>
+            <Text style={styles.login}>SignUp</Text>
+            <Text style={styles.acc}>     Back to Login</Text>
         </View>
 
         <View style={styles.footer}>
@@ -53,10 +34,11 @@ const Input = () => {
         </View>
     </View>
     </View>
+
   )
 }
 
-export default Input
+export default ResetInput
 
 const styles = StyleSheet.create({
     InputGroup: {
@@ -73,6 +55,10 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         borderRadius:12,
         padding: 7,
+        
+        
+        
+        
     },
     
     icon: {
@@ -84,7 +70,7 @@ const styles = StyleSheet.create({
     },
 
     Input: {
-        padding: 5,
+        padding: 7,
         backgroundColor: "#D9D9D9",
         width: 250,
         borderBottomRightRadius: 20,
@@ -94,10 +80,10 @@ const styles = StyleSheet.create({
         
     },
 
-    signContainer:{
+    container:{
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 22,
+        marginTop: 32,
         
     },
 
@@ -114,17 +100,17 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 40,
+        marginTop: 70,
         
     },
 
     acc: {
-        fontSize: 12,
+        fontSize: 10,
         color: "#FFFFFF",
     },
 
     login: {
-        fontSize: 12,
+        fontSize: 10,
         color: "#FFFFFF",
     },
 
@@ -132,7 +118,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
-        marginTop: 60,
+        marginTop: 100,
         
     },
 
@@ -140,10 +126,6 @@ const styles = StyleSheet.create({
         fontSize: 12,
         color: "#FFFFFF",
     },
+
+    
 })
-
-
-
-
-
-
