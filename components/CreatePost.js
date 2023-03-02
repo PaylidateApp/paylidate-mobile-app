@@ -69,6 +69,7 @@ const PostItem = () => {
             <Text style={styles.post2CommunityBtnTxt}>Create Post</Text>
           </TouchableHighlight>
         </View>
+        {/* Create Post button ends */}
       </View>
     </View>
   );

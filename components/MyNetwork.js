@@ -1,5 +1,14 @@
 import React from "react";
-import { StyleSheet, View, Text, FlatList, Image, TouchableWithoutFeedback, Keyboard } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  FlatList,
+  Image,
+  TouchableHighlight,
+  TouchableWithoutFeedback,
+  Keyboard,
+} from "react-native";
 
 import CustomSearchBar from "./CustomSearchBar";
 import Colors from "../constants/colors";
@@ -118,12 +127,19 @@ const MyNetwork = () => {
     //   Keyboard.dismiss();
     // }}></TouchableWithoutFeedback>
     <View style={styles.screen}>
-
       {/* Custom SearchBar */}
       <View style={styles.searchbarContainer}>
         <CustomSearchBar style={styles.searchbar}></CustomSearchBar>
       </View>
       {/* Custom SearchBar ends */}
+
+      {/* Invite friends button */}
+      <View style={styles.btnContainer}>
+        <TouchableHighlight style={styles.inviteFriendsBtn}>
+          <Text style={styles.inviteFriendsBtnTxt}>Invite friends to my Network</Text>
+        </TouchableHighlight>
+      </View>
+      {/* Invite friends button ends */}
 
       {/* section one */}
       <View style={styles.container}>
@@ -268,7 +284,6 @@ const MyNetwork = () => {
         <View
           style={{
             paddingVertical: 5,
-            
           }}
         >
           <Text style={styles.sectionTwoHeader}>My Network Contacts</Text>
@@ -276,13 +291,13 @@ const MyNetwork = () => {
         {/* section two header ends */}
 
         {/* section two listItems */}
-          <FlatList
-            data={NetworkContacts}
-            renderItem={({ item }) => (
-              <Contact userName={item.userName} name={item.name} />
-            )}
-            keyExtractor={(item) => item.id}
-          />
+        <FlatList
+          data={NetworkContacts}
+          renderItem={({ item }) => (
+            <Contact userName={item.userName} name={item.name} />
+          )}
+          keyExtractor={(item) => item.id}
+        />
         {/* section two listItems end */}
       </View>
     </View>
@@ -334,7 +349,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(217, 217, 217, 0.1)",
   },
   sectionOne: {
-    width: '47%',
+    width: "47%",
     minWidth: 160,
     height: 160,
     borderRadius: 10,
@@ -387,6 +402,24 @@ const styles = StyleSheet.create({
     fontSize: 10,
     lineHeight: 12,
     // width: "50%",
+  },
+  btnContainer: {
+    alignItems: "center",
+    marginVertical: 10,
+  },
+  inviteFriendsBtn: {
+    width: "65%",
+    height: 29,
+    backgroundColor: "#182430",
+    borderRadius: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  inviteFriendsBtnTxt: {
+    fontFamily: "Cabin",
+    fontSize: 12,
+    lineHeight: 15,
+    color: "#fff",
   },
 });
 

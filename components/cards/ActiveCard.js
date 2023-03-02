@@ -20,7 +20,7 @@ const ActiveCard = () => {
       <View style={styles.screen}>
         {/* Header */}
         <View style={styles.headerStyle}>
-          <View style={{ flexDirection: "row", width: "45%" }}>
+          <View style={{ flexDirection: "row", width: "40%" }}>
             <Ionicons name="chevron-back" size={20} color="black" />
             <Text style={styles.txt}>Home</Text>
           </View>
@@ -133,8 +133,9 @@ const styles = StyleSheet.create({
   },
   removeCardBtnTxt: {
     fontFamily: "Cabin",
-    fontSize: 14,
-    lineHeight: 17,
+    fontWeight: 'bold',
+    fontSize: 16,
+    lineHeight: 19,
     color: "#fff",
   },
   input: {
@@ -157,6 +158,7 @@ const styles = StyleSheet.create({
   },
   bigTxt: {
     fontFamily: "Cabin",
+    fontWeight: 'bold',
     fontSize: 16,
     lineHeight: 19,
   },
