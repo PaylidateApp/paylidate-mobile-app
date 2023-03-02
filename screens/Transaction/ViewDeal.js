@@ -64,20 +64,21 @@ const styles = StyleSheet.create({
 
 txt1: {
     marginRight:20,
+    fontSize: 16,
 },
 
 txt2: {
     marginRight:30,
+    fontSize: 16,
 },
 
 nikon: {
   marginTop: 14,
-  fontSize: 28,
   alignSelf:'center',
 },
 
 camera: {
-  fontSize: 22,
+  fontSize: 24,
 },
 
 img: {
@@ -103,12 +104,12 @@ description: {
 
 amount1: {
   marginLeft:30,
-  fontSize:20,
+  fontSize:24,
 },
 
 amount2: {
   marginRight:30,
-  fontSize:20,
+  fontSize:24,
 },
 
 thirdtxt: {
@@ -117,11 +118,14 @@ thirdtxt: {
     justifyContent: 'space-between',
   
 },
+amount3: {
+  fontSize:16,
+},
 
 amount4: {
     marginTop:7,
     marginRight:30,
-    fontSize:20,
+    fontSize:24,
 },
 
 des: {
@@ -130,8 +134,7 @@ des: {
 },
   
 des1: {
-    fontSize: 13,
-    paddingHorizontal: 40,
+    fontSize: 14,
     
 },
 

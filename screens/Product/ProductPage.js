@@ -56,20 +56,21 @@ const styles = StyleSheet.create({
 
 txt1: {
     marginRight:20,
+    fontSize: 16,
 },
 
 txt2: {
     marginRight:60,
+    fontSize: 16,
 },
 
 nikon: {
   marginTop: 14,
-  fontSize: 28,
   alignSelf:'center',
 },
 
 camera: {
-  fontSize: 22,
+  fontSize: 24,
 },
 
 img: {
@@ -94,13 +95,13 @@ description: {
 },
 
 amount1: {
-  marginLeft:30,
-  fontSize:20,
+  marginLeft:29,
+  fontSize:24,
 },
 
 amount2: {
-  marginRight:30,
-  fontSize:20,
+  marginRight:29,
+  fontSize:24,
 },
 
 des: {

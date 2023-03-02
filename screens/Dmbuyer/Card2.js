@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     },
 
     message: {
-        fontSize: 18,
+        fontSize: 14,
         // justifyContent: 'center',
         alignSelf:'center',
         // fontWeight: bold,
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     quantity: {
         backgroundColor: '#D9D9D9',
         padding: 1,
-        fontSize: 11,
+        fontSize: 10,
         width:80,
         marginLeft:25,
         textAlign: 'center',
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     num: {
         backgroundColor: '#D9D9D9',
         padding: 1,
-        fontSize: 11,
+        fontSize: 10,
         width:80,
         marginRight:25,
         textAlign: 'center',
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     total: {
         backgroundColor: '#D9D9D9',
         padding: 1,
-        fontSize: 11,
+        fontSize: 10,
         width:80,
         marginLeft:25,
         textAlign: 'center',
@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
     num1: {
         backgroundColor: '#D9D9D9',
         padding: 1,
-        fontSize: 11,
+        fontSize: 10,
         width:80,
         marginRight:25,
         textAlign: 'center',
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     delivery: {
         backgroundColor: '#D9D9D9',
         padding: 1,
-        fontSize: 11,
+        fontSize: 10,
         paddingRight: 7,
         width:80,
         marginLeft:25,
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     num2: {
         backgroundColor: '#D9D9D9',
         padding: 1,
-        fontSize: 11,
+        fontSize: 10,
         width:80,
         marginRight:25,
         textAlign: 'center',
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
     deliveryfee: {
         backgroundColor: '#D9D9D9',
         padding: 1,
-        fontSize: 11,
+        fontSize: 10,
         paddingRight: 7,
         width:80,
         marginLeft:25,
@@ -223,7 +223,7 @@ const styles = StyleSheet.create({
     num3: {
         backgroundColor: '#D9D9D9',
         padding: 1,
-        fontSize: 11,
+        fontSize: 10,
         width:80,
         marginRight:25,
         textAlign: 'center',
@@ -242,7 +242,7 @@ const styles = StyleSheet.create({
     btn: {
         color: 'ffffff',
         padding: 1,
-        fontSize: 11,
+        fontSize: 10,
         paddingRight: 7,
         width:80,
         marginLeft:20,

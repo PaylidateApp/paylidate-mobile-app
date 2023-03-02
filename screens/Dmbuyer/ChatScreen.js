@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image,TextInput } from 'react-native'
 import React from 'react'
+import { FONTS } from '../../constants/theme'
 import Card from './Card'
 import MessageList from './MessageList'
 import Card2 from './Card2'
@@ -7,8 +8,8 @@ import FontAwesome from '@expo/vector-icons/FontAwesome'
 
 const ChatScreen = () => {
   return (
-    <ScrollView>
-        <View style={styles.container}>
+    <ScrollView style={styles.container}>
+        <View style={styles.headerContainer}>
             <TouchableOpacity style={styles.profile}>
                 <Image style={styles.image} source={require('../../assets/M.Lawrence.png')} />
                 <View style={styles.txt}>
@@ -47,6 +48,14 @@ export default ChatScreen
 
 const styles = StyleSheet.create({
     container: {
+    
+        backgroundColor: '#182430',
+        borderColor:'#D9D9D9',
+        borderWidth: 3,
+
+    },
+
+    headerContainer: {
         flexDirection: 'row',
         backgroundColor: '#EB6117',
         paddingTop: 40
@@ -63,12 +72,13 @@ const styles = StyleSheet.create({
 
     txt: {
       marginTop: 17,
-      fontSize: 10,
+      fontSize: 14,
       color: '#FFFFFF',
     },
 
     name: {
       fontSize: 14,
+      // fontFamily: 'FONTS.cabin',
       fontweight: 500,
       color: '#FFFFFF',
       lineHeight: 14,

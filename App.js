@@ -1,6 +1,8 @@
 import { useFonts } from 'expo-font';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { StyleSheet, Text, View } from 'react-native';
+
 
 import React from 'react';
 
@@ -10,13 +12,15 @@ import CreatePost from './components/CreatePost';
 
 
 // import Logo from "./Pages/Signup/Logo";
-// import Input from "./Pages/Signup/Input";
-// import ResetInput from './Pages/Signup/ResetInput';
-// import ChatScreen from './Pages/Dmbuyer/ChatScreen';
-// import ProductPage from './Pages/Product/ProductPage';
-// import OrderModal from './Pages/Product/OrderModal';
-// import ViewDeal from './Pages/Transaction/ViewDeal';
-// import ViewModal from './Pages/Transaction/ViewModal';
+// import Input from "./screens/Signup/Input";
+// import ResetInput from './screens/Signup/ResetInput';
+// import ChatScreen from './screens/Dmbuyer/ChatScreen';
+// import OrderModal from './screens/Product/OrderModal';
+// import ViewDeal from './screens/Transaction/ViewDeal';
+// import ViewModal from './screens/Transaction/ViewModal';
+// import MyDeals from './screens/MyDeals';
+
+
 
 
 
