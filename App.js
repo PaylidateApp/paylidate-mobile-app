@@ -6,8 +6,10 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import React from 'react';
 
-import {Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, VerifyAccount, VerifyMe, SendFunds, Settings,SignUp, ResetInput, PayBills, Airtime, DataBundle, Internet, MyCommunityScreen, AddCardScreen, ActiveCardScreen } from './screens';
+import { Login, DashboardScreen, MyNetworkScreen, UserProfileScreen, VerifyAccount, VerifyMe, SendFunds, Settings, SignUp, ResetInput, PayBills, Airtime, DataBundle, Internet, MyCommunityScreen, AddCardScreen, ActiveCardScreen, MyDeals } from './screens';
 import CreatePost from './components/CreatePost';
+import Tabs from './components/tabs';
+import PostItem from './components/CreatePost';
 
 
 
@@ -28,11 +30,11 @@ export default function App() {
 
 
   const [fontsLoaded] = useFonts({
-    Cabin : require('./assets/fonts/Cabin-Regular.ttf'),
+    Cabin: require('./assets/fonts/Cabin-Regular.ttf'),
   });
 
   if (!fontsLoaded) return null;
-  
+
   const Stack = createStackNavigator();
   return (
     <NavigationContainer>
@@ -42,7 +44,7 @@ export default function App() {
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="ResetInput" component={ResetInput} />
         <Stack.Screen name="PayBills" component={PayBills} />
-        <Stack.Screen name="DashboardScreen" component={DashboardScreen} />
+        <Stack.Screen name="DashboardScreen" component={Tabs} />
         <Stack.Screen name="MyNetworkScreen" component={MyNetworkScreen} />
         <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} />
         <Stack.Screen name='MyCommunityScreen' component={MyCommunityScreen} />
@@ -55,15 +57,17 @@ export default function App() {
         <Stack.Screen name="Internet" component={Internet} />
         <Stack.Screen name="DataBundle" component={DataBundle} />
         <Stack.Screen name="VerifyMe" component={VerifyMe} />
+        <Stack.Screen name="Post" component={PostItem} />
+        <Stack.Screen name="MyDeals" component={MyDeals} />
 
       </Stack.Navigator>
 
     </NavigationContainer>
 
-   
 
 
-    
+
+
   )
 }
 

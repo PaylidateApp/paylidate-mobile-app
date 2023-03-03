@@ -38,6 +38,10 @@ const Dashboard = () => {
     navigation.navigate("ActiveCardScreen");
   };
 
+  const myDeals = async () => {
+    navigation.navigate("MyDeals");
+  };
+
   const sendfunds_navigation = async () => {
     navigation.navigate("SendFunds");
   };
@@ -118,10 +122,12 @@ const Dashboard = () => {
             <Text style={styles.miniText}>Community Feed</Text>
           </View>
           <View>
-            <Image
-              style={[styles.imageStyle2, styles.imgPositionRight]}
-              source={require("../assets/dashboard/handshake.png")}
-            />
+            <TouchableHighlight onPress={myDeals}>
+              <Image
+                style={[styles.imageStyle2, styles.imgPositionRight]}
+                source={require("../assets/dashboard/handshake.png")}
+              />
+            </TouchableHighlight>
             <Text style={[styles.miniText, styles.imgPositionRight]}>
               My Deals
             </Text>
@@ -144,62 +150,42 @@ const Dashboard = () => {
             </TouchableOpacity>
             <Text style={styles.miniText}>My Network</Text>
           </View>
+
           <View>
-            {/* section three ends */}
-          <TouchableHighlight onPress={checkUserProfile}>
+            <TouchableOpacity onPress={checkUserProfile}>
               <Image
-                style={styles.imageStyle2}
+                style={[styles.imageStyle2, styles.imgPositionLeft]}
                 source={require("../assets/dashboard/payment_wallet.png")}
               />
-            </TouchableHighlight>
-
-            {/* 
-          <Image
-              style={styles.imageStyle2}
-              source={require("../assets/dashboard/payment_wallet.png")}
-            />
-          */}
-
-          {/* 
-            <Image
-              style={[styles.imageStyle2, styles.imgPositionLeft]}
-              source={require("../assets/dashboard/payment_wallet.png")}
-            />
-          */}
-            <Text style={styles.miniText}>Payment Requests</Text>
+              <Text style={[styles.miniText, styles.imgPositionRight]}>
+                Payment Requests
+              </Text>
+            </TouchableOpacity>
           </View>
 
           <View>
-          {/* 
-
-          <TouchableOpacity onPress={paybills_navigation}>
-
-            <Image
-              style={styles.imageStyle}
-              source={require("../assets/dashboard/payment.png")}
-            />
-          */}
-            
-            
-            <TouchableHighlight onPress={checkAddCards}>
-              <Image
-                style={styles.imageStyle}
-                source={require("../assets/dashboard/payment.png")}
-              />
-            </TouchableHighlight>
-            
-          
-
-            <Text style={styles.miniText}>Pay Bills</Text>
-          </TouchableOpacity>
+            <TouchableOpacity onPress={paybills_navigation}>
+              <TouchableHighlight onPress={checkAddCards}>
+                <Image
+                  style={styles.imageStyle}
+                  source={require("../assets/dashboard/payment.png")}
+                />
+              </TouchableHighlight>
+              <Text style={styles.miniText}>Pay Bills</Text>
+            </TouchableOpacity>
+          </View>
         </View>
+        {/* section three ends */}
+
+
+
 
         {/* Post to Community button */}
         <View style={styles.btnContainer}>
           <TouchableHighlight
-          onPress={checkMyCommunity}
+            onPress={checkMyCommunity}
             style={styles.postCommunityBtn}
-         >
+          >
             <Text style={styles.postCommunityBtnTxt}>Post to Community</Text>
           </TouchableHighlight>
         </View>
@@ -333,7 +319,7 @@ const styles = StyleSheet.create({
     lineHeight: 19,
     color: "#000",
   },
-  postCommunityBtn:{
+  postCommunityBtn: {
     width: "90%",
     height: 30,
     backgroundColor: "#EB6117",
