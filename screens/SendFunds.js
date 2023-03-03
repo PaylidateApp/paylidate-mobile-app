@@ -2,7 +2,7 @@ import { StyleSheet, View, Text, SafeAreaView, ScrollView, TouchableOpacity, Tex
 import React, { useState } from 'react'
 import { FONTS } from '../constants/theme'
 import DropDownPicker from 'react-native-dropdown-picker';
-import Navigation from '../components/Navigation';
+// import Navigation from '../components/Navigation';
 // import Tabs from '../components/tabs';
 
 const SendFunds = () => {
