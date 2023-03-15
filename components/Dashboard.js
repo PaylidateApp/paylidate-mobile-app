@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import {
   View,
@@ -10,12 +10,26 @@ import {
   TouchableOpacity
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { AuthContext } from '../context/AuthContext';
 
 import MainButton from "./MainButton";
 import ProductListItem from "./ProductListItem";
 import Colors from "../constants/colors";
 
 const Dashboard = () => {
+  const { userData, setUserData } = useContext(AuthContext);
+  const { name, email, username, phone, } = userData;
+
+  // useEffect(() => {
+  //   console.log(userData);
+
+  //   return () => {
+  //     "UserData from context";
+  //   }
+  // }, []);
+
+
+
   const navigation = useNavigation();
 
   const checkMyNetwork = async () => {
@@ -53,7 +67,7 @@ const Dashboard = () => {
   return (
     <View style={styles.screen}>
       <View style={styles.textContainer}>
-        <Text>Hello, Lawrence</Text>
+        <Text>Hello, {name}</Text>
       </View>
       <View style={styles.sectionOne}>
         <View style={styles.flexStyle}>
@@ -70,7 +84,7 @@ const Dashboard = () => {
         </View>
         <View style={styles.flexStyle}>
           <View>
-            <Text style={styles.mediumText}>@AttahLaw</Text>
+            <Text style={styles.mediumText}>{email ? `@${username}` : '@AttahLaw'}</Text>
           </View>
           <View>
             <Text style={styles.mediumText}>7123467390</Text>

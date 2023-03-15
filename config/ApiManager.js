@@ -1,10 +1,9 @@
 import axios from "axios";
-import { API_URL, TEST_URL } from '@env';
+import { API_URL, API_URL1, TEST_URL } from '@env';
 
 const instance = axios.create({
-    baseURL: 'https://paylidate-production.up.railway.app',
-    // baseURL: 'http://172.20.10.5:8000/',
-    // baseURL: 'http://localhost:8000/',
+    // baseURL: 'https://paylidate-production.up.railway.app',
+    baseURL: API_URL,
     responseType: 'json',
     withCredentials: true,
     timeout: 30000,

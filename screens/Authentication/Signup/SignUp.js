@@ -36,13 +36,15 @@ const SignUp = () => {
                     const data = {
                         email: email,
                         password: password,
+                        password_confirmation: confirmPassword,
                         phone: phone,
                         name: name,
                     };
                     const response = await instance.post("/api/signup", data);
                     if (response.status === 200) {
                         alert("Sign Up Successful");
-                        navigation.navigate("Dashboard");
+                        setLoading(false);
+                        navigation.navigate("Login");
                     } else {
                         alert("Sign Up Failed");
                         setLoading(false);

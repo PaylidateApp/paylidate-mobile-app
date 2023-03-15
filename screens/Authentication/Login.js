@@ -18,17 +18,10 @@ const Login = () => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [loading, setLoading] = React.useState(false);
-  // const [error, setError] = React.useState("");
-  // const [email_error, setEmailError] = React.useState("");
-  // const [password_error, setPasswordError] = React.useState("");
-  // const [email_valid, setEmailValid] = React.useState(false);
-  // const [password_valid, setPasswordValid] = React.useState(false);
 
-  const [userData, setUserData] = React.useState(null);
-  const { signIn } = React.useContext(AuthContext)
+  const { userData, setUserData } = React.useContext(AuthContext)
 
   const checklogin = async () => {
-    console.log("clicked before_try");
     try {
       if (email.length === 0 || password.length === 0) {
         alert("Please enter fill in your email and password");
@@ -39,22 +32,23 @@ const Login = () => {
           alert(email + " is not a valid email address.");
         } else {
           setLoading(true);
-          const result = instance.post("/api/login", { email: email, password: password }).then((response) => {
-            if (response.data.statusText !== "success" || response.data.status === 500) {
-              alert("Sorry an error occured please try again");
+          const result = instance.post("/api/login", { email: email, password: password })
+            .then((response) => {
+              const result = response.data
+              const { data, message, status } = result;
+
+              if (status !== "success" || message == 'error') {
+                alert("Sorry an error occured please try again");
+                setLoading(false);
+              }
+              else {
+                persistLogin({ ...data }, message, status);
+                setLoading(false);
+              }
+            }).catch((error) => {
+              alert(error.response.data.message);
               setLoading(false);
-            }
-            else {
-              AsyncStorage.setItem("AccessToken", response.data.token);
-              setUserData(response.data);
-              navigation.navigate("DashboardScreen");
-              setLoading(false);
-              signIn();
-            }
-          }).catch((error) => {
-            alert(error.response.data.message);
-            setLoading(false);
-          });
+            });
         }
       }
 
@@ -63,6 +57,23 @@ const Login = () => {
     }
 
   };
+
+  const persistLogin = (userData, message, status) => {
+    try {
+      // AsyncStorage.setItem("AccessToken", userData.access_token);
+      AsyncStorage
+        .setItem("paylidateCredentials", JSON.stringify(userData))
+        .then(() => {
+          setUserData(userData)
+          alert(status);
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
+    } catch (error) {
+      return error.message;
+    }
+  }
 
   const signup_navigation = async () => {
     navigation.navigate("SignUp");
