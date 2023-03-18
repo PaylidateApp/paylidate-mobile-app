@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from "react";
-
 import {
   View,
   Text,
@@ -7,27 +6,74 @@ import {
   Image,
   Button,
   TouchableHighlight,
-  TouchableOpacity
+  TouchableOpacity,
+  ActivityIndicator
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+
 import { AuthContext } from '../context/AuthContext';
+import instance from '../config/ApiManager'
 
 import MainButton from "./MainButton";
 import ProductListItem from "./ProductListItem";
 import Colors from "../constants/colors";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
 
 const Dashboard = () => {
   const { userData, setUserData } = useContext(AuthContext);
+  const [token, setToken] = useState(null)
+  const [walletData, setWalletData] = useState(null);
+  const [dashboardData, setDashboardData] = useState(null)
   const { name, email, username, phone, } = userData;
 
-  // useEffect(() => {
-  //   console.log(userData);
+  const tokes = AsyncStorage.getItem("paylidateToken").then((result) => {
+    if (result !== null) {
+      return result;
+    } else {
+      return 'empty';
+    }
+  }).then((response) => { setToken(JSON.parse(response)) }).catch((error) => console.log(error));
 
-  //   return () => {
-  //     "UserData from context";
-  //   }
-  // }, []);
+  const authToken = 'Bearer ' + token;
+  instance.defaults.headers.common["Authorization"] = authToken;
 
+  useEffect(() => {
+    instance.get('/api/dashboard')
+      .then((response) => {
+        console.log("worked");
+        setDashboardData(response.data.data);
+        // console.log({ ...dashboardData })
+      }).catch((error) => error);
+
+    // return () => {
+    //   fetchData();
+    // }
+  }, []);
+
+
+
+  const { wallet } = { ...dashboardData }
+
+  // if (dashboardData !== null) {
+  //   setWalletData();
+  // }
+  // console.log(walletData)
+
+  const { balance, bonus, bank_name, account_number } = { ...wallet[0] };
+
+  const logOut = async () => {
+    instance.get('/api/logout')
+      .then((response) => {
+        AsyncStorage.removeItem('paylidateCredentials').then(() => {
+          alert('Log Out Successful');
+        });
+        AsyncStorage.removeItem('paylidateToken');
+        console.log(response)
+      })
+      .catch(error => alert(error));
+
+  }
 
 
   const navigation = useNavigation();
@@ -65,153 +111,159 @@ const Dashboard = () => {
   };
 
   return (
-    <View style={styles.screen}>
-      <View style={styles.textContainer}>
-        <Text>Hello, {name}</Text>
-      </View>
-      <View style={styles.sectionOne}>
-        <View style={styles.flexStyle}>
-          <Text style={styles.bigText}>N329,000</Text>
-          {/* Fund Wallet button */}
-          <View >
-            <TouchableHighlight
-              style={styles.smallBtn}
-            >
-              <Text style={styles.smallBtnTxt}>Fund Wallet</Text>
-            </TouchableHighlight>
-          </View>
-          {/* Fund button ends */}
-        </View>
-        <View style={styles.flexStyle}>
-          <View>
-            <Text style={styles.mediumText}>{email ? `@${username}` : '@AttahLaw'}</Text>
-          </View>
-          <View>
-            <Text style={styles.mediumText}>7123467390</Text>
-            <Text style={styles.smallText}>Sterling Bank</Text>
-          </View>
-        </View>
-        {/* Send funds button */}
-        <View style={styles.btnContainer}>
-          <TouchableHighlight
-            style={styles.sendFundsBtn}
-            onPress={sendfunds_navigation}
-          >
-            <Text style={styles.sendFundsBtnTxt}>Send Funds</Text>
-          </TouchableHighlight>
-        </View>
-        {/* Send funds button ends */}
-      </View>
-
-      {/* Section Two  */}
-      <View style={styles.sectionTwo}>
-        <View style={styles.flexStyle2}>
-          <View style={styles.sectionTwoSub}>
-            <Image
-              style={styles.imgStyleSec2}
-              source={require("../assets/dashboard/trophy.png")}
-            />
-            <Text style={styles.smallTextSecTwo}>117 PPTs</Text>
-          </View>
-          <View style={styles.sectionTwoSub}>
-            <Image
-              style={styles.imgStyleSec2}
-              source={require("../assets/dashboard/trophy2.png")}
-            />
-            <Text style={styles.smallTextSecTwo}>N 2,500</Text>
-          </View>
-        </View>
-      </View>
-      {/* Section Two ends */}
-
-      <View>
-        <View style={styles.sectionThree}>
-          <View>
-            <TouchableHighlight onPress={checkActiveCards}>
-              <Image
-                style={[styles.imageStyle2, styles.imgPositionLeft]}
-                source={require("../assets/dashboard/users.png")}
-              />
-            </TouchableHighlight>
-            <Text style={styles.miniText}>Community Feed</Text>
-          </View>
-          <View>
-            <TouchableHighlight onPress={myDeals}>
-              <Image
-                style={[styles.imageStyle2, styles.imgPositionRight]}
-                source={require("../assets/dashboard/handshake.png")}
-              />
-            </TouchableHighlight>
-            <Text style={[styles.miniText, styles.imgPositionRight]}>
-              My Deals
-            </Text>
-          </View>
-          <View>
-            <Image
-              style={[styles.imageStyle, styles.imgPositionLeft]}
-              source={require("../assets/dashboard/verified.png")}
-            />
-            <Text style={styles.miniText}>Fulfillment</Text>
-          </View>
-        </View>
-        <View style={styles.sectionThree}>
-          <View>
-            <TouchableOpacity onPress={checkMyNetwork}>
-              <Image
-                style={[styles.imageStyle, styles.imgPositionLeft]}
-                source={require("../assets/dashboard/node.png")}
-              />
-            </TouchableOpacity>
-            <Text style={styles.miniText}>My Network</Text>
+    <>
+      {dashboardData ?
+        <View style={styles.screen}>
+          <View style={styles.textContainer}>
+            <Text>Hello, {name}</Text>
           </View>
 
-          <View>
-            <TouchableOpacity onPress={checkUserProfile}>
-              <Image
-                style={[styles.imageStyle2, styles.imgPositionLeft]}
-                source={require("../assets/dashboard/payment_wallet.png")}
-              />
-              <Text style={[styles.miniText, styles.imgPositionRight]}>
-                Payment Requests
-              </Text>
-            </TouchableOpacity>
-          </View>
-
-          <View>
-            <TouchableOpacity onPress={paybills_navigation}>
-              <TouchableHighlight onPress={checkAddCards}>
-                <Image
-                  style={styles.imageStyle}
-                  source={require("../assets/dashboard/payment.png")}
-                />
+          <View style={styles.sectionOne}>
+            <View style={styles.flexStyle}>
+              <Text style={styles.bigText}>N {balance ? balance : "0"}</Text>
+              {/* Fund Wallet button */}
+              <View >
+                <TouchableHighlight
+                  style={styles.smallBtn}
+                  onPress={logOut}
+                >
+                  <Text style={styles.smallBtnTxt}>Fund Wallet</Text>
+                </TouchableHighlight>
+              </View>
+              {/* Fund button ends */}
+            </View>
+            <View style={styles.flexStyle}>
+              <View>
+                <Text style={styles.mediumText}>{username ? `@${username}` : 'Username'}</Text>
+              </View>
+              <View>
+                <Text style={styles.mediumText}>{account_number ? account_number : "7123467390"}</Text>
+                <Text style={styles.smallText}>{bank_name ? bank_name : "Sterling Bank"}</Text>
+              </View>
+            </View>
+            {/* Send funds button */}
+            <View style={styles.btnContainer}>
+              <TouchableHighlight
+                style={styles.sendFundsBtn}
+                onPress={sendfunds_navigation}
+              >
+                <Text style={styles.sendFundsBtnTxt}>Send Funds</Text>
               </TouchableHighlight>
-              <Text style={styles.miniText}>Pay Bills</Text>
-            </TouchableOpacity>
+            </View>
+            {/* Send funds button ends */}
           </View>
+
+          {/* Section Two  */}
+          <View style={styles.sectionTwo}>
+            <View style={styles.flexStyle2}>
+              <View style={styles.sectionTwoSub}>
+                <Image
+                  style={styles.imgStyleSec2}
+                  source={require("../assets/dashboard/trophy.png")}
+                />
+                <Text style={styles.smallTextSecTwo}>0 PPTs</Text>
+              </View>
+              <View style={styles.sectionTwoSub}>
+                <Image
+                  style={styles.imgStyleSec2}
+                  source={require("../assets/dashboard/trophy2.png")}
+                />
+                <Text style={styles.smallTextSecTwo}>N {bonus ? bonus : '0'}</Text>
+              </View>
+            </View>
+          </View>
+          {/* Section Two ends */}
+
+          <View>
+            <View style={styles.sectionThree}>
+              <View>
+                <TouchableHighlight onPress={checkActiveCards}>
+                  <Image
+                    style={[styles.imageStyle2, styles.imgPositionLeft]}
+                    source={require("../assets/dashboard/users.png")}
+                  />
+                </TouchableHighlight>
+                <Text style={styles.miniText}>Community Feed</Text>
+              </View>
+              <View>
+                <TouchableHighlight onPress={myDeals}>
+                  <Image
+                    style={[styles.imageStyle2, styles.imgPositionRight]}
+                    source={require("../assets/dashboard/handshake.png")}
+                  />
+                </TouchableHighlight>
+                <Text style={[styles.miniText, styles.imgPositionRight]}>
+                  My Deals
+                </Text>
+              </View>
+              <View>
+                <Image
+                  style={[styles.imageStyle, styles.imgPositionLeft]}
+                  source={require("../assets/dashboard/verified.png")}
+                />
+                <Text style={styles.miniText}>Fulfillment</Text>
+              </View>
+            </View>
+            <View style={styles.sectionThree}>
+              <View>
+                <TouchableOpacity onPress={checkMyNetwork}>
+                  <Image
+                    style={[styles.imageStyle, styles.imgPositionLeft]}
+                    source={require("../assets/dashboard/node.png")}
+                  />
+                </TouchableOpacity>
+                <Text style={styles.miniText}>My Network</Text>
+              </View>
+
+              <View>
+                <TouchableOpacity onPress={checkUserProfile}>
+                  <Image
+                    style={[styles.imageStyle2, styles.imgPositionLeft]}
+                    source={require("../assets/dashboard/payment_wallet.png")}
+                  />
+                  <Text style={[styles.miniText, styles.imgPositionRight]}>
+                    Payment Requests
+                  </Text>
+                </TouchableOpacity>
+              </View>
+
+              <View>
+                <TouchableOpacity onPress={paybills_navigation}>
+                  <TouchableHighlight onPress={checkAddCards}>
+                    <Image
+                      style={styles.imageStyle}
+                      source={require("../assets/dashboard/payment.png")}
+                    />
+                  </TouchableHighlight>
+                  <Text style={styles.miniText}>Pay Bills</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+            {/* section three ends */}
+
+
+
+
+            {/* Post to Community button */}
+            <View style={styles.btnContainer}>
+              <TouchableHighlight
+                onPress={checkMyCommunity}
+                style={styles.postCommunityBtn}
+              >
+                <Text style={styles.postCommunityBtnTxt}>Post to Community</Text>
+              </TouchableHighlight>
+            </View>
+            {/* Post to Community button ends */}
+          </View>
+
+          {/* product list section */}
+          <View style={styles.listSection}>
+            <ProductListItem />
+          </View>
+          {/* product list section end */}
         </View>
-        {/* section three ends */}
-
-
-
-
-        {/* Post to Community button */}
-        <View style={styles.btnContainer}>
-          <TouchableHighlight
-            onPress={checkMyCommunity}
-            style={styles.postCommunityBtn}
-          >
-            <Text style={styles.postCommunityBtnTxt}>Post to Community</Text>
-          </TouchableHighlight>
-        </View>
-        {/* Post to Community button ends */}
-      </View>
-
-      {/* product list section */}
-      <View style={styles.listSection}>
-        <ProductListItem />
-      </View>
-      {/* product list section end */}
-    </View>
+        : <ActivityIndicator size="large" color="#EB6117" />}
+    </>
   );
 };
 

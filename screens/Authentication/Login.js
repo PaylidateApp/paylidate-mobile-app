@@ -35,14 +35,14 @@ const Login = () => {
           const result = instance.post("/api/login", { email: email, password: password })
             .then((response) => {
               const result = response.data
-              const { data, message, status } = result;
+              const { data, access_token, message, status } = result;
 
               if (status !== "success" || message == 'error') {
                 alert("Sorry an error occured please try again");
                 setLoading(false);
               }
               else {
-                persistLogin({ ...data }, message, status);
+                persistLogin({ ...data }, message, status, access_token);
                 setLoading(false);
               }
             }).catch((error) => {
@@ -58,9 +58,9 @@ const Login = () => {
 
   };
 
-  const persistLogin = (userData, message, status) => {
+  const persistLogin = (userData, message, status, access_token) => {
     try {
-      // AsyncStorage.setItem("AccessToken", userData.access_token);
+      AsyncStorage.setItem("paylidateToken", JSON.stringify(access_token));
       AsyncStorage
         .setItem("paylidateCredentials", JSON.stringify(userData))
         .then(() => {
