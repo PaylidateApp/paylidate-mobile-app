@@ -177,7 +177,7 @@ const DashboardScreen = () => {
 
   return (
     <ScrollView>
-      {!isLoading ?
+      {dashboardData ?
         <View style={styles.screen}>
           <View style={styles.textContainer}>
             <Text>Hello, {name}</Text>
@@ -336,7 +336,7 @@ const DashboardScreen = () => {
           </View> */}
           {/* product list section end */}
         </View>
-        : <ActivityIndicator size="large" color="#EB6117" style={{ flex: 1, justifyContent: "center", alignItems: "center" }} />}
+        : <ActivityIndicator size="large" color="#EB6117" style={{ justifyContent: "center", alignItems: "center" }} />}
     </ScrollView>
   );
 };
