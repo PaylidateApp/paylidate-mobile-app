@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import {
   StyleSheet,
   View,
@@ -6,10 +6,28 @@ import {
   TouchableHighlight,
   Image,
 } from "react-native";
+import instance from "../config/ApiManager";
+import { AuthContext } from "../context/AuthContext";
 
 import ProductListItem from "./ProductListItem";
 
-const UserProfile = () => {
+const UserProfile = ({ route }) => {
+
+  // const { userId } = route.params;
+
+  const { userData, setUserData } = useContext(AuthContext);
+  const { id, name, email, username, phone, avatar } = userData;
+
+  const dummyPicture = 'https://picsum.photos/200'
+  // useEffect(() => {
+  //   instance.get('/api/users/')
+
+  //   return () => {
+  //     second
+  //   }
+  // }, [third])
+
+
   return (
     <View style={styles.screen}>
       {/* section one Star Rating */}
@@ -30,15 +48,15 @@ const UserProfile = () => {
             alignItems: "center",
           }}
         >
-          <Image style={styles.bigImg} source={require("../assets/userProfile/userPic.png")} />
+          <Image style={styles.bigImg} source={{ uri: avatar ? dummyPicture : 'https://picsum.photos/200' }} />
         </View>
         <View
           style={{
             alignItems: "center",
           }}
         >
-          <Text style={styles.bigTxt}>Victoria Owolijah</Text>
-          <Text style={styles.bigTxt}>@MrsVSO</Text>
+          <Text style={styles.bigTxt}>{name}</Text>
+          <Text style={styles.bigTxt}>@{username}</Text>
         </View>
         <View style={{
           alignItems: 'flex-start'
@@ -65,11 +83,11 @@ const UserProfile = () => {
         >
           <Text style={styles.headerTxt}>My Catalog</Text>
         </View>
-      {/* product list section */}
-      <View style={styles.listSection}>
-        <ProductListItem />
-      </View>
-      {/* product list section end */}
+        {/* product list section */}
+        <View style={styles.listSection}>
+          <ProductListItem prop={id} />
+        </View>
+        {/* product list section end */}
       </View>
       {/* section three ends */}
     </View>
@@ -88,25 +106,26 @@ const styles = StyleSheet.create({
     fontFamily: "Cabin",
     fontSize: 16,
     lineHeight: 19,
-    paddingVertical:5,
+    paddingVertical: 5,
   },
   bigTxt: {
     fontFamily: "Cabin",
     fontSize: 14,
     lineHeight: 17,
-    paddingVertical:5,
+    paddingVertical: 5,
   },
   smallTxt: {
     fontFamily: "Cabin",
     fontSize: 12,
     lineHeight: 14,
     textAlign: 'center',
-    paddingVertical:5,
+    paddingVertical: 5,
   },
 
   bigImg: {
     width: 120,
     height: 120,
+    borderRadius: 100,
   },
 
   smallImg: {

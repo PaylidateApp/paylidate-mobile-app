@@ -1,5 +1,8 @@
-import React from "react";
-import { View, Text, Image, StyleSheet, FlatList } from "react-native";
+import React, { useEffect } from "react";
+import { View, Text, Image, StyleSheet, FlatList, TouchableOpacity } from "react-native";
+import instance from "../config/ApiManager";
+import { Product } from "./Product";
+import { useNavigation } from "@react-navigation/native";
 
 const ProductLists = [
   {
@@ -67,99 +70,36 @@ const ProductLists = [
   },
 ];
 
-const Product = ({ userName, productName, amount, location }) => (
-  <View style={styles.listItemStyles}>
-    <View style={styles.listItemsPicContainer}>
-      <Image
-        style={styles.listItemsPic}
-        source={require("../assets/dashboard/camera.png")}
-      />
-    </View>
-    <View style={styles}>
-      <View style={styles.listItemsTxtContainer}>
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-          }}
-        >
-          <Text style={[styles.miniText, styles.miniTextPosition2]}>
-            {userName}
-          </Text>
-
-          <Image
-            style={styles.miniImg}
-            source={require("../assets/dashboard/verify_primary.png")}
-          />
-        </View>
-        <View>
-          <Text style={styles.smallTextDark}>{productName}</Text>
-        </View>
-      </View>
-      <View style={styles.listItemsTxtContainer}>
-        <View>
-          <Text style={[styles.smallTextDark, styles.smallTextDarkPosition]}>
-            {amount}
-          </Text>
-        </View>
-      </View>
-      <View style={styles.listItemsTxtContainer}>
-        <View style={styles.listItemsTxt}>
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-            }}
-          >
-            <Image
-              style={styles.microImg}
-              source={require("../assets/dashboard/location.png")}
-            />
-            <Text style={styles.microText}>{location}</Text>
-          </View>
-          <View
-            style={{
-              display: "flex",
-              flexDirection: "row",
-            }}
-          >
-            <Image
-              style={styles.microImgTruck}
-              source={require("../assets/dashboard/truck.png")}
-            />
-            <Text style={styles.microText}>Nigeria Wide</Text>
-          </View>
-        </View>
-      </View>
-      <View style={styles}>
-        <View style={styles.listItemsTxt}>
-          <View>
-            <Image
-              style={styles.commentImg}
-              source={require("../assets/dashboard/comment.png")}
-            />
-          </View>
-          <View style={styles.listItemsTxt}>
-            <Text style={[styles.miniText, styles.miniTextPosition]}>10</Text>
-            <Image
-              style={styles.likeImg}
-              source={require("../assets/dashboard/like.png")}
-            />
-          </View>
-        </View>
-      </View>
-    </View>
-  </View>
-);
 
 const ProductListItem = () => {
+  const navigation = useNavigation();
+
+  // useEffect(() => {
+  //   (async () => {
+  //     res = await instance.get('/api/products');
+  //   })
+
+  //   return () => {
+  //     second
+  //   }
+  // }, [third])
+
+
   return (
     <View style={styles.screen}>
       <FlatList
         data={ProductLists}
+        horizontal={false}
         renderItem={({ item }) => (
-          <Product userName={item.userName} productName={item.productName} amount={item.amount} location={item.location} />
+          <Product
+            userName={item.userName}
+            productName={item.productName}
+            amount={item.amount}
+            location={item.location}
+            onPress={() => { navigation.navigate('Product', { productSlug: item.id }) }}
+          />
         )}
+
         keyExtractor={(item) => item.id}
       />
     </View>

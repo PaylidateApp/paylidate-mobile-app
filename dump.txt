@@ -1,0 +1,128 @@
+{/* <View style={styles.sectionOne}>
+                    <View
+                        style={{
+                            paddingVertical: 10,
+                        }}
+                    >
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                justifyContent: "space-evenly",
+                                paddingVertical: 8,
+                            }}
+                        >
+                            <View>
+                                <Image
+                                    style={styles.img}
+                                    source={require("../assets/myNetwork/cyflex.png")}
+                                />
+                            </View>
+                            <View
+                                style={{
+                                    paddingVertical: 6,
+                                }}
+                            >
+                                <View>
+                                    <Text style={styles.sectionOneUsername}>@Jiji_manager</Text>
+                                </View>
+                                <View style={styles.card}>
+                                    <Text style={styles.sectionOneAddToNetwork}>
+                                        Add to Network
+                                    </Text>
+                                </View>
+                            </View>
+                        </View>
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                justifyContent: "space-evenly",
+                                paddingVertical: 8,
+                            }}
+                        >
+                            <View>
+                                <Image
+                                    style={styles.img}
+                                    source={require("../assets/myNetwork/vso.png")}
+                                />
+                            </View>
+                            <View
+                                style={{
+                                    paddingVertical: 6,
+                                }}
+                            >
+                                <View>
+                                    <Text style={styles.sectionOneUsername}>@Ivan_moneyman</Text>
+                                </View>
+                                <View style={styles.card}>
+                                    <Text style={styles.sectionOneAddToNetwork}>
+                                        Add to Network
+                                    </Text>
+                                </View>
+                            </View>
+                        </View>
+                    </View>
+                </View>
+                <View style={styles.sectionOne}>
+                    <View
+                        style={{
+                            paddingVertical: 10,
+                        }}
+                    >
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                justifyContent: "space-evenly",
+                                paddingVertical: 8,
+                            }}
+                        >
+                            <View>
+                                <Image
+                                    style={styles.img}
+                                    source={require("../assets/myNetwork/david.png")}
+                                />
+                            </View>
+                            <View
+                                style={{
+                                    paddingVertical: 6,
+                                }}
+                            >
+                                <View>
+                                    <Text style={styles.sectionOneUsername}>@DavidShegs</Text>
+                                </View>
+                                <View style={styles.card}>
+                                    <Text style={styles.sectionOneAddToNetwork}>
+                                        Add to Network
+                                    </Text>
+                                </View>
+                            </View>
+                        </View>
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                justifyContent: "space-evenly",
+                                paddingVertical: 8,
+                            }}
+                        >
+                            <View>
+                                <Image
+                                    style={styles.img}
+                                    source={require("../assets/myNetwork/vso.png")}
+                                />
+                            </View>
+                            <View
+                                style={{
+                                    paddingVertical: 6,
+                                }}
+                            >
+                                <View>
+                                    <Text style={styles.sectionOneUsername}>@MrsVSO</Text>
+                                </View>
+                                <View style={styles.card}>
+                                    <Text style={styles.sectionOneAddToNetwork}>
+                                        Add to Network
+                                    </Text>
+                                </View>
+                            </View>
+                        </View>
+                    </View>
+                </View> */}

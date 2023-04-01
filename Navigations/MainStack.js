@@ -4,6 +4,7 @@ import { MyNetworkScreen, UserProfileScreen, VerifyAccount, VerifyMe, SendFunds,
 import CreatePost from '../components/CreatePost';
 import Tabs from '../components/tabs';
 import PostItem from '../components/CreatePost';
+import ProductPage from '../screens/Product/ProductPage';
 
 const MainStack = (Stack) => {
     return (
@@ -25,8 +26,9 @@ const MainStack = (Stack) => {
             <Stack.Screen name="VerifyMe" component={VerifyMe} />
             <Stack.Screen name="Post" component={PostItem} />
             <Stack.Screen name="MyDeals" component={MyDeals} />
+            <Stack.Screen name="Product" component={ProductPage} />
         </>
-    )
+    );
 }
 
 export default MainStack;
