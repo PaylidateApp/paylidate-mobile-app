@@ -54,7 +54,7 @@ const dealerData = [
 
 const DashboardScreen = () => {
   const { userData, setUserData } = useContext(AuthContext);
-  const [token, setToken] = useState(null)
+  // const [token, setToken] = useState(null)
   const [walletData, setWalletData] = useState(null);
   const [dashboardData, setDashboardData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -62,21 +62,21 @@ const DashboardScreen = () => {
 
   const SCREEN_WIDTH = Dimensions.get('screen').width;
 
-  const tokes = AsyncStorage.getItem("paylidateToken").then((result) => {
-    if (result !== null) {
-      return result;
-    } else {
-      return 'empty';
-    }
-  }).then((response) => { setToken(JSON.parse(response)) }).catch((error) => console.log(error));
+  // const tokes = AsyncStorage.getItem("paylidateToken").then((result) => {
+  //   if (result !== null) {
+  //     return result;
+  //   } else {
+  //     return 'empty';
+  //   }
+  // }).then((response) => { setToken(JSON.parse(response)) }).catch((error) => console.log(error));
 
-  const authToken = 'Bearer ' + token;
-  instance.defaults.headers.common["Authorization"] = authToken;
+  // const authToken = 'Bearer ' + token;
+  // instance.defaults.headers.common["Authorization"] = authToken;
 
   const logOut = async () => {
-    AsyncStorage.removeItem('paylidateToken');
-    AsyncStorage.removeItem('paylidateCredentials')
-    instance.get('/api/logout')
+    // AsyncStorage.removeItem('paylidateToken');
+    // AsyncStorage.removeItem('paylidateCredentials')
+    await instance.get('/api/logout')
       .then((response) => {
         AsyncStorage.removeItem('paylidateCredentials').then(() => {
           alert('Log Out Successful');
@@ -88,40 +88,26 @@ const DashboardScreen = () => {
 
   }
 
-  // useEffect(() => {
-  //   // logOut();
-  //   console.log("useEffect() fired");
-  //   setIsLoading(true);
-  //   // (async () => {
-  //   // setIsLoading(true);
-  //   instance.get('/api/dashboard')
-  //     .then((response) => {
-  //       setDashboardData(response.data.data);
-  //       console.log("worked-in");
-  //       console.log({ dashboardData })
-  //       console.log("worked-out0");
-  //       setIsLoading(false);
-  //     }).catch((error) => error);
-  //   // })();
-
-  // }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       console.log("useEffect() fired");
+      // console.log(authToken);
+      console.log(userData);
       setIsLoading(true);
 
       try {
         const response = await instance.get('/api/dashboard');
-        setDashboardData(response.data.data);
-        console.log("worked-in");
-        console.log({ dashboardData });
-        console.log("worked-out");
+        if (response.data.status === 'success') {
+          setDashboardData(response.data.data);
+          const { wallet } = response.data.data;
+          const [{ account_number, balance, bank_name, bonus }] = wallet;
+          setWalletData({ account_number, balance, bank_name, bonus });
+          console.log("worked-in");
+          console.log("worked-out");
+          // setIsLoading(false);
+        }
 
-        // Destructure the wallet data and set it to the walletData state
-        const { wallet } = response.data.data;
-        const [{ account_number, balance, bank_name, bonus }] = wallet;
-        setWalletData({ account_number, balance, bank_name, bonus });
       } catch (error) {
         console.log(error);
       } finally {
@@ -133,18 +119,10 @@ const DashboardScreen = () => {
   }, []);
 
 
-  // console.log({ ...dashboardData })
-
-  // const { wallet: [{ account_number, balance, bank_name, bonus }] } = dashboardData;
-
-  // const { wallet } = { dashboardData };
-  // // // console.log({ dashboardData });
-  // const { account_number, balance, bank_name, bonus } = { ...wallet };
-
   const navigation = useNavigation();
 
   const checkMyNetwork = async () => {
-    navigation.navigate("MyNetworkScreen");
+    navigation.navigate("DashboardScreen", { screen: 'Network' });
   };
 
   const checkUserProfile = async () => {
@@ -176,168 +154,170 @@ const DashboardScreen = () => {
   };
 
   return (
-    <ScrollView>
-      {dashboardData ?
-        <View style={styles.screen}>
-          <View style={styles.textContainer}>
-            <Text>Hello, {name}</Text>
-          </View>
+    <>
+      {!isLoading ?
+        <ScrollView>
+          <View style={styles.screen}>
+            <View style={styles.textContainer}>
+              <Text>Hello, {name}</Text>
+            </View>
 
-          <View style={styles.sectionOne}>
-            <View style={styles.flexStyle}>
-              <Text style={styles.bigText}>N {walletData ? walletData.balance : "0"}</Text>
-              {/* Fund Wallet button */}
-              <View >
+            <View style={styles.sectionOne}>
+              <View style={styles.flexStyle}>
+                <Text style={styles.bigText}>N {walletData ? walletData.balance : "0"}</Text>
+                {/* Fund Wallet button */}
+                <View >
+                  <TouchableHighlight
+                    style={styles.smallBtn}
+                    onPress={logOut}
+                  >
+                    <Text style={styles.smallBtnTxt}>Fund Wallet</Text>
+                  </TouchableHighlight>
+                </View>
+                {/* Fund button ends */}
+              </View>
+              <View style={styles.flexStyle}>
+                <View>
+                  <Text style={styles.mediumText}>{username ? `@${username}` : 'Username'}</Text>
+                </View>
+                <View>
+                  <Text style={styles.mediumText}>{walletData ? walletData.account_number : "7123467390"}</Text>
+                  <Text style={styles.smallText}>{walletData ? walletData.bank_name : "Sterling Bank"}</Text>
+                </View>
+              </View>
+              {/* Send funds button */}
+              <View style={styles.btnContainer}>
                 <TouchableHighlight
-                  style={styles.smallBtn}
-                  onPress={logOut}
+                  style={styles.sendFundsBtn}
+                  onPress={sendfunds_navigation}
                 >
-                  <Text style={styles.smallBtnTxt}>Fund Wallet</Text>
+                  <Text style={styles.sendFundsBtnTxt}>Send Funds</Text>
                 </TouchableHighlight>
               </View>
-              {/* Fund button ends */}
+              {/* Send funds button ends */}
             </View>
-            <View style={styles.flexStyle}>
-              <View>
-                <Text style={styles.mediumText}>{username ? `@${username}` : 'Username'}</Text>
-              </View>
-              <View>
-                <Text style={styles.mediumText}>{walletData ? walletData.account_number : "7123467390"}</Text>
-                <Text style={styles.smallText}>{walletData ? walletData.bank_name : "Sterling Bank"}</Text>
-              </View>
-            </View>
-            {/* Send funds button */}
-            <View style={styles.btnContainer}>
-              <TouchableHighlight
-                style={styles.sendFundsBtn}
-                onPress={sendfunds_navigation}
-              >
-                <Text style={styles.sendFundsBtnTxt}>Send Funds</Text>
-              </TouchableHighlight>
-            </View>
-            {/* Send funds button ends */}
-          </View>
 
-          {/* Section Two  */}
-          <View style={styles.sectionTwo}>
-            <View style={styles.flexStyle2}>
-              <View style={styles.sectionTwoSub}>
-                <FontAwesome name="trophy" size={24} color="black" />
-                <Text style={styles.smallTextSecTwo}>0 PPTs</Text>
-              </View>
-              <View style={styles.sectionTwoSub}>
-                <MaterialCommunityIcons name="sack" size={24} color="black" />
-                <Text style={styles.smallTextSecTwo}>N {walletData ? walletData.bonus : '0'}</Text>
-              </View>
-            </View>
-          </View>
-          {/* Section Two ends */}
-
-          <View>
-            <View style={styles.sectionThree}>
-              <View>
-                <TouchableHighlight onPress={checkActiveCards}>
-                  <Image
-                    style={[styles.imageStyle2, styles.imgPositionLeft]}
-                    source={require("../assets/dashboard/users.png")}
-                  />
-                </TouchableHighlight>
-                <Text style={styles.miniText}>Community Feed</Text>
-              </View>
-              <View>
-                <TouchableOpacity onPress={myDeals}>
-                  <FontAwesome5 name="handshake" size={40} color="#182430" style={{ marginTop: -6 }} />
-                </TouchableOpacity>
-                <Text style={[styles.miniText,]}>
-                  My Deals
-                </Text>
-              </View>
-              <View>
-                <Image
-                  style={[styles.imageStyle, styles.imgPositionLeft]}
-                  source={require("../assets/dashboard/verified.png")}
-                />
-                <Text style={styles.miniText}>Fulfillment</Text>
+            {/* Section Two  */}
+            <View style={styles.sectionTwo}>
+              <View style={styles.flexStyle2}>
+                <View style={styles.sectionTwoSub}>
+                  <FontAwesome name="trophy" size={24} color="black" />
+                  <Text style={styles.smallTextSecTwo}>0 PPTs</Text>
+                </View>
+                <View style={styles.sectionTwoSub}>
+                  <MaterialCommunityIcons name="sack" size={24} color="black" />
+                  <Text style={styles.smallTextSecTwo}>N {walletData ? walletData.bonus : '0'}</Text>
+                </View>
               </View>
             </View>
-            <View style={styles.sectionThree}>
-              <View>
-                <TouchableOpacity onPress={checkMyNetwork}>
-                  <Image
-                    style={[styles.imageStyle, styles.imgPositionLeft]}
-                    source={require("../assets/dashboard/node.png")}
-                  />
-                </TouchableOpacity>
-                <Text style={styles.miniText}>My Network</Text>
-              </View>
+            {/* Section Two ends */}
 
-              <View>
-                <TouchableOpacity onPress={checkUserProfile}>
-                  <Image
-                    style={[styles.imageStyle2, styles.imgPositionLeft]}
-                    source={require("../assets/dashboard/payment_wallet.png")}
-                  />
-                  <Text style={[styles.miniText,]}>
-                    Payment Requests
-                  </Text>
-                </TouchableOpacity>
-              </View>
-
-              <View>
-                <TouchableOpacity onPress={paybills_navigation}>
-                  <TouchableHighlight onPress={checkAddCards}>
+            <View>
+              <View style={styles.sectionThree}>
+                <View>
+                  <TouchableHighlight onPress={checkMyCommunity}>
                     <Image
-                      style={styles.imageStyle}
-                      source={require("../assets/dashboard/payment.png")}
+                      style={[styles.imageStyle2, styles.imgPositionLeft]}
+                      source={require("../assets/dashboard/users.png")}
                     />
                   </TouchableHighlight>
-                  <Text style={styles.miniText}>Pay Bills</Text>
-                </TouchableOpacity>
+                  <Text style={styles.miniText}>Community Feed</Text>
+                </View>
+                <View>
+                  <TouchableOpacity onPress={myDeals}>
+                    <FontAwesome5 name="handshake" size={40} color="#182430" style={{ marginTop: -6 }} />
+                  </TouchableOpacity>
+                  <Text style={[styles.miniText,]}>
+                    My Deals
+                  </Text>
+                </View>
+                <View>
+                  <Image
+                    style={[styles.imageStyle, styles.imgPositionLeft]}
+                    source={require("../assets/dashboard/verified.png")}
+                  />
+                  <Text style={styles.miniText}>Fulfillment</Text>
+                </View>
               </View>
+              <View style={styles.sectionThree}>
+                <View>
+                  <TouchableOpacity onPress={checkMyNetwork}>
+                    <Image
+                      style={[styles.imageStyle, styles.imgPositionLeft]}
+                      source={require("../assets/dashboard/node.png")}
+                    />
+                  </TouchableOpacity>
+                  <Text style={styles.miniText}>My Network</Text>
+                </View>
+
+                <View>
+                  <TouchableOpacity onPress={checkUserProfile}>
+                    <Image
+                      style={[styles.imageStyle2, styles.imgPositionLeft]}
+                      source={require("../assets/dashboard/payment_wallet.png")}
+                    />
+                    <Text style={[styles.miniText,]}>
+                      Payment Requests
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+
+                <View>
+                  <TouchableOpacity onPress={paybills_navigation}>
+                    <TouchableHighlight onPress={checkAddCards}>
+                      <Image
+                        style={styles.imageStyle}
+                        source={require("../assets/dashboard/payment.png")}
+                      />
+                    </TouchableHighlight>
+                    <Text style={styles.miniText}>Pay Bills</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              {/* section three ends */}
+
+
+
+
+              {/* Post to Community button */}
+              <View style={styles.btnContainer}>
+                <TouchableHighlight
+                  onPress={checkMyCommunity}
+                  style={styles.postCommunityBtn}
+                >
+                  <Text style={styles.postCommunityBtnTxt}>Post to Community</Text>
+                </TouchableHighlight>
+              </View>
+              {/* Post to Community button ends */}
             </View>
-            {/* section three ends */}
 
-
-
-
-            {/* Post to Community button */}
-            <View style={styles.btnContainer}>
-              <TouchableHighlight
-                onPress={checkMyCommunity}
-                style={styles.postCommunityBtn}
-              >
-                <Text style={styles.postCommunityBtnTxt}>Post to Community</Text>
-              </TouchableHighlight>
+            {/* Top Sellers section */}
+            <View style={{ justifyContent: "center", alignItems: "center", marginVertical: 20, }}>
+              <Text style={styles.bigText}> Top Paylidatian Sellers </Text>
             </View>
-            {/* Post to Community button ends */}
-          </View>
+            <View style={{ flexDirection: "row" }}>
+              <FlatList
+                horizontal
+                pagingEnabled={true}
+                showsHorizontalScrollIndicator={false}
+                legacyImplementation={false}
+                data={dealerData}
+                renderItem={({ item }) => (<TopDealer avatar={item.avatar} userName={item.username} name={item.name} ratings={item.ratings} />)}
+                keyExtractor={(item) => item.id}
+              // style={{ width: SCREEN_WIDTH + 5, height: '100%' }}
+              />
+            </View>
+            {/* Top Sellers section end */}
 
-          {/* Top Sellers section */}
-          <View style={{ justifyContent: "center", alignItems: "center", marginVertical: 20, }}>
-            <Text style={styles.bigText}> Top Paylidatian Sellers </Text>
-          </View>
-          <View style={{ flexDirection: "row" }}>
-            <FlatList
-              horizontal
-              pagingEnabled={true}
-              showsHorizontalScrollIndicator={false}
-              legacyImplementation={false}
-              data={dealerData}
-              renderItem={({ item }) => (<TopDealer avatar={item.avatar} userName={item.username} name={item.name} ratings={item.ratings} />)}
-              keyExtractor={(item) => item.id}
-            // style={{ width: SCREEN_WIDTH + 5, height: '100%' }}
-            />
-          </View>
-          {/* Top Sellers section end */}
-
-          {/* product list section */}
-          {/* <View style={styles.listSection}>
+            {/* product list section */}
+            {/* <View style={styles.listSection}>
             <ProductListItem />
           </View> */}
-          {/* product list section end */}
-        </View>
-        : <ActivityIndicator size="large" color="#EB6117" style={{ justifyContent: "center", alignItems: "center" }} />}
-    </ScrollView>
+            {/* product list section end */}
+          </View>
+        </ScrollView>
+        : <ActivityIndicator size="large" color="#EB6117" style={{ flex: 1, justifyContent: "center", alignItems: "center" }} />}
+    </>
   );
 };
 

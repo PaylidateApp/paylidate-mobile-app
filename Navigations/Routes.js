@@ -14,7 +14,7 @@ const Routes = () => {
         <AuthContext.Consumer>
             {({ userData }) => (
                 <NavigationContainer>
-                    <Stack.Navigator screenOptions={{ headerShown: false }}>
+                    <Stack.Navigator initialRouteName={userData ? "DashboardScreen" : "Login"} screenOptions={{ headerShown: false }}>
                         {userData ? MainStack(Stack)
                             : AuthStack(Stack)
                         }

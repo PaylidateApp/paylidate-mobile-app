@@ -9,8 +9,12 @@ import {
   TextInput,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
 
 const AddCard = () => {
+
+  const navigation = useNavigation();
+
   return (
     <TouchableWithoutFeedback
       onPress={() => {
@@ -20,9 +24,11 @@ const AddCard = () => {
       <View style={styles.screen}>
         {/* Header */}
         <View style={styles.headerStyle}>
-          <View style={{ flexDirection: "row", width: "40%" }}>
-            <Ionicons name="chevron-back" size={20} color="black" />
-            <Text style={styles.txt}>Home</Text>
+          <View>
+            <TouchableOpacity onPress={() => navigation.navigate('Home')} style={{ flexDirection: "row", alignItems: "center" }}>
+              <Ionicons name="chevron-back" size={20} color="black" />
+              <Text style={styles.txt}>Home</Text>
+            </TouchableOpacity>
           </View>
           <View>
             <Text style={styles.bigTxt}>Add Card</Text>
@@ -111,6 +117,8 @@ const styles = StyleSheet.create({
 
   headerStyle: {
     flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingVertical: 12,
   },
 

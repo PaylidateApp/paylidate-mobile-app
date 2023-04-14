@@ -12,7 +12,7 @@ const MainStack = (Stack) => {
             <Stack.Screen name="DashboardScreen" component={Tabs} />
             <Stack.Screen name="ResetInput" component={ResetInput} />
             <Stack.Screen name="PayBills" component={PayBills} />
-            <Stack.Screen name="MyNetworkScreen" component={MyNetworkScreen} />
+            {/* <Stack.Screen name="MyNetworkScreen" component={MyNetworkScreen} /> */}
             <Stack.Screen name="UserProfileScreen" component={UserProfileScreen} />
             <Stack.Screen name='MyCommunityScreen' component={MyCommunityScreen} />
             <Stack.Screen name='CreatePost' component={CreatePost} />

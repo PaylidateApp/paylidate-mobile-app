@@ -34,7 +34,7 @@ export const Product = ({ userName, productName, amount, location, onPress }) =>
                 <View style={styles.listItemsTxtContainer}>
                     <View>
                         <Text style={[styles.smallTextDark, styles.smallTextDarkPosition]}>
-                            {amount}
+                            {amount}.00
                         </Text>
                     </View>
                 </View>

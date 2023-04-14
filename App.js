@@ -9,11 +9,12 @@ import instance from './config/ApiManager';
 
 export default function App() {
   const [userData, setUserData] = useState("");
+  const [token, setToken] = useState(null)
 
   // axios.defaults.headers.common["Authorization"] = token;
 
-  const checkLoginCredentials = () => {
-    AsyncStorage
+  const checkLoginCredentials = async () => {
+    await AsyncStorage
       .getItem('paylidateCredentials')
       .then((result) => {
         if (result !== null) {
@@ -24,7 +25,18 @@ export default function App() {
         }
       })
       .catch(error => alert(error));
+
+    await AsyncStorage.getItem("paylidateToken").then((result) => {
+      if (result !== null) {
+        return result;
+      } else {
+        return 'empty';
+      }
+    }).then((response) => { setToken(JSON.parse(response)) }).catch((error) => console.log(error));
+
   }
+  const authToken = 'Bearer ' + token;
+  instance.defaults.headers.common["Authorization"] = authToken;
 
   useEffect(() => {
     checkLoginCredentials();
